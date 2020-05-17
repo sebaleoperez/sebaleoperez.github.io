@@ -17,17 +17,24 @@ Les dejo los links:
 
 [Parte 2 - El Build por dentro](https://ar.ivoox.com/es/50985154)
 
+[Parte 3 - Curiosidades](https://ar.ivoox.com/es/51113126)
+
 **Spotify:**
 
 [Parte 1 - Introducción](https://open.spotify.com/episode/0O1dL0z7VMr08xEe5Db1C2?si=YIv-cHUJSm2GLY9j4HnE2w)
 
 [Parte 2 - El Build por dentro](https://open.spotify.com/episode/2dbikpxaXmV2ULknkd2LyJ?si=GhuuY9lUQC6PR3pf0ngwGQ)
 
+[Parte 3 - Curiosidades](https://open.spotify.com/episode/4XZgklPtNyrWhwUTJjEFdx?si=HuSjUMq8StG5PwRbKHs5vA)
+
 **Youtube:**
 
 [Parte 1 - Introducción](https://www.youtube.com/watch?v=Vztu1e3d7yc)
 
 [Parte 2 - El Build por dentro](https://www.youtube.com/watch?v=ht8UbQOrBKo)
+
+[Parte 3 - Curiosidades](https://youtu.be/4QtvFbxs_jo)
+
 
 **Links:**
 
