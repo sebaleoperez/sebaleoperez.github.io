@@ -42,6 +42,18 @@ Les dejo los links:
 
 [Registro](https://register.build.microsoft.com/)
 
+**Fotos:**
 
+Pablo en el Build, con Carlos Castro
+
+![Pablo en el Build](https://pablodiloreto.com/wp-content/uploads/2020/02/59829842_2596184863728199_6639252203838111744_o.jpg)
+
+Yo, en el "Vacío" auditorio de conferencias de Apple
+
+![Auditorio Apple](/imgs/apple.jpg)
+
+La foto "cholula" con Hanselman
+
+![Foto con Hanselman](/imgs/hanselman.jpg)
 
 Espero sus comentarios !
