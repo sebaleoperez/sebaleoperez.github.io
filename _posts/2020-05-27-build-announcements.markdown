@@ -7,7 +7,7 @@ categories: microsoft build evento conferencia desarrolladores .net azure mvp ma
 
 ![Scott Hanselman, Microsoft partner program manager, speaks to attendees virtually at Build 2020.](https://3er1viui9wo30pkxh1v2nh4w-wpengine.netdna-ssl.com/wp-content/uploads/prod/sites/575/2020/05/Scott-Hanselman-800x533.jpg)
 
-Un nuevo Microsoft Build pasó y trajo muchas novedades, pero lo realmente llamativo de esta edición es que fue **100% online y gratuita**. Antes que nada, si querés saber más sobre qué es el Microsoft Build podés escuchar el [podcast de Pinta-NET](https://bit.ly/pinta-net-1) donde explicamos todo eso y más.
+Un nuevo Microsoft Build pasó y trajo muchas novedades, pero lo realmente llamativo de esta edición es que fue **100% online y gratuita**. Antes que nada, si querés saber más sobre qué es el Microsoft Build podés escuchar el [podcast de Pinta-NET](https://bit.ly/pinta-net-1) donde te contamos la historia del evento y algunas curiosidades.
 
 **MAUI:** Se anunció el sucesor de Xamarin Forms, pero lamentablemente tendremos que esperar a 2021 para poder utilizarlo.
 
