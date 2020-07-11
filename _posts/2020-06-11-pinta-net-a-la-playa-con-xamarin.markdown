@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Pinta-NET: A la playa con Xamarin"
-date:   2020-05-13 00:00:00 -0300
+date:   2020-07-11 00:00:00 -0300
 categories: español podcast microsoft xamarin android ios maui .net uruguay
 ---
 
