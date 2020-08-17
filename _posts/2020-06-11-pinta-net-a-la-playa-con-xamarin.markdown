@@ -39,8 +39,6 @@ Les dejo los links:
 
 **Fotos:**
 
-Con Diego en la .NET Conf AR
-
-![Pablo en el Build](https://scontent.faep9-2.fna.fbcdn.net/v/t1.0-9/21430608_1902720849980237_358772039205460858_n.jpg?_nc_cat=110&_nc_sid=cdbe9c&_nc_ohc=CADV5Dx4tn8AX8vqG3c&_nc_ht=scontent.faep9-2.fna&oh=273a6adac24bbe40533a6ad11340dfe8&oe=5F2F4E9F)
+Con Diego en la .NET Conf AR(https://scontent.faep9-2.fna.fbcdn.net/v/t1.0-9/21430608_1902720849980237_358772039205460858_n.jpg?_nc_cat=110&_nc_sid=cdbe9c&_nc_ohc=sxG8maWq5YAAX9pkeLQ&_nc_ht=scontent.faep9-2.fna&oh=e5c5855419bf64eccfc090dfa246f220&oe=5F5EC49F)
 
 Espero sus comentarios !
