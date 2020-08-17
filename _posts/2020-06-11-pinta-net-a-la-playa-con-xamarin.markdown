@@ -17,19 +17,19 @@ Les dejo los links:
 
 [Lado A](https://ar.ivoox.com/es/53776952)
 
-Lado B (Proximamente)
+[Lado B](https://go.ivoox.com/rf/55222966)
 
 **Spotify:**
 
 [Lado A](https://open.spotify.com/episode/7FfuGj2bNzQXU2MG3lIYWd?si=qlgF96rsSi2XMTZ8Bq6GOw)
 
-Lado B (Proximamente)
+[Lado B](https://open.spotify.com/episode/2PDPygLNWzmtklPziYGO0M?si=23YnIb_jSl27rWW_t1j0Tw)
 
 **Youtube:**
 
 [Lado A](https://www.youtube.com/watch?v=hsCf4Aqtkm0)
 
-Lado B (Proximamente)
+[Lado B](https://www.youtube.com/watch?v=LO6zivi1OsU)
 
 **Links:**
 
