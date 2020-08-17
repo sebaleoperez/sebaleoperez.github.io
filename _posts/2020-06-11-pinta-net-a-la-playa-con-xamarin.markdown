@@ -39,6 +39,6 @@ Les dejo los links:
 
 **Fotos:**
 
-Con Diego en la .NET Conf AR(https://scontent.faep9-2.fna.fbcdn.net/v/t1.0-9/21430608_1902720849980237_358772039205460858_n.jpg?_nc_cat=110&_nc_sid=cdbe9c&_nc_ohc=sxG8maWq5YAAX9pkeLQ&_nc_ht=scontent.faep9-2.fna&oh=e5c5855419bf64eccfc090dfa246f220&oe=5F5EC49F)
+![Con Diego en la .NET Conf AR](https://scontent.faep9-2.fna.fbcdn.net/v/t1.0-9/21430608_1902720849980237_358772039205460858_n.jpg?_nc_cat=110&_nc_sid=cdbe9c&_nc_ohc=sxG8maWq5YAAX9pkeLQ&_nc_ht=scontent.faep9-2.fna&oh=e5c5855419bf64eccfc090dfa246f220&oe=5F5EC49F)
 
 Espero sus comentarios !
