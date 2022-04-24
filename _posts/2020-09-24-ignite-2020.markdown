@@ -2,10 +2,9 @@
 layout: post
 title:  "Lo que me gustó del Microsoft Ignite 2020"
 date:   2020-09-24 00:00:00 -0300
-categories: español post microsoft ignite virtual conference
+tags: [español,microsoft,conferencia,evento,desarrollo,azure]
+img: /posts/events/ignite2020.jpg
 ---
-
-![Microsoft Ignite 2020](/imgs/ignite.jpg)
 
 Se realizó una nueva edición de este evento que suele realizarse de forma presencial en los Estados Unidos. La edición 2019 de había realizado en Orlando y este año el plan era New Orleans. La novedad ? Esta vez fue 100% online y gratuito !
 

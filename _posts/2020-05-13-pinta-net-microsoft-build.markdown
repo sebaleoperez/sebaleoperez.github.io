@@ -2,10 +2,9 @@
 layout: post
 title:  "Pinta-NET: Microsoft Build"
 date:   2020-05-13 00:00:00 -0300
-categories: español podcast microsoft build evento conferencia desarrolladores .net azure mvp
+tags: [español,podcast,microsoft,evento,conferencia,desarrollo,.net,azure,microsoft mvp]
+img: /posts/events/build2020.jpeg
 ---
-
-![Podcast](https://1gew6o3qn6vx9kp3s42ge0y1-wpengine.netdna-ssl.com/wp-content/uploads/prod/2020/04/Build-Hero-Image_OMB.jpg)
 
 Arrancamos con este nuevo podcast, mezclando dos pasiones: tecnología y una divertida conversación. En esta edición conversamos con [Pablo Di Loreto](https://ar.linkedin.com/in/pablodiloreto/es-es) sobre Qué es el [Microsoft Build](https://mybuild.microsoft.com/).
 
@@ -50,10 +49,10 @@ Pablo en el Build, con Carlos Castro
 
 Yo, en el "Vacío" auditorio de conferencias de Apple
 
-![Auditorio Apple](/imgs/apple.jpg)
+![Auditorio Apple](../assets/img/posts/events/apple2020.jpg)
 
 La foto "cholula" con Hanselman
 
-![Foto con Hanselman](/imgs/hanselman.jpg)
+![Foto con Hanselman](../assets/img/posts/events/hanselman2019.jpg)
 
 Espero sus comentarios !

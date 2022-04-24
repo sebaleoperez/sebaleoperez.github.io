@@ -2,10 +2,9 @@
 layout: post
 title:  "Global AI Tour Argentina"
 date:   2020-05-12 00:00:00 -0300
-categories: ai inteligencia articial español argentina azure
+tags: [ai,inteligencia articial,español,argentina,azure]
+img: /posts/ia/robot.avif
 ---
-
-![Global AI Tour](https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1242&q=80)
 
 Llega el Tour Global de Inteligencia Artificial de Microsoft a Argentina, esta vez en edición Online y 100% gratuita. El mismo consta de 3 ediciones:
 - Rosario (Sabado 16 de Mayo)
