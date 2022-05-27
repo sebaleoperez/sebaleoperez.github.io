@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Microsoft Build 2022 LATAM: Volver a la presencialidad"
+date:   2022-05-27 00:00:00 -0300
+tags: [español,microsoft,evento,conferencia,desarrollo,.net,azure,microsoft mvp,maui]
+img: /posts/events/build2022latam.JPG
+---
+
+Pasaba el mes de Marzo del año 2020 y me encontraba en San Francisco, Estados Unidos. Sospechándolo pero sin saberlo, se aproximaba un acontecimiento global que terminaría con todo evento presencial. Fuera del miedo y la incertidumbre, al estar de regreso en mi hogar en Buenos Aires la primera sensación fue de alivio, y luego de eso, vino una fuerte motivación: la oportunidad de la virtualidad. Y así fue que nació este blog. 
+
+Pero no fui el único, el 2020 fue una año plagado de virtualidad: eventos, conferencias, charlas, hasta meetups online. Tanto, que agotó. No voy a negar que tuve grandes satisfacciones como organizar un épico Xamarin Assemble 2020 y ser orador en la dotnetconf. Todo pareció marchar bien en el 2020 pero algo pasó en el año siguiente. Todos los planes que tenía para el 2021 de continuar este blog, o de grabar el podcast, o de subir algún video a Youtube se fueron diluyendo. Un desgaste que noté en la mayoría de los que tuvimos la suerte de trabajar online desde nuestras casas y cuya causa fue lo que tan bien nos hizo en el 2020: exceso de virtualidad devenido en desgaste. De los meetups virtuales y eventos que hicimos para 300 personas en el 2020 bajamos a encuentros de 50 personas o menos. La virtualidad dejaba de tener sentido y necesitabamos de un pequeño empujón para volver a la actividad. 
+
+Hace poco le hice un retoque estético al blog, que parecía tener polvo y telarañas, y que nunca me había gustado cómo se veía. Y vi el contenido del Microsoft Build 2020, y como cuando se encuentra una foto familiar de hace muchos años, esos posts me trasladaron temporalmente a esa época de virtualidad "buena", y también a la etapa previa, la de la comunidad y los eventos presenciales. Y cómo si todo estuviera guionado, dias después me entero que el Microsoft Build iba a tener su versión presencial en Latinoamérica, nada más y nada menos que en la ciudad en la que vivo. 
