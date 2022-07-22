@@ -10,7 +10,7 @@ Si hablamos de Maui, lo primero que se me viene a la mente es un paisaje paradis
 
 **.NET MAUI** podría hacer referencia a esta icónico pasaje natural, sin embargo en este caso **representa las siglas de Multi-platform Application User Interface**. Esta prometedora plataforma fue anunciada en el **Microsoft Build 2020** (te invito a leer [este post](https://sebaleoperez.github.io/build-announcements/) sobre el evento) junto con **.NET 5** y se esperaba una utópica integración para finales de ese año. Pandemia mediante, sucedió lo esperable: el deseo de contar con este framework evolución de Xamarin Forms **se postergaba un año más para coincidir con la salida de .NET 6** en Noviembre de 2021.
 
-<img src="https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2020/05/maui-01-overview.png" width="400" height="400">
+<img src="https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2020/05/maui-01-overview.png" width="600" height="400">
 > **.NET MAUI** se anunció en el evento **Microsoft Build 2020** y se esperaba una preview para fin de ese año.
 
 Finalmente la ansiada fecha llegó, **.NET Conf 2021** (donde tuve el agrado de [participar como orador](https://www.youtube.com/watch?v=ZvioCO48A40)) se desarrolló de manera increible y todo parecía marchar fantástico, pero algo faltaba. **No había versión estable de .NET MAUI.** Pero la buena noticia es que parecíamos estar cerca.
@@ -45,7 +45,7 @@ Este es otro punto flojo. Si miramos el [repositorio de MAUI](https://github.com
 
 Si quieres un análisis más profundo, te recomiendo que veas este video de la charla que di junto con la gente del MUG sobre este tema:
 
-[![Charla sobre .NET MAUI]](https://www.youtube.com/watch?v=Vlj8GT5NuIc)
+[![Charla sobre .NET MAUI](https://img.youtube.com/vi/Vlj8GT5NuIc/0.jpg)](https://www.youtube.com/watch?v=Vlj8GT5NuIc)
 
 ¿Has probado .NET MAUI? No te olvides de dejarme tu opinión.
 
