@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "EthLatam + Platzi como plataforma sugerida de aprendizaje en Ethereum.org"
-date:   2022-08-22 00:00:00 -0300
+date:   2022-08-08 00:00:00 -0300
 tags: [español,web3,blockchain,desarrollo,solidity,educacion, ethereum, comunidad]
 img: /posts/crypto/platzi-ethlatam.png
 ---
