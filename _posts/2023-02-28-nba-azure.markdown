@@ -1,0 +1,37 @@
+---
+layout: post
+title:  "Puede la NBA mejorar utilizando Azure ?"
+date:   2023-02-28 00:00:00 -0300
+tags: [español,microsoft,azure,desarrollo,nba]
+img: /posts/azure/basketball.jpeg
+---
+
+A simple vista y fuera de contexto, suena raro que un servicio de nube pueda potenciar una liga de baloncesto, pero la llegada de Big Data revolucionó la industria de los deportes a tal punto que hoy no es posible competir en la alta competencia si no se cuenta con este tipo de análisis. Pero fuera de lo deportivo la liga de basquetbol más popular del mundo ha adoptado a la nube de Azure para crecer como plataforma de contenido hacia los usuarios con algunos casos de éxito:
+
+## Microsoft Teams como tribuna en "la burbuja"
+
+![La tribuna de la burbuja](/assets/img/posts/azure/nba-teams.jpeg)
+
+Durante la pandemia del Covid se produjo un cierre total de actividades deportivas que se extendió por meses. La solución que se encontró para que la liga puede completar su temporada fue la de convivir en una "burbuja" (espacio cerrado controlando entradas y salidas) para evitar los contagios la cual se realizó en Disney Orlando. El problema era que si bien el partido se podía jugar, el público no estaría presente. Aquí es donde se aprovecha la capacidad de Microsoft Teams para que tratar de simular lo mejor que se pueda la experiencia de un público presente en el estadio.
+
+## Video análisis para referees
+
+![Video análisis para referees](/assets/img/posts/azure/checks.jpeg)
+
+No solamente la tecnología ayuda a los árbitros a revisar jugadas con cada vez con más precisión si no que además poseen una App llamada REPS (Referee Engagement and Performance System) de la cual pueden aprender y estudiar para mejorar su performance. A futuro la NBA ya está hablando de incorporar cobros automáticos como el ojo de Halcón del tenis.
+
+## Apps para empleados
+
+1800 empleados de la NBA cuentan con una aplicación mobile-first de uso interno para que con puedan autenticarse de forma fácil a través de un single sign-on y tengan toda la información consolidad en un sólo punto de acceso. Esto ayuda no sólo a lo que tiene que ver con venta de entradas si no también al trabajo diario que se debe realizar en una franquicia.
+
+## Nueva aplicación de la NBA
+
+![La tribuna de la burbuja](/assets/img/posts/azure/app-nba.png)
+
+La aplicación que ofrece la NBA para mostrar estadísticas, noticias y hasta para ver la transmisión en vivo de los partidos ha sufrido una renovación total. El foco estaba puesto en tener una mejor respuesta del mercado y para esto no sólo se aplicaron servicios como Azure App Service, Azure Spring Apps, Azure SQL Database Hyperscale y Azure Cosmos DB si no que también aplicó los conceptos de modernización de Apps que pueden ver en [este link](https://azure.microsoft.com/en-us/solutions/application-and-database-modernization/#overview). 
+
+## Lo que se viene
+
+Que se viene ? Lo podés ver acá...
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Rv0qBbJq4qQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
