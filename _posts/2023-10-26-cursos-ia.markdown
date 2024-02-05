@@ -1,0 +1,22 @@
+---
+layout: post
+title:  "5 cursos gratuitos sobre IA generativa"
+date:   2023-10-26 00:00:00 -0300
+tags: [español,microsoft,azure,ia]
+img: /posts/azure/learn-ia.jpeg
+---
+
+En el post anterior hablamos de qué es la IA generativa y qué beneficios tiene. ¿Querés comenzar a usarla? Microsoft lanzó en su plataforma de Learn varios cursos gratuitos y actualizados en los que podés aprender cómo usarla:
+
+* [Primeros pasos con Azure Open AI](https://learn.microsoft.com/en-us/training/modules/get-started-openai/?WT.mc_id=AZ-MVP-5003354): en este curso vas a aprender a usar el servicio de Azure Open AI, qué debo tener en cuenta para acceder al servicio y explorar las distintas maneras de usarlo como la linea de comandos o las API REST.
+
+* [Aprovechando el lenguaje natural](https://learn.microsoft.com/en-us/training/modules/build-language-solution-azure-openai/?WT.mc_id=AZ-MVP-5003354): el lenguaje nautral nos permite que un asistente virtual nos responda como lo haría una persona. En este curso vas a aprender a utilizar las "Completions" que te permitirán integrar un asistente virtual en tu aplicación.
+
+* [Utilizando prompts](https://learn.microsoft.com/en-us/training/modules/apply-prompt-engineering-azure-openai/?WT.mc_id=AZ-MVP-5003354): un "prompt" es una instrucción que le damos al algoritmo generativo para que nos cree un contenido acorde. Cuanto más específico sea el prompt, más específico será el contenido generado. En este curso vas a aprender cómo aprovechar al máximo los prompts para generar un mejor contenido.
+
+* [Generación de imágenes](https://learn.microsoft.com/en-us/training/modules/generate-images-azure-openai/?WT.mc_id=AZ-MVP-5003354): este módulo está apuntado a la creación de imágenes espotáneas a través de prompts y el modelo DALL-E. 
+
+* [Crear código](https://learn.microsoft.com/en-us/training/modules/generate-code-azure-openai/?WT.mc_id=AZ-MVP-5003354): algo que no mencioné pero que es importante es que se puede también utilizar como un asistente en el desarrollo de software. En este módulo vas a aprender a crear piezas de código a través de prompts.
+
+¿Tenés algún otro curso para recomendar? 
+
