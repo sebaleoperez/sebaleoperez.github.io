@@ -4,6 +4,7 @@ title:  "Pinta-NET: A la playa con Xamarin"
 date:   2020-07-11 00:00:00 -0300
 tags: [español,podcast,microsoft,xamarin,android,ios,maui,.net,uruguay]
 img: /posts/podcast/E02A.png
+lang: es
 ---
 
 En esta oportunidad charlamos con [Diego Bonilla](https://uy.linkedin.com/in/diebonilla), socio fundador de Nareia y organizador de la comunidad de Xamarin en Uruguay, contando sobre la evolución de esta plataforma desde su creación y la llega de .NET MAUI.

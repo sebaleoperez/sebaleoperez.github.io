@@ -1,0 +1,54 @@
+---
+layout: post
+title:  "What I liked about Microsoft Ignite 2020"
+date:   2020-09-24 00:00:00 -0300
+tags: [english,microsoft,conference,event,development,azure]
+img: /posts/events/ignite2020.jpg
+lang: en
+---
+
+A new edition of this event took place, which is usually held in person in the United States. The 2019 edition was held in Orlando, and this year the plan was New Orleans. The twist? This time it was 100% online and free!
+
+## About the Event
+The event took place over three days (September 22, 23, and 24), with more than 250 sessions and over 1,000 speakers. As usual, the keynote was delivered by Satya Nadella, the company’s CEO, followed by various sessions with experts including Program Managers and Microsoft MVPs. Some sessions were pre-recorded broadcasts, while others were interactive, allowing participants to ask questions directly to the experts.
+
+## My Participation
+As a Microsoft MVP, I had the pleasure of collaborating in several sessions on Application Migration and Modernization with .NET and SQL Server. It was a great experience being “on the other side of the table” and seeing how a presentation is done at such a major event. 
+
+## What I Liked
+What I liked the most is that, just like Microsoft Build, it was free and open to everyone. Also, this time there was significant participation from MVPs around the world, which doesn’t usually happen in the in-person version.
+
+Regarding the topics and announcements, here are some highlights I particularly liked:
+
+### Microsoft Teams
+
+Among the updates to this communication tool, I want to highlight the announcement of Breakout Rooms, where a session host can move a subgroup into another room to discuss a specific topic. Also, the number of participants has been expanded (1,000 for group presentations and 20,000 for broadcasts). Other notable updates: more of the fun scenes showing all attendees seated like in a theater, new presentation layout options in the works, and automatic call summaries.
+
+For more details, I recommend [reading this article](https://www.microsoft.com/en-us/microsoft-365/blog/2020/09/22/seven-ways-were-empowering-every-person-and-every-organization-to-thrive-in-a-new-world-of-work/).
+
+### Cognitive Services
+
+One update I really liked was the “Spatial Analysis” feature in Computer Vision, which allows you to get new kinds of statistics from an image, such as the number of people, their behavior around a shelf, or how long they spend in a line. For more on this, check out [this video](https://channel9.msdn.com/Shows/AI-Show/Computer-Vision-for-Spatial-Analysis).
+
+### Azure Orbital
+
+This sounds like something out of a sci-fi movie, but you can now access “satellite” services in the cloud. For example, you can view a satellite image and apply Cognitive Services to it, or communicate via satellites. For more info, visit [this link](https://azure.microsoft.com/en-us/blog/introducing-azure-orbital-process-satellite-data-at-cloudscale/).
+
+### Microsoft Edge for Linux
+
+Microsoft’s new browser will be available for Linux starting in October. More info at [this link](https://blogs.windows.com/windowsexperience/2020/09/22/whats-new-in-web-experiences-ignite-2020-need-to-secure-your-remote-workers-choose-microsoft-edge-as-your-browser-for-business/). 
+
+### .NET 5
+Release Candidates were launched not only for .NET 5 but also for ASP.NET 5 and Entity Framework. Want to know what’s new? I recommend [this blog by my friend Fernando Sonego](https://withoutdebugger.com/), where he explains everything very clearly.
+
+### All the News and Announcements
+
+If you want a detailed look at all the event announcements, don’t miss the [Book of News](https://news.microsoft.com/ignite-2020-book-of-news/).
+
+You can also check out the [YouTube channel](https://www.youtube.com/channel/UCrhJmfAGQ5K81XQ8_od1iTg).
+
+## The Surprise
+
+A new Microsoft Learn Challenge was announced, and the prize is a free certification!
+
+To participate, go to [this link](https://csc.docs.microsoft.com/ignite/).

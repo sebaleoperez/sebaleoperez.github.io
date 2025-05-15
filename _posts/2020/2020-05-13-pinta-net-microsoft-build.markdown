@@ -4,6 +4,7 @@ title:  "Pinta-NET: Microsoft Build"
 date:   2020-05-13 00:00:00 -0300
 tags: [español,podcast,microsoft,evento,conferencia,desarrollo,.net,azure,microsoft mvp]
 img: /posts/events/build2020.jpeg
+lang: es
 ---
 
 Arrancamos con este nuevo podcast, mezclando dos pasiones: tecnología y una divertida conversación. En esta edición conversamos con [Pablo Di Loreto](https://ar.linkedin.com/in/pablodiloreto/es-es) sobre Qué es el [Microsoft Build](https://mybuild.microsoft.com/).

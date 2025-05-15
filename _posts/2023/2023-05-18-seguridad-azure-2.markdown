@@ -4,6 +4,7 @@ title:  "Entendiendo la seguridad en Azure: Defensa en profundidad"
 date:   2023-05-18 00:00:00 -0300
 tags: [español,microsoft,azure,seguridad]
 img: /posts/azure/defense-depth.jpeg
+lang: es
 ---
 
 Seguimos con esta serie de artículos que detallan algunos conceptos básicos de seguridad orientados a Azure. Hoy vamos a ver una forma de plantear la seguridad que aumenta la protección basado en un modelo de capas.

@@ -4,6 +4,7 @@ title:  "Como funciona Blockchain"
 date:   2020-05-04 00:00:00 -0300
 tags: [blockchain,español]
 img: /posts/crypto/blockchain.avif
+lang: es
 ---
 
 Escuchaste hablar de Blockchain ? Sabes de que se trata ? Les comparto un artículo que escribí en el blog de Xablu explicando conceptos básicos de cómo funciona Blockchain:

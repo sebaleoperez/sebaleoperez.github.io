@@ -981,6 +981,12 @@ table tfoot td {
   transform: scale3d(0.9, 0.9, 1);
 }
 
+.about .author-description {
+  font-size: 0.95em;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
 .about .author-name {
   font-family: 'PT Serif', serif;
   margin: 0 0 10px;
@@ -1507,4 +1513,30 @@ a.newer-posts:hover {
   .post .post-content .post-title a {
     font-size: 21px;
   }
+}
+
+.lang-toggle {
+  margin: 20px auto;
+  display: inline-block;
+  padding: 6px 12px;
+  border: 2px solid #007acc;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #007acc;
+  font-weight: bold;
+  background-color: #f0f8ff;
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.lang-toggle:hover {
+  background-color: #007acc;
+  color: white;
+  box-shadow: 0 0 8px rgba(0, 122, 204, 0.4);
+  text-decoration: none;
+}
+
+.cover-author-image img {
+  border: 3px solid #007acc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }

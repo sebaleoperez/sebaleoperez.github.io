@@ -4,6 +4,7 @@ title:  "Puede la NBA mejorar utilizando Azure ?"
 date:   2023-02-28 00:00:00 -0300
 tags: [español,microsoft,azure,desarrollo,nba]
 img: /posts/azure/basketball.jpeg
+lang: es
 ---
 
 A simple vista y fuera de contexto, suena raro que un servicio de nube pueda potenciar una liga de baloncesto, pero la llegada de Big Data revolucionó la industria de los deportes a tal punto que hoy no es posible competir en la alta competencia si no se cuenta con este tipo de análisis. Pero fuera de lo deportivo la liga de basquetbol más popular del mundo ha adoptado a la nube de Azure para crecer como plataforma de contenido hacia los usuarios con algunos casos de éxito:
@@ -26,7 +27,7 @@ No solamente la tecnología ayuda a los árbitros a revisar jugadas con cada vez
 
 ## Nueva aplicación de la NBA
 
-![La tribuna de la burbuja](/assets/img/posts/azure/app-nba.png)
+![Nueva app de la NBA](/assets/img/posts/azure/app-nba.png)
 
 La aplicación que ofrece la NBA para mostrar estadísticas, noticias y hasta para ver la transmisión en vivo de los partidos ha sufrido una renovación total. El foco estaba puesto en tener una mejor respuesta del mercado y para esto no sólo se aplicaron servicios como Azure App Service, Azure Spring Apps, Azure SQL Database Hyperscale y Azure Cosmos DB si no que también aplicó los conceptos de modernización de Apps que pueden ver en [este link](https://azure.microsoft.com/en-us/solutions/application-and-database-modernization/#overview). 
 

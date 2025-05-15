@@ -4,6 +4,7 @@ title:  "Al espacio con Azure"
 date:   2022-11-30 00:00:00 -0300
 tags: [español,microsoft,azure,desarrollo]
 img: /posts/azure/space.png
+lang: es
 ---
 
 Pensaste alguna vez que un servicio de nube podía llevarte al espacio ? Bueno, no lo tomes literalmente aunque con el SDK de Azure Orbital Space vas a poder crear aplicaciones que operen en órbita. 

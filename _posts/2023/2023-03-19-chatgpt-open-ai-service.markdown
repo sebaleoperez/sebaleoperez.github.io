@@ -4,6 +4,7 @@ title:  "Chat GPT disponible en Azure Open AI Service"
 date:   2023-03-19 00:00:00 -0300
 tags: [español,microsoft,azure,desarrollo,ai,ia]
 img: /posts/ia/openai.png
+lang: es
 ---
 
 Es impresionante todo lo que pasó en el último tiempo con la inteligencia artificial. Sin embargo lo único que podíamos hacer por ahora era consultar sitios como mini dalle o chatgpt para interactuar con algoritmos sorprendentes que realizan tareas complejas en cuestión de segundos.

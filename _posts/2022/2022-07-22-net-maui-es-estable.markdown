@@ -4,6 +4,7 @@ title:  ".NET MAUI GA, ¿versión estable?"
 date:   2022-07-22 00:00:00 -0300
 tags: [español,microsoft,mobile,desarrollo,.net,microsoft mvp,maui]
 img: /posts/net/netmaui.png
+lang: es
 ---
 
 Si hablamos de Maui, lo primero que se me viene a la mente es un paisaje paradisíaco y una camisa Hawaiana. Esto se debe a que ese nombre es precisamente el de una isla dentro del archipiélago conocido como Hawai y más especificamente al de una deidad dentro de su mitología. Pero esto no tiene nada que ver con el tema de este post. 

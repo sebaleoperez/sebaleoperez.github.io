@@ -4,6 +4,7 @@ title:  ".NET Conf Focus on MAUI: un paso más en la estabilidad"
 date:   2022-08-12 00:00:00 -0300
 tags: [español,microsoft,mobile,desarrollo,.net,microsoft mvp,maui]
 img: /posts/net/net_maui_stable.png
+lang: es
 ---
 
 Hace poco estuve escribiendo sobre la [estabilidad de .NET MAUI](https://sebaleoperez.github.io/net-maui-es-estable/), estaba seguro que habría novedades pronto y de hecho, las hubo en la [.NET CONF Focus on MAUI](https://www.youtube.com/watch?v=vc22hoUorzA).
@@ -19,7 +20,7 @@ Esta es la novedad principal, ahora la instalación se incluye con Visual Studio
 ### Plataformas
 Punto fuerte, sin dudas. En este ítem sigue bien arriba, **merece el punto**.
 
-### Plataformas
+### Performance
 
 No hubo cambios notables desde la última evaluación. Dejo el valor en **medio punto**, como estaba.
 

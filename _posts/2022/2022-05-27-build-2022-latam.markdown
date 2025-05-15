@@ -4,6 +4,7 @@ title:  "Microsoft Build 2022 LATAM: Volver a la presencialidad"
 date:   2022-05-27 00:00:00 -0300
 tags: [español,microsoft,evento,conferencia,desarrollo,.net,azure,microsoft mvp,maui]
 img: /posts/events/build2022latam.JPG
+lang: es
 ---
 
 Pasaba el mes de Marzo del año 2020 y me encontraba en San Francisco, Estados Unidos. Sospechándolo pero sin saberlo, se aproximaba un acontecimiento global que terminaría con todo evento presencial. Fuera del miedo y la incertidumbre, al estar de regreso en mi hogar en Buenos Aires la primera sensación fue de alivio, y luego de eso, vino una fuerte motivación: la oportunidad de la virtualidad. Y así fue que nació este blog. 

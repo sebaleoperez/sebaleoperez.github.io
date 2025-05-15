@@ -4,6 +4,7 @@ title:  "Resumen y anuncios del Microsoft Build"
 date:   2020-05-27 00:00:00 -0300
 tags: [español,microsoft,evento,conferencia,desarrollo,.net,azure,microsoft mvp,maui]
 img: /posts/events/build2020_2.jpeg
+lang: es
 ---
 
 Un nuevo Microsoft Build pasó y trajo muchas novedades, pero lo realmente llamativo de esta edición es que fue **100% online y gratuita**. Antes que nada, si querés saber más sobre qué es el Microsoft Build podés escuchar el [podcast de Pinta-NET](https://bit.ly/pinta-net-1) donde te contamos la historia del evento y algunas curiosidades.

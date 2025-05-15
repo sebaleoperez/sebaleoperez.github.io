@@ -4,6 +4,7 @@ title:  "Entendiendo la seguridad en Azure: Responsabilidad Compartida"
 date:   2023-04-20 00:00:00 -0300
 tags: [español,microsoft,azure,seguridad]
 img: /posts/azure/security.avif
+lang: es
 ---
 
 Estos dias estuve trabajando con algunos esquemas de seguridad en la nube y creo que viene bien para generar contenido que sirva de resumen con las nociones básicas de seguridad que aplican no sólo a Azure sino que al Cloud Computing en general. Si bien, utilizaré alguna nomenclatura relacionada con los servicios de la nube de Microsoft, son conceptos que podrás encontrar en cualquier proveedor de nube que utilices. En esta primera parte veremos un concepto clave.

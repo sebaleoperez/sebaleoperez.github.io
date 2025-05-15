@@ -4,6 +4,7 @@ title:  "Entendiendo la seguridad en Azure: Confianza cero"
 date:   2023-06-22 00:00:00 -0300
 tags: [español,microsoft,azure,seguridad]
 img: /posts/azure/trust.jpeg
+lang: es
 ---
 
 Tercera entrega de conceptos básicos de seguridad, y en esa ocasión vamos a hablar del modelo de confianza cero. Si no leíste los artículos anteriores, te recomiendo que lo hagas antes de seguir con este.

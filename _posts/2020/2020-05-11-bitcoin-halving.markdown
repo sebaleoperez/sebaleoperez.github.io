@@ -4,6 +4,7 @@ title:  "Bitcoin Halving"
 date:   2020-05-11 00:00:00 -0300
 tags: [blockchain,bitcoin,español]
 img: /posts/crypto/bitcoin.avif
+lang: es
 ---
 
 Hoy es un día especial para el mundo Bitcoin, ya que sucede como cada 4 años el famoso Halving. Si les interesa saber más sobre este tema, les dejo un link al artículo que escribí en el blog de Xablu:
