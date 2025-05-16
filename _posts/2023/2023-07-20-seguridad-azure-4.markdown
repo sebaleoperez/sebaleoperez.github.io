@@ -4,6 +4,7 @@ title:  "Entendiendo la seguridad en Azure: Encriptación y Hashing"
 date:   2023-07-20 00:00:00 -0300
 tags: [español,microsoft,azure,seguridad]
 img: /posts/azure/encryption.avif
+lang: es
 ---
 
 En este nuevo capítulo de conceptos básicos de seguridad vamos a ver dos mecanismos claves: Encriptación y Hashing.

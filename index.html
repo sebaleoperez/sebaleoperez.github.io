@@ -2,7 +2,10 @@
 layout: main
 ---
 
-<a href="#" id="lang-switcher" class="lang-toggle">🌐 Cambiar idioma</a>
+<div class="top-controls">
+  <a href="#" id="lang-switcher" class="lang-toggle">🌐 Cambiar idioma</a>
+  <a href="#" id="themeToggle" class="theme-toggle">🌓 Dark Mode</a>
+</div>
 {% for post in paginator.posts %}
 <article class="post" data-lang="{{ post.lang }}">
   {% if post.img %}

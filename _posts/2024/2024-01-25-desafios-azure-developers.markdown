@@ -4,6 +4,7 @@ title:  "5 desafíos de Azure gratuitos para desarrolladores"
 date:   2024-01-25 00:00:00 -0300
 tags: [español,microsoft,azure]
 img: /posts/azure/azure-devs.png
+lang: es
 ---
 
 Este año comencé un poco más tranquilo que de costumbre y aproveché a terminar algunos cursitos que tenía pendiente. Por esto, seleccioné 5 desafíos de Azure que me parecieron interesantes para desarrolladores de software en general:

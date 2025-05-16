@@ -4,6 +4,7 @@ title:  "Casos de uso de Azure Open IA en Automoviles"
 date:   2023-12-28 00:00:00 -0300
 tags: [español,microsoft,azure]
 img: /posts/azure/ia-cars.jpeg
+lang: es
 ---
 
 Una de los temas que más se trata cuando se habla de inteligencia artificial es la conducción autónoma, pero no es la única forma en que la Azure puede colaborar a mejorar con esta actividad. Te voy a compartir algunos ejemplos de cómo se incorporaron servicios de Azure en la vida real.
@@ -20,7 +21,7 @@ Microsoft y General Motors anunciaron una alianza para acelerar la comercializac
 
 [Fuente](https://news.microsoft.com/2021/01/19/cruise-and-gm-team-up-with-microsoft-to-commercialize-self-driving-vehicles/)
 
-## Wolskwagen
+## Volskwagen
 
 Con motivos de expandir la alianza creada en 2018 entre Microsoft y Volkswagen, se creó una plataforma basada en la nube para el desarrollo de software de conducción autónoma. La subsidiaria de Volkswagen, Car.Software, utilizará Azure para desarrollar y lograr sus metas de manera más sencilla.
 

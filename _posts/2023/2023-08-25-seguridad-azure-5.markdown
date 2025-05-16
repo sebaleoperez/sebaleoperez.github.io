@@ -4,6 +4,7 @@ title:  "Entendiendo la seguridad en Azure: Gobernanza, Riesgo y Compliance"
 date:   2023-08-25 00:00:00 -0300
 tags: [español,microsoft,azure,seguridad]
 img: /posts/azure/governance.png
+lang: es
 ---
 
 Finalmente llegamos a la última entrega de conceptos básicos de seguridad sobre Azure. Hoy vamos a hablar de tres conceptos que no están relacionados directamente con lo tecnológico si no con el mundo en el que vivimos y sus reglas. Estos conceptos son Gobernanza, Riesgo y Cumplimiento (Compliance).

@@ -1,0 +1,22 @@
+---
+layout: post
+title:  "5 Free Courses on Generative AI"
+date:   2023-10-26 00:00:00 -0300
+tags: [english,microsoft,azure,ai]
+img: /posts/azure/learn-ia.jpeg
+lang: en
+---
+
+In the previous post, we talked about what generative AI is and the benefits it offers. Want to start using it? Microsoft has released several free and up-to-date courses on its Learn platform where you can dive in and start learning how to use it:
+
+* [Get started with Azure OpenAI](https://learn.microsoft.com/en-us/training/modules/get-started-openai/?WT.mc_id=AZ-MVP-5003354): In this course, you’ll learn how to use the Azure OpenAI service, what you need to know to access it, and the different ways to work with it — such as through the command line or REST APIs.
+
+* [Working with natural language](https://learn.microsoft.com/en-us/training/modules/build-language-solution-azure-openai/?WT.mc_id=AZ-MVP-5003354): Natural language allows a virtual assistant to respond just like a human would. In this course, you’ll learn how to use Completions, which will let you integrate a virtual assistant into your application.
+
+* [Using prompts](https://learn.microsoft.com/en-us/training/modules/apply-prompt-engineering-azure-openai/?WT.mc_id=AZ-MVP-5003354): A “prompt” is the instruction we give to a generative algorithm to create content. The more specific the prompt, the more accurate the output. In this course, you’ll learn how to get the most out of prompts to generate better content.
+
+* [Image generation](https://learn.microsoft.com/en-us/training/modules/generate-images-azure-openai/?WT.mc_id=AZ-MVP-5003354): This module focuses on creating spontaneous images using prompts and the DALL·E model.
+
+* [Generating code](https://learn.microsoft.com/en-us/training/modules/generate-code-azure-openai/?WT.mc_id=AZ-MVP-5003354): Something I haven’t mentioned yet, but it’s worth noting — you can also use generative AI as a coding assistant. In this module, you’ll learn how to generate code snippets using prompts.
+
+Do you have any other courses you'd recommend?

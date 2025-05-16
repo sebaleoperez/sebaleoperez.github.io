@@ -4,6 +4,7 @@ title:  "Almacenamiento óptimo de Blobs en Cold Tier"
 date:   2024-03-28 00:00:00 -0300
 tags: [español,microsoft,azure]
 img: /posts/azure/storage-tiers.jpeg
+lang: es
 ---
 
 Es muy común que en nuestras apliaciones necesitemos guardar imágenes o documentos para lo cual una base de datos de SQL no es la mejor opción. Para eso, tenemos disponible el servicio de Blobs en Azure. Pero, ¿Qué pasa si necesitamos guardar archivos que no se utilizan con frecuencia pero que necesitamos que se mantengan por tiempo indefinido? Para esto, Azure nos ofrece el almacenamiento en Cold Tier.

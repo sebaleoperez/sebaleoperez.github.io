@@ -4,6 +4,7 @@ title:  "5 cursos gratuitos sobre IA generativa"
 date:   2023-10-26 00:00:00 -0300
 tags: [español,microsoft,azure,ia]
 img: /posts/azure/learn-ia.jpeg
+lang: es
 ---
 
 En el post anterior hablamos de qué es la IA generativa y qué beneficios tiene. ¿Querés comenzar a usarla? Microsoft lanzó en su plataforma de Learn varios cursos gratuitos y actualizados en los que podés aprender cómo usarla:

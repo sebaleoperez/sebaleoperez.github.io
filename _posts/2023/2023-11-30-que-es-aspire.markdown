@@ -4,6 +4,7 @@ title:  "Aspire: .NET 8 + Azure"
 date:   2023-11-30 00:00:00 -0300
 tags: [español,microsoft,azure,desarrollo,.net]
 img: /posts/azure/aspire.jpeg
+lang: es
 ---
 
 Como todos los últimos años, en Noviembre se lanza una nueva versión de .NET. Este año, la versión 8 trae muchas novedades, y una de las más importantes es la integración con Azure. En este post vamos a contar sobre Aspire y cómo podemos utilizarlo para crear aplicaciones en la nube.

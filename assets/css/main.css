@@ -936,14 +936,15 @@ table tfoot td {
   left: 0;
   bottom: 0;
   width: 240px;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
   padding: 20px 10px;
   background-color: #ffffff;
 }
 
 .about,
 .findme {
-  margin: 0 0 40px;
+  margin: 0 0 10px;
   text-align: center;
 }
 
@@ -953,7 +954,9 @@ table tfoot td {
   height: 100px;
   margin: 0 auto 10px;
   -webkit-border-radius: 100%;
-  border-radius: 100%;
+  border: 3px solid #007acc;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 122, 204, 0.3);
   overflow: hidden;
   background-color: #333030;
 }
@@ -989,29 +992,14 @@ table tfoot td {
 
 .about .author-name {
   font-family: 'PT Serif', serif;
-  margin: 0 0 10px;
+  margin-bottom: 8px;
   position: relative;
-  padding-bottom: 15px;
-  font-size: 16px;
+  padding-bottom: 6px;
+  font-size: 1.2rem;
   text-transform: uppercase;
   color: #333030;
-  font-weight: 700;
-}
-
-.about .author-name::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  bottom: 0;
-  display: block;
-  width: 7px;
-  height: 7px;
-  -webkit-border-radius: 100%;
-  border-radius: 100%;
-  background-color: #515151;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
 }
 
 .about p {
@@ -1539,4 +1527,118 @@ a.newer-posts:hover {
 .cover-author-image img {
   border: 3px solid #007acc;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-top: 10px;
+  border: 2px solid #007acc;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #007acc;
+  font-weight: bold;
+  background-color: #f0f8ff;
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.theme-toggle:hover {
+  background-color: #007acc;
+  color: white;
+  box-shadow: 0 0 8px rgba(0, 122, 204, 0.4);
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode .sidebar {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode a {
+  color: #90caf9;
+}
+
+.top-controls {
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.lang-toggle, .theme-toggle {
+  line-height: 1.2; /* antes era el default (~1.5) */
+}
+
+.findme {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0; /* ← importante para permitir scroll en hijo */
+}
+
+.findme-title {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.findme-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.findme-icons li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.findme-icons img {
+  max-width: 64px;
+  height: auto;
+  transition: transform 0.2s ease;
+}
+
+.findme-icons img:hover {
+  transform: scale(1.05);
+}
+
+/* Scrollbar visual tweaks */
+.findme-icons::-webkit-scrollbar {
+  width: 6px;
+}
+.findme-icons::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+@media (max-height: 700px) {
+  .findme-icons {
+    grid-template-columns: repeat(2, 1fr); /* menos columnas */
+  }
+}
+
+@media (max-width: 500px) {
+  .sidebar {
+    height: auto;
+    padding: 10px;
+  }
+
+  .findme-icons {
+    max-height: 200px; /* por si estás en mobile landscape */
+  }
+}
+
+.accent {
+  color: #007acc;
+  font-weight: 500;
 }

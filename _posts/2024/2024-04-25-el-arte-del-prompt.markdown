@@ -4,6 +4,7 @@ title:  "IA Generativa: El arte del prompt"
 date:   2024-04-25 00:00:00 -0300
 tags: [español,microsoft,azure,ia]
 img: /posts/azure/prompt.jpeg
+lang: es
 ---
 
 Ya hemos hablado de lo que es la Inteligencia Artificial generativa y cómo es se puede establecer una conversación muy similar (o similar) a la que tendríamos con una persona. Pero algo que es super importante es que para tener buenas respuestas debemos hacer buenas preguntas, o mejor dicho, escribir buenos prompts. En este tiempo fui experimentando y mejorando la forma en que le pido contenido (digo contenido porque no sólo funciona con el chat si no con la generación de imágenes) a la IA y me gustaría compartirte 10 puntos importantes que debes considerar para escribir mejores prompts:

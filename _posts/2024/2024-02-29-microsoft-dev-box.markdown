@@ -4,6 +4,7 @@ title:  "Microsoft Dev Box: tu entorno de desarrollo en la nube"
 date:   2024-02-25 00:00:00 -0300
 tags: [español,microsoft,azure]
 img: /posts/azure/dev-box.jpeg
+lang: es
 ---
 
 Hace años, cuando ni existía el Home Office, el trabajo del desarrollador dependía de su computadora (de escritorio) que tenías designada en la oficina y no era opción conectarse de forma remota. El siguiente paso fue el escritorio remoto, que permitía conectarse a la computadora en la oficina, pero dicho equipo tenía que estar enchufado y conectado a internet. Hoy, la mayoría de los desarrolladores trabajan con su propia notebook en cualquier lugar, per dadas las prestaciones de hoy... ¿No sería mejor que nuestra estación de trabajo se encuentre directamente en la nube? Esto es exactamente lo que nos ofrece dev-box. 
