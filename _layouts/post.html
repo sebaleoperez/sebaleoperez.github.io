@@ -1,12 +1,13 @@
 ---
 layout: main
 ---
-<article class="article-page">
+
+<article class="article-page" lang="{{ page.lang }}">
   <div class="page-content">
     {% if page.img %}
     <div class="page-cover-image">
       <figure>
-        <img class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}">
+        <img loading="lazy" class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}">
         {% if page.fig-caption %}
           <figcaption>{{page.fig-caption}}</figcaption>
         {% endif %}
@@ -19,12 +20,13 @@ layout: main
         <h1 class="page-title">{{page.title}}</h1>
         <div class="page-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
       </header>
+      <button id="listen-btn" class="listen-button" aria-label="Escuchar/Listen">🔊 Escuchar artículo</button>
       {{content | markdownify}}
       <div class="page-footer">
         <div class="page-share">
           <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
           <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
-          <a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" title="Share on LinkedIn" rel="nofollow" target="_blank">LinkedIn</a>
         </div>
         <div class="page-tag">
           {% for tag in page.tags %}
@@ -36,3 +38,66 @@ layout: main
     </div> <!-- End Wrap Content -->
   </div> <!-- End Page Content -->
 </article> <!-- End Article Page -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Check if dark mode is enabled in localStorage
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+
+    // Listen for changes to the theme toggle
+    const btn = document.getElementById("listen-btn");
+    const synth = window.speechSynthesis;
+
+    if (!window.speechSynthesis || !window.SpeechSynthesisUtterance) {
+      btn.style.display = "none";
+      return;
+    }
+
+    let isSpeaking = false;
+    let utterance;
+
+    function getPostLang() {
+      const article = document.querySelector("article[lang]");
+      return article ? article.getAttribute("lang") : "en";
+    }
+
+    function getTexts(lang) {
+      return lang.startsWith("es")
+        ? { start: "🔊 Escuchar artículo", stop: "⏹️ Detener" }
+        : { start: "🔊 Listen article", stop: "⏹️ Stop" };
+    }
+
+    const lang = getPostLang();
+    const texts = getTexts(lang);
+    btn.textContent = texts.start;
+
+    btn.addEventListener("click", () => {
+      if (isSpeaking) {
+        synth.cancel();
+        btn.textContent = texts.start;
+        isSpeaking = false;
+        return;
+      }
+
+      const content = document.querySelector(".wrap-content");
+      const text = content.innerText || content.textContent;
+
+      utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = lang;
+      utterance.rate = 1;
+      utterance.pitch = 1;
+
+      synth.speak(utterance);
+      isSpeaking = true;
+      btn.textContent = texts.stop;
+
+      utterance.onend = () => {
+        isSpeaking = false;
+        btn.textContent = texts.start;
+      };
+    });
+  });
+</script>
+

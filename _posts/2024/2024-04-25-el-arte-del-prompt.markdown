@@ -11,7 +11,7 @@ Ya hemos hablado de lo que es la Inteligencia Artificial generativa y cómo es s
 
 ## 1 - Primero preguntarte a vos mismo
 
-Antes de marear al algoritmo con una pregunta confusa, está bueno hacernos la pregunta primero y ver si nosotros mismos podemos responderla. Además puede servir para que refinarla y hacerla más específica si notamos que nuestra posible respuesta es muy genérica.
+Antes de marear al algoritmo con una pregunta confusa, está bueno hacernos la pregunta primero y ver si nosotros mismos podemos responderla. Además puede servir para refinarla y hacerla más específica si notamos que nuestra posible respuesta es muy genérica.
 
 ## 2 - Simplemente simple
 

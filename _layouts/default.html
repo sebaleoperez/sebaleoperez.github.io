@@ -1,12 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 {% include head.html %}
 <body>
-  
+  <!-- Main content wrapper -->
   <div class="wrapper">
     {{ content }}
   </div>
   
   {% include analytics.html %}
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Toggle dark mode
+    const toggle = document.getElementById("themeToggle");
+    if (toggle) {
+      toggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+      });
+    }
+
+    // Apply saved theme
+    try {
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+      }
+    } catch(e) {
+      console.warn("localStorage not available.");
+    }
+
+    // Mantener idioma en link del avatar
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get("lang");
+    if (lang) {
+      const avatarLink = document.querySelector(".cover-author-image a");
+      if (avatarLink) {
+        const url = new URL(avatarLink.href, window.location.origin);
+        url.searchParams.set("lang", lang);
+        avatarLink.href = url.pathname + url.search;
+      }
+    }
+
+    // Mantener idioma en links de la barra de navegación
+    document.querySelectorAll('a[href^="{{site.baseurl}}/"]').forEach(link => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get("lang");
+    if (lang) {
+      const url = new URL(link.href, window.location.origin);
+      url.searchParams.set("lang", lang);
+      link.href = url.pathname + url.search;
+    }
+});
+
+  });
+</script>
+
 </body>
 </html>

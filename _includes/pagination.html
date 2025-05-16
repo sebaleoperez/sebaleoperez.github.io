@@ -1,20 +1,22 @@
-<div class="container">
-  <nav class="pagination" role="pagination">
+<div class="container pagination-container">
+  <nav class="pagination" role="pagination" aria-label="Pagination">
     <ul>
       {% if paginator.previous_page %}
-        {% if paginator.previous_page == 1 %}
-        <p><a class="newer-posts" href="{{ site.baseurl }}/"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a></p>
-        {% else %}
-        <p><a class="newer-posts" href="{{ site.baseurl }}/page/{{ paginator.previous_page }}/"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a></p>
-        {% endif %}
+        <li>
+          <a class="page-btn" href="{{ site.baseurl }}{% if paginator.previous_page == 1 %}/{% else %}/page/{{ paginator.previous_page }}/{% endif %}" aria-label="Previous Page">
+            ← <span class="sr-only">Previous</span>
+          </a>
+        </li>
       {% endif %}
 
-      {% if paginator.total_pages > 1 %}
-      <p><span class="page-number">Page {{paginator.page}} of {{paginator.total_pages}}</span></p>
-      {% endif %}
-      
+      <li><span class="page-number">Pag {{ paginator.page }} / {{ paginator.total_pages }}</span></li>
+
       {% if paginator.next_page %}
-      <p><a class="older-posts" href="{{ site.baseurl }}/page/{{ paginator.next_page }}/"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+        <li>
+          <a class="page-btn" href="{{ site.baseurl }}/page/{{ paginator.next_page }}/" aria-label="Next Page">
+            → <span class="sr-only">Next</span>
+          </a>
+        </li>
       {% endif %}
     </ul>
   </nav>
@@ -47,34 +49,21 @@
         post.style.display = (postLang === lang) ? "" : "none";
       });
     
+      // Cambia el texto del botón de idioma
       const langSwitcher = document.getElementById("lang-switcher");
-      const url = new URL(window.location.href);
-      const currentLang = url.searchParams.get("lang") || "es";
-      const newLang = currentLang === "es" ? "en" : "es";
+      if (langSwitcher) {
+        const url = new URL(window.location.href);
+        const currentLang = url.searchParams.get("lang") || "es";
+        const newLang = currentLang === "es" ? "en" : "es";
 
-      langSwitcher.textContent = currentLang === "es" ? "🌐 Switch to English" : "🌐 Cambiar a Español";
+        langSwitcher.textContent = currentLang === "es" ? "🌐 Switch to English" : "🌐 Cambiar a Español";
 
-      langSwitcher.addEventListener("click", (e) => {
-        e.preventDefault();
-        url.searchParams.set("lang", newLang);
-        window.location.href = url.pathname + url.search;
-      });
+        langSwitcher.addEventListener("click", (e) => {
+          e.preventDefault();
+          url.searchParams.set("lang", newLang);
+          window.location.href = url.pathname + url.search;
+        });
+      }
     });
-    </script>
-
-    <script>
-      const toggle = document.getElementById("themeToggle");
-      toggle.addEventListener("click", (e) => {
-        e.preventDefault();
-        document.body.classList.toggle("dark-mode");
-        localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
-      });
-
-      // Apply saved theme
-      window.addEventListener("DOMContentLoaded", () => {
-        if (localStorage.getItem("theme") === "dark") {
-          document.body.classList.add("dark-mode");
-        }
-      });
     </script>
 </div>

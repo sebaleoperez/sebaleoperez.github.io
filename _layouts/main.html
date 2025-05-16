@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<aside class="sidebar">
+<aside class="sidebar" aria-label="Sidebar">
       <header>
             <div class="about">
                   <div class="cover-author-image">
@@ -18,13 +18,13 @@ layout: default
       <div class="findme">
             <p class="findme-title">FIND ME</p>
             <ul class="findme-icons">
-                  <li><a title="YouTube" href="https://www.youtube.com/channel/UCjm14K2SX978Z62XUbXTlwA/playlists" target="_blank" rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube"></a></li>
-                  <li><a title="Net-Baires" href="https://www.meetup.com/es/net-baires/" target="_blank" rel="noopener"><img src="https://pbs.twimg.com/profile_images/1046181157556178944/RrV9qMOP_400x400.jpg" alt="Net-Baires"></a></li>
-                  <li><a title="Microsoft MVP" href="https://mvp.microsoft.com/en-us/PublicProfile/5003354?fullName=Sebasti%C3%A1n%20Leonardo%20P%C3%A9rez" target="_blank" rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Microsoft_MVP_banner.png" alt="Microsoft MVP"></a></li>
-                  <li><a title="NET Foundation" href="https://dotnetfoundation.org/community/speakers/sebastian-leonardo-perez" target="_blank" rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/.NET_Foundation_Logo.svg" alt=".NET Foundation"></a></li>
-                  <li><a title="Sessionize" href="https://sessionize.com/sebaleoperez" target="_blank" rel="noopener"><img src="https://sessionize.com/landing/images/brand/logo/sessionize-logo-vertical.png" alt="Sessionize"></a></li>
-                  <li><a title="Platzi" href="https://platzi.com/profesores/sebaleoperez/" target="_blank" rel="noopener"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Ri6opTFioEnszPqPLqN5k_AXnaUJtFbd9g&s" alt="Platzi"></a></li>
-                  <li><a title="Credly" href="https://www.credly.com/users/sebastian-perez.f02ebce5/badges" target="_blank" rel="noopener"><img src="https://www.svgrepo.com/show/331358/credly.svg" alt="Credly"></a></li>
+                  <li><a title="YouTube" href="https://www.youtube.com/channel/UCjm14K2SX978Z62XUbXTlwA/playlists" target="_blank" rel="noopener"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube"></a></li>
+                  <li><a title="Net-Baires" href="https://www.meetup.com/es/net-baires/" target="_blank" rel="noopener"><img loading="lazy" src="https://media.canva.com/v2/image-resize/format:PNG/height:600/quality:100/uri:ifs%3A%2F%2FM%2FAiPZd4fXl2DowSAR0J-vpk3ltL9tkKvzTWanxdpNsVA.png/watermark:F/width:519?csig=AAAAAAAAAAAAAAAAAAAAAGateRdTPuxPrpy7aYxaXlO66qPc6dG8_HonTMlY8T6P&exp=1747439906&osig=AAAAAAAAAAAAAAAAAAAAAPVlLcGdqFnyI7SMEuiVt_qTKONjkFTVkFHV_W47Yy7T&signer=media-rpc&x-canva-quality=screen" alt="Net-Baires"></a></li>
+                  <li><a title="Microsoft MVP" href="https://mvp.microsoft.com/en-us/PublicProfile/5003354?fullName=Sebasti%C3%A1n%20Leonardo%20P%C3%A9rez" target="_blank" rel="noopener"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Microsoft_MVP_banner.png" alt="Microsoft MVP"></a></li>
+                  <li><a title="NET Foundation" href="https://dotnetfoundation.org/community/speakers/sebastian-leonardo-perez" target="_blank" rel="noopener"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e3/.NET_Foundation_Logo.svg" alt=".NET Foundation"></a></li>
+                  <li><a title="Sessionize" href="https://sessionize.com/sebaleoperez" target="_blank" rel="noopener"><img loading="lazy" src="https://sessionize.com/landing/images/brand/logo/sessionize-logo-vertical.png" alt="Sessionize"></a></li>
+                  <li><a title="Platzi" href="https://platzi.com/profesores/sebaleoperez/" target="_blank" rel="noopener"><img loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Ri6opTFioEnszPqPLqN5k_AXnaUJtFbd9g&s" alt="Platzi"></a></li>
+                  <li><a title="Credly" href="https://www.credly.com/users/sebastian-perez.f02ebce5/badges" target="_blank" rel="noopener"><img loading="lazy" src="https://www.svgrepo.com/show/331358/credly.svg" alt="Credly"></a></li>
             </ul>
       </div>
       <footer>
@@ -32,23 +32,23 @@ layout: default
                   <h3 class="contact-title">Contact</h3>
                   <ul>
                         {% if site.social-x %}
-                        <li><a href="https://x.com/{{ site.social-x }}" target="_blank"><i
+                        <li><a aria-label="X (Twitter)" href="https://x.com/{{ site.social-x }}" target="_blank"><i
                                           class="fab fa-x-twitter" aria-hidden="true"></i></a></li>
                         {% endif %}
                         {% if site.social-instagram %}
-                        <li><a href="https://instagram.com/{{ site.social-instagram }}" target="_blank"><i
+                        <li><a aria-label="Instagram" href="https://instagram.com/{{ site.social-instagram }}" target="_blank"><i
                                           class="fab fa-instagram" aria-hidden="true"></i></a></li>
                         {% endif %}
                         {% if site.social-github %}
-                        <li class="github"><a href="http://github.com/{{site.social-github}}" target="_blank"><i
+                        <li class="github"><a aria-label="Github" href="http://github.com/{{site.social-github}}" target="_blank"><i
                                           class="fab fa-github"></i></a></li>
                         {% endif %}
                         {% if site.social-linkedin %}
-                        <li class="linkedin"><a href="https://in.linkedin.com/in/{{site.social-linkedin}}"
+                        <li class="linkedin"><a aria-label="LinkedIn" href="https://in.linkedin.com/in/{{site.social-linkedin}}"
                                     target="_blank"><i class="fab fa-linkedin"></i></a></li>
                         {% endif %}
                         {% if site.social-email %}
-                        <li class="email"><a href="mailto:{{site.social-email}}"><i class="fas fa-envelope"></i></a>
+                        <li class="email"><a aria-label="Email" href="mailto:{{site.social-email}}"><i class="fas fa-envelope"></i></a>
                         </li>
                         {% endif %}
                   </ul>
