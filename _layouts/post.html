@@ -82,7 +82,11 @@ layout: main
       }
 
       const content = document.querySelector(".wrap-content");
-      const text = content.innerText || content.textContent;
+      
+      const clone = content.cloneNode(true);
+      const button = clone.querySelector("#listen-btn");
+      if (button) button.remove();
+      const text = clone.innerText || clone.textContent;
 
       utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = lang;
