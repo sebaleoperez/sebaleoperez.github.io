@@ -13,11 +13,21 @@
   document.addEventListener("DOMContentLoaded", () => {
     // Toggle dark mode
     const toggle = document.getElementById("themeToggle");
+    
+    // Function to update button text based on current theme
+    function updateToggleButtonText() {
+      if (toggle) {
+        const isDarkMode = document.body.classList.contains("dark-mode");
+        toggle.textContent = isDarkMode ? "🌓 Light Mode" : "🌓 Dark Mode";
+      }
+    }
+    
     if (toggle) {
       toggle.addEventListener("click", (e) => {
         e.preventDefault();
         document.body.classList.toggle("dark-mode");
         localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+        updateToggleButtonText();
       });
     }
 
@@ -29,6 +39,9 @@
     } catch(e) {
       console.warn("localStorage not available.");
     }
+    
+    // Update button text on page load
+    updateToggleButtonText();
 
     // Mantener idioma en link del avatar
     const urlParams = new URLSearchParams(window.location.search);
