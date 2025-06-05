@@ -146,3 +146,15 @@ body.dark-mode .page-btn:hover {
 body.dark-mode .page-number {
   color: #ccc;
 }
+
+/* Language toggle button in dark mode */
+body.dark-mode .lang-toggle {
+  background-color: #2a2a2a;
+  border-color: #90caf9;
+  color: #90caf9;
+}
+body.dark-mode .lang-toggle:hover {
+  background-color: #90caf9;
+  color: #1e1e1e;
+  text-decoration: none;
+}
