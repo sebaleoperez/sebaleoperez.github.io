@@ -19,6 +19,8 @@
       if (toggle) {
         const isDarkMode = document.body.classList.contains("dark-mode");
         toggle.textContent = isDarkMode ? "🌓 Light Mode" : "🌓 Dark Mode";
+        toggle.setAttribute("aria-pressed", isDarkMode.toString());
+        toggle.setAttribute("aria-label", isDarkMode ? "Switch to light mode" : "Switch to dark mode");
       }
     }
     
