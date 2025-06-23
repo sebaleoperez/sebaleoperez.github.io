@@ -72,6 +72,11 @@ body.dark-mode .author-name {
   text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
+/* FIND ME title in dark mode */
+body.dark-mode .findme-title {
+  color: #f0f0f0;
+}
+
 /* Contact title and copyright in dark mode */
 body.dark-mode .contact-title,
 body.dark-mode footer .copyright {
