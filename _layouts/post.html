@@ -9,7 +9,11 @@ layout: main
     {% if page.img %}
     <div class="page-cover-image">
       <figure>
+        {% if page.img contains "http" %}
+        <img loading="lazy" class="page-image" src="{{ page.img }}" alt="{{page.title}}">
+        {% else %}
         <img loading="lazy" class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}">
+        {% endif %}
         {% if page.fig-caption %}
           <figcaption>{{page.fig-caption}}</figcaption>
         {% endif %}
