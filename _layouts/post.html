@@ -2,6 +2,8 @@
 layout: main
 ---
 
+<a href="{{site.baseurl}}/" class="back-to-home"><i class="fas fa-arrow-left"></i> Back</a>
+
 <article class="article-page" lang="{{ page.lang }}">
   <div class="page-content">
     {% if page.img %}
@@ -18,7 +20,11 @@ layout: main
     <div class="wrap-content">
       <header class="header-page">
         <h1 class="page-title">{{page.title}}</h1>
-        <div class="page-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+        <div class="page-date">
+          <span>{{page.date | date: '%Y, %b %d'}}</span>
+          <span>&nbsp;·&nbsp;</span>
+          <span>{% capture words %}{{ page.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 }} min read{% endunless %}</span>
+        </div>
       </header>
       <button id="listen-btn" class="listen-button" aria-label="Escuchar/Listen">🔊 Escuchar artículo</button>
       {{content | markdownify}}
@@ -41,12 +47,6 @@ layout: main
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Check if dark mode is enabled in localStorage
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark-mode");
-    }
-
-    // Listen for changes to the theme toggle
     const btn = document.getElementById("listen-btn");
     const synth = window.speechSynthesis;
 

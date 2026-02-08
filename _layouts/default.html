@@ -2,69 +2,147 @@
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 {% include head.html %}
 <body>
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress" id="readingProgress"></div>
+  
   <!-- Main content wrapper -->
   <div class="wrapper">
     {{ content }}
   </div>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
   
   {% include analytics.html %}
 
   <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Toggle dark mode
-    const toggle = document.getElementById("themeToggle");
+    // ===== Dark Mode Toggle =====
+    const toggles = [document.getElementById("themeToggle"), document.getElementById("themeToggle-mobile")];
     
-    // Function to update button text based on current theme
-    function updateToggleButtonText() {
-      if (toggle) {
-        const isDarkMode = document.body.classList.contains("dark-mode");
-        toggle.textContent = isDarkMode ? "🌓 Light Mode" : "🌓 Dark Mode";
-        toggle.setAttribute("aria-pressed", isDarkMode.toString());
-        toggle.setAttribute("aria-label", isDarkMode ? "Switch to light mode" : "Switch to dark mode");
-      }
+    function isDarkMode() {
+      return document.documentElement.classList.contains("dark-mode");
+    }
+
+    function updateAllThemeButtons() {
+      const dark = isDarkMode();
+      const emoji = dark ? "☀️" : "🌙";
+      toggles.forEach(t => {
+        if (!t) return;
+        // Keep just emoji for desktop (compact), add text for mobile
+        if (t.id.includes("mobile")) {
+          t.textContent = dark ? "☀️ Light" : "🌙 Dark";
+        } else {
+          t.textContent = emoji;
+        }
+        t.setAttribute("aria-pressed", dark.toString());
+      });
     }
     
-    if (toggle) {
+    // Apply saved theme or OS preference
+    try {
+      const saved = localStorage.getItem("theme");
+      if (saved === "dark") {
+        document.documentElement.classList.add("dark-mode");
+        document.body.classList.add("dark-mode");
+      } else if (saved === "light") {
+        document.documentElement.classList.remove("dark-mode");
+        document.body.classList.remove("dark-mode");
+      } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.classList.add("dark-mode");
+        document.body.classList.add("dark-mode");
+      }
+    } catch(e) {}
+
+    updateAllThemeButtons();
+
+    toggles.forEach(toggle => {
+      if (!toggle) return;
       toggle.addEventListener("click", (e) => {
         e.preventDefault();
+        const willBeDark = !isDarkMode();
+        document.documentElement.classList.toggle("dark-mode");
         document.body.classList.toggle("dark-mode");
-        localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
-        updateToggleButtonText();
+        try { localStorage.setItem("theme", willBeDark ? "dark" : "light"); } catch(e) {}
+        updateAllThemeButtons();
+      });
+    });
+
+    // ===== Hamburger Menu =====
+    const hamburger = document.getElementById("navbarHamburger");
+    const mobileMenu = document.getElementById("navbarMobile");
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.toggle("open");
+        hamburger.classList.toggle("active");
+        hamburger.setAttribute("aria-expanded", isOpen.toString());
       });
     }
 
-    // Apply saved theme
-    try {
-      if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark-mode");
-      }
-    } catch(e) {
-      console.warn("localStorage not available.");
-    }
-
-    // Mantener idioma en link del avatar
+    // ===== Language Switching =====
     const urlParams = new URLSearchParams(window.location.search);
     const lang = urlParams.get("lang");
+
+    // Propagate lang to internal links
     if (lang) {
-      const avatarLink = document.querySelector(".cover-author-image a");
-      if (avatarLink) {
-        const url = new URL(avatarLink.href, window.location.origin);
-        url.searchParams.set("lang", lang);
-        avatarLink.href = url.pathname + url.search;
-      }
+      document.querySelectorAll('a').forEach(link => {
+        try {
+          const url = new URL(link.href, window.location.origin);
+          if (url.origin === window.location.origin && !url.searchParams.has("lang")) {
+            url.searchParams.set("lang", lang);
+            link.href = url.pathname + url.search;
+          }
+        } catch(e) {}
+      });
     }
 
-    // Mantener idioma en links de la barra de navegación
-    document.querySelectorAll('a[href^="{{site.baseurl}}/"]').forEach(link => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const lang = urlParams.get("lang");
-    if (lang) {
-      const url = new URL(link.href, window.location.origin);
-      url.searchParams.set("lang", lang);
-      link.href = url.pathname + url.search;
+    // ===== Reading Progress Bar =====
+    const progressBar = document.getElementById("readingProgress");
+    if (progressBar && document.querySelector(".article-page")) {
+      window.addEventListener("scroll", () => {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (window.scrollY / docHeight) * 100;
+        progressBar.style.width = Math.min(scrolled, 100) + "%";
+      }, { passive: true });
+    } else if (progressBar) {
+      progressBar.style.display = "none";
     }
-});
 
+    // ===== Scroll to Top =====
+    const scrollBtn = document.getElementById("scrollToTop");
+    if (scrollBtn) {
+      window.addEventListener("scroll", () => {
+        scrollBtn.classList.toggle("visible", window.scrollY > 400);
+      }, { passive: true });
+      scrollBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+
+    // ===== Copy Code Buttons =====
+    document.querySelectorAll(".highlight").forEach(block => {
+      const btn = document.createElement("button");
+      btn.className = "copy-code-btn";
+      btn.textContent = "Copy";
+      btn.addEventListener("click", async () => {
+        const code = block.querySelector("code");
+        if (code) {
+          try {
+            await navigator.clipboard.writeText(code.textContent);
+            btn.textContent = "Copied!";
+            btn.classList.add("copied");
+            setTimeout(() => { btn.textContent = "Copy"; btn.classList.remove("copied"); }, 2000);
+          } catch(e) {
+            btn.textContent = "Error";
+            setTimeout(() => { btn.textContent = "Copy"; }, 2000);
+          }
+        }
+      });
+      block.style.position = "relative";
+      block.appendChild(btn);
+    });
   });
 </script>
 

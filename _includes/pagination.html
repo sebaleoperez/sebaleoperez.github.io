@@ -33,7 +33,7 @@
         urlParams.set("lang", lang);
         const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
         window.location.replace(newUrl);
-        return; // Para evitar seguir ejecutando en esta carga
+        return;
       }
 
       // Aplica el lang a la paginación
@@ -49,21 +49,29 @@
         post.style.display = (postLang === lang) ? "" : "none";
       });
     
-      // Cambia el texto del botón de idioma
-      const langSwitcher = document.getElementById("lang-switcher");
-      if (langSwitcher) {
-        const url = new URL(window.location.href);
-        const currentLang = url.searchParams.get("lang") || "es";
-        const newLang = currentLang === "es" ? "en" : "es";
+      // Setup lang switchers (desktop + mobile)
+      const currentLang = lang || "es";
+      const newLang = currentLang === "es" ? "en" : "es";
+      const switchers = [
+        document.getElementById("lang-switcher"),
+        document.getElementById("lang-switcher-mobile")
+      ];
 
-        langSwitcher.textContent = currentLang === "es" ? "🌐 Switch to English" : "🌐 Cambiar a Español";
+      switchers.forEach(btn => {
+        if (!btn) return;
+        const isMobile = btn.id.includes("mobile");
+        btn.textContent = isMobile
+          ? (currentLang === "es" ? "🌐 English" : "🌐 Español")
+          : "🌐";
+        btn.setAttribute("title", currentLang === "es" ? "Switch to English" : "Cambiar a Español");
 
-        langSwitcher.addEventListener("click", (e) => {
+        btn.addEventListener("click", (e) => {
           e.preventDefault();
+          const url = new URL(window.location.href);
           url.searchParams.set("lang", newLang);
           window.location.href = url.pathname + url.search;
         });
-      }
+      });
     });
     </script>
 </div>

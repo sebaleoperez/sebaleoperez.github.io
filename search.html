@@ -1,0 +1,102 @@
+---
+layout: main
+title: Search
+permalink: /search/
+---
+
+<div class="search-page">
+  <div class="search-header">
+    <h1>Search</h1>
+    <div class="search-input-wrapper">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" id="searchInput" class="search-input" placeholder="Type to search posts..." autofocus autocomplete="off">
+      <button id="searchClear" class="search-clear" aria-label="Clear search" style="display:none;">✕</button>
+    </div>
+  </div>
+  <div id="searchResults" class="search-results"></div>
+  <p id="searchEmpty" class="search-empty" style="display:none;">No results found.</p>
+</div>
+
+<script src="https://unpkg.com/lunr@2.3.9/lunr.min.js"></script>
+<script>
+(function() {
+  let index, posts;
+
+  async function loadIndex() {
+    const resp = await fetch('{{ site.baseurl }}/search.json');
+    posts = await resp.json();
+    index = lunr(function() {
+      this.ref('url');
+      this.field('title', { boost: 10 });
+      this.field('tags', { boost: 5 });
+      this.field('content');
+      posts.forEach(p => this.add(p));
+    });
+  }
+
+  function renderResults(results) {
+    const container = document.getElementById('searchResults');
+    const empty = document.getElementById('searchEmpty');
+    if (!results.length) {
+      container.innerHTML = '';
+      empty.style.display = 'block';
+      return;
+    }
+    empty.style.display = 'none';
+    container.innerHTML = results.map(r => {
+      const post = posts.find(p => p.url === r.ref);
+      if (!post) return '';
+      const tags = post.tags.map(t => `<span class="search-tag">#${t}</span>`).join(' ');
+      return `
+        <a href="${post.url}" class="search-result-item">
+          <div class="search-result-title">${post.title}</div>
+          <div class="search-result-meta">
+            <span>${post.date}</span>
+            ${tags}
+          </div>
+          <div class="search-result-excerpt">${post.content.substring(0, 150)}...</div>
+        </a>
+      `;
+    }).join('');
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    await loadIndex();
+    const input = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('searchClear');
+    const container = document.getElementById('searchResults');
+    const empty = document.getElementById('searchEmpty');
+
+    input.addEventListener('input', () => {
+      const q = input.value.trim();
+      clearBtn.style.display = q ? 'block' : 'none';
+      if (!q) {
+        container.innerHTML = '';
+        empty.style.display = 'none';
+        return;
+      }
+      try {
+        const results = index.search(q + '~1');  // fuzzy search
+        renderResults(results);
+      } catch(e) {
+        // Fallback for simple queries
+        try {
+          const results = index.search(q + '*');
+          renderResults(results);
+        } catch(e2) {
+          container.innerHTML = '';
+          empty.style.display = 'block';
+        }
+      }
+    });
+
+    clearBtn.addEventListener('click', () => {
+      input.value = '';
+      clearBtn.style.display = 'none';
+      container.innerHTML = '';
+      empty.style.display = 'none';
+      input.focus();
+    });
+  });
+})();
+</script>

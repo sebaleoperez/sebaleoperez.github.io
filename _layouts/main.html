@@ -2,62 +2,101 @@
 layout: default
 ---
 
-<aside class="sidebar" aria-label="Sidebar">
-      <header>
-            <div class="about">
-                  <div class="cover-author-image">
-                        <a href="{{site.baseurl}}/"><img
-                                    src="{{site.baseurl}}/assets/img/{% if site.author-img %}{{site.author-img}}{% endif %}"
-                                    alt="{{site.author}}"></a>
-                  </div>
-                  <div class="author-name">{{site.author}}</div>
-                  <p class="author-description">{{site.about-author}}</p>
-            </div>
-            <hr />
-      </header> <!-- End Header -->
-      <div class="findme">
-            <p class="findme-title">FIND ME</p>
-            <ul class="findme-icons">
-                  <li><a title="YouTube" href="https://www.youtube.com/channel/UCjm14K2SX978Z62XUbXTlwA/playlists" target="_blank" rel="noopener"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube"></a></li>
-                  <li><a title="Net-Baires" href="https://www.meetup.com/es/net-baires/" target="_blank" rel="noopener"><img loading="lazy" src="{{site.baseurl}}/assets/img/netbaires.png" alt="Net-Baires"></a></li>
-                  <li><a title="Microsoft MVP" href="https://mvp.microsoft.com/en-us/PublicProfile/5003354?fullName=Sebasti%C3%A1n%20Leonardo%20P%C3%A9rez" target="_blank" rel="noopener"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Microsoft_MVP_banner.png" alt="Microsoft MVP"></a></li>
-                  <li><a title="NET Foundation" href="https://dotnetfoundation.org/community/speakers/sebastian-leonardo-perez" target="_blank" rel="noopener"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e3/.NET_Foundation_Logo.svg" alt=".NET Foundation"></a></li>
-                  <li><a title="Sessionize" href="https://sessionize.com/sebaleoperez" target="_blank" rel="noopener"><img loading="lazy" src="https://sessionize.com/landing/images/brand/logo/sessionize-logo-vertical.png" alt="Sessionize"></a></li>
-                  <li><a title="Platzi" href="https://platzi.com/profesores/sebaleoperez/" target="_blank" rel="noopener"><img loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Ri6opTFioEnszPqPLqN5k_AXnaUJtFbd9g&s" alt="Platzi"></a></li>
-                  <li><a title="Credly" href="https://www.credly.com/users/sebastian-perez.f02ebce5/badges" target="_blank" rel="noopener"><img loading="lazy" src="https://www.svgrepo.com/show/331358/credly.svg" alt="Credly"></a></li>
-            </ul>
-      </div>
-      <footer>
-            <section class="contact">
-                  <h3 class="contact-title">Contact</h3>
-                  <ul>
-                        {% if site.social-x %}
-                        <li><a aria-label="X (Twitter)" href="https://x.com/{{ site.social-x }}" target="_blank"><i
-                                          class="fab fa-x-twitter" aria-hidden="true"></i></a></li>
-                        {% endif %}
-                        {% if site.social-instagram %}
-                        <li><a aria-label="Instagram" href="https://instagram.com/{{ site.social-instagram }}" target="_blank"><i
-                                          class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                        {% endif %}
+<!-- Top Navigation Bar -->
+<nav class="navbar" aria-label="Main navigation">
+      <div class="navbar-inner">
+            <a href="{{site.baseurl}}/" class="navbar-brand">
+                  <img src="{{site.baseurl}}/assets/img/{% if site.author-img %}{{site.author-img}}{% endif %}"
+                        alt="{{site.author}}" class="navbar-avatar">
+                  <span class="navbar-name">{{site.author}}</span>
+            </a>
+
+            <div class="navbar-links">
+                  <ul class="navbar-social">
                         {% if site.social-github %}
-                        <li class="github"><a aria-label="Github" href="http://github.com/{{site.social-github}}" target="_blank"><i
-                                          class="fab fa-github"></i></a></li>
+                        <li><a aria-label="Github" href="https://github.com/{{site.social-github}}" target="_blank" rel="noopener"><i class="fab fa-github"></i></a></li>
                         {% endif %}
                         {% if site.social-linkedin %}
-                        <li class="linkedin"><a aria-label="LinkedIn" href="https://in.linkedin.com/in/{{site.social-linkedin}}"
-                                    target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a aria-label="LinkedIn" href="https://linkedin.com/in/{{site.social-linkedin}}" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a></li>
                         {% endif %}
-                        {% if site.social-email %}
-                        <li class="email"><a aria-label="Email" href="mailto:{{site.social-email}}"><i class="fas fa-envelope"></i></a>
-                        </li>
+                        {% if site.social-x %}
+                        <li><a aria-label="X (Twitter)" href="https://x.com/{{ site.social-x }}" target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i></a></li>
+                        {% endif %}
+                        {% if site.social-instagram %}
+                        <li><a aria-label="Instagram" href="https://instagram.com/{{ site.social-instagram }}" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a></li>
                         {% endif %}
                   </ul>
-            </section> <!-- End Section Contact -->
-            <div class="copyright">
-                  <p>{{site.time | date: '%Y'}} &copy; {{site.author}}</p>
+                  <div class="navbar-actions">
+                        <a href="{{site.baseurl}}/search/" class="nav-toggle-btn" aria-label="Search"><i class="fas fa-magnifying-glass"></i></a>
+                        <a href="#" id="lang-switcher" class="nav-toggle-btn" aria-label="Switch language">🌐</a>
+                        <a href="#" id="themeToggle" class="nav-toggle-btn" aria-label="Toggle dark mode">🌙</a>
+                  </div>
             </div>
-      </footer> <!-- End Footer -->
-</aside> <!-- End Sidebar -->
-<div class="content-box clearfix">
+
+            <button class="navbar-hamburger" id="navbarHamburger" aria-label="Toggle menu" aria-expanded="false">
+                  <span></span><span></span><span></span>
+            </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="navbar-mobile" id="navbarMobile">
+            <ul class="navbar-social">
+                  {% if site.social-github %}
+                  <li><a aria-label="Github" href="https://github.com/{{site.social-github}}" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a></li>
+                  {% endif %}
+                  {% if site.social-linkedin %}
+                  <li><a aria-label="LinkedIn" href="https://linkedin.com/in/{{site.social-linkedin}}" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                  {% endif %}
+                  {% if site.social-x %}
+                  <li><a aria-label="X" href="https://x.com/{{ site.social-x }}" target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i> X</a></li>
+                  {% endif %}
+                  {% if site.social-instagram %}
+                  <li><a aria-label="Instagram" href="https://instagram.com/{{ site.social-instagram }}" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a></li>
+                  {% endif %}
+            </ul>
+            <div class="navbar-actions">
+                  <a href="{{site.baseurl}}/search/" class="nav-toggle-btn" aria-label="Search"><i class="fas fa-magnifying-glass"></i> Search</a>
+                  <a href="#" id="lang-switcher-mobile" class="nav-toggle-btn" aria-label="Switch language">🌐 Language</a>
+                  <a href="#" id="themeToggle-mobile" class="nav-toggle-btn" aria-label="Toggle dark mode">🌙 Theme</a>
+            </div>
+      </div>
+</nav>
+
+<!-- Main Content -->
+<main class="main-content">
       {{ content }}
-</div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+      <div class="footer-inner">
+            <div class="footer-about">
+                  <p class="footer-bio">{{site.about-author}}</p>
+            </div>
+            <div class="footer-platforms">
+                  <p class="footer-section-title">Platforms</p>
+                  <ul class="footer-platform-list">
+                        <li><a href="https://www.youtube.com/channel/UCjm14K2SX978Z62XUbXTlwA/playlists" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        <li><a href="https://www.meetup.com/es/net-baires/" target="_blank" rel="noopener"><i class="fab fa-meetup"></i> Net-Baires</a></li>
+                        <li><a href="https://mvp.microsoft.com/en-us/PublicProfile/5003354" target="_blank" rel="noopener"><i class="fab fa-microsoft"></i> Microsoft MVP</a></li>
+                        <li><a href="https://sessionize.com/sebaleoperez" target="_blank" rel="noopener"><i class="fas fa-microphone-alt"></i> Sessionize</a></li>
+                        <li><a href="https://platzi.com/profesores/sebaleoperez/" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> Platzi</a></li>
+                        <li><a href="https://www.credly.com/users/sebastian-perez.f02ebce5/badges" target="_blank" rel="noopener"><i class="fas fa-award"></i> Credly</a></li>
+                  </ul>
+            </div>
+            <div class="footer-contact">
+                  <p class="footer-section-title">Contact</p>
+                  <ul class="footer-contact-list">
+                        {% if site.social-email %}
+                        <li><a href="mailto:{{site.social-email}}"><i class="fas fa-envelope"></i> {{site.social-email}}</a></li>
+                        {% endif %}
+                        {% if site.social-github %}
+                        <li><a href="https://github.com/{{site.social-github}}" target="_blank" rel="noopener"><i class="fab fa-github"></i> github.com/{{site.social-github}}</a></li>
+                        {% endif %}
+                  </ul>
+            </div>
+      </div>
+      <div class="footer-bottom">
+            <p>{{site.time | date: '%Y'}} &copy; {{site.author}} · Built with <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a></p>
+      </div>
+</footer>
