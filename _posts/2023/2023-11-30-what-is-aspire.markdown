@@ -3,7 +3,7 @@ layout: post
 title:  "Aspire: .NET 8 + Azure"
 date:   2023-11-30 00:00:00 -0300
 tags: [english,microsoft,azure,development,.net]
-img: /posts/azure/aspire.jpeg
+img: /posts/2023/11/aspire.jpeg
 lang: en
 ---
 

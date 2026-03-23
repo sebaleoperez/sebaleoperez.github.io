@@ -3,7 +3,7 @@ layout: post
 title:  "Pinta-NET: A la playa con Xamarin"
 date:   2020-07-11 00:00:00 -0300
 tags: [español,podcast,microsoft,xamarin,android,ios,maui,.net,uruguay]
-img: /posts/podcast/E02A.png
+img: /posts/2020/07/e02a.png
 lang: es
 ---
 
@@ -39,6 +39,6 @@ Les dejo los links:
 
 **Fotos:**
 
-![Con Diego en la .NET Conf AR](../assets/img/posts/events/netconfar2017.jpeg)
+![Con Diego en la .NET Conf AR](../assets/img/posts/2020/07/netconfar2017.jpeg)
 
 Espero sus comentarios !

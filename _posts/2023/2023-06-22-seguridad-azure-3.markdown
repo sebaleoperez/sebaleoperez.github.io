@@ -3,7 +3,7 @@ layout: post
 title:  "Entendiendo la seguridad en Azure: Confianza cero"
 date:   2023-06-22 00:00:00 -0300
 tags: [español,microsoft,azure,seguridad]
-img: /posts/azure/trust.jpeg
+img: /posts/2023/06/trust.jpeg
 lang: es
 ---
 

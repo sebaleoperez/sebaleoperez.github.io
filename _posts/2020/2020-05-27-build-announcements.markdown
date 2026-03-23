@@ -3,7 +3,7 @@ layout: post
 title:  "Resumen y anuncios del Microsoft Build"
 date:   2020-05-27 00:00:00 -0300
 tags: [español,microsoft,evento,conferencia,desarrollo,.net,azure,microsoft mvp,maui]
-img: /posts/events/build2020_2.jpeg
+img: /posts/2020/05/build2020-2.jpeg
 lang: es
 ---
 

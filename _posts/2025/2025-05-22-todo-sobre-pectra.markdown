@@ -3,7 +3,7 @@ layout: post
 title:  "Todo sobre Pectra, la nueva versión de Ethereum"
 date:   2025-05-22 00:00:00 -0300
 tags: [español,blockchain,crypto,ethereum]
-img: /posts/crypto/pectra.png
+img: /posts/2025/05/pectra.png
 lang: es
 ---
 

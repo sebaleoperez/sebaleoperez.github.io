@@ -3,7 +3,7 @@ layout: post
 title:  "Bitcoin Halving"
 date:   2020-05-11 00:00:00 -0300
 tags: [blockchain,bitcoin,english]
-img: /posts/crypto/bitcoin.avif
+img: /posts/2020/05/bitcoin.avif
 lang: en
 ---
 

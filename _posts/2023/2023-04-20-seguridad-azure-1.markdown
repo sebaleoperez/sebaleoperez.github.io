@@ -3,7 +3,7 @@ layout: post
 title:  "Entendiendo la seguridad en Azure: Responsabilidad Compartida"
 date:   2023-04-20 00:00:00 -0300
 tags: [español,microsoft,azure,seguridad]
-img: /posts/azure/security.avif
+img: /posts/2023/04/security.avif
 lang: es
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title:  "January 2026 updates: AI, Cloud, and .NET"
 date:   2026-01-31 00:00:00 -0300
 tags: [english,ai,cloud,azure,dotnet,github,copilot]
-img: posts/news/012026.png
+img: posts/2026/01/012026.png
 lang: en
 ---
 

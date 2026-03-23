@@ -3,7 +3,7 @@ layout: post
 title:  "5 Free Azure Challenges for Developers"
 date:   2024-01-25 00:00:00 -0300
 tags: [english,microsoft,azure]
-img: /posts/azure/azure-devs.png
+img: /posts/2024/01/azure-devs.png
 lang: en
 ---
 

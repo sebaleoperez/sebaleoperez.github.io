@@ -3,7 +3,7 @@ layout: post
 title:  "Global AI Tour Argentina"
 date:   2020-05-12 00:00:00 -0300
 tags: [ai,inteligencia articial,español,argentina,azure]
-img: /posts/ia/robot.avif
+img: /posts/2020/05/robot.avif
 lang: es
 ---
 

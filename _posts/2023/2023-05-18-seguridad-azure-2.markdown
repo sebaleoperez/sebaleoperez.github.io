@@ -3,7 +3,7 @@ layout: post
 title:  "Entendiendo la seguridad en Azure: Defensa en profundidad"
 date:   2023-05-18 00:00:00 -0300
 tags: [español,microsoft,azure,seguridad]
-img: /posts/azure/defense-depth.jpeg
+img: /posts/2023/05/defense-depth.jpeg
 lang: es
 ---
 

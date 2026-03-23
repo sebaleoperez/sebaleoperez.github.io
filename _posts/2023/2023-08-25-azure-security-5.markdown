@@ -3,7 +3,7 @@ layout: post
 title:  "Understanding Security in Azure: Governance, Risk, and Compliance"
 date:   2023-08-25 00:00:00 -0300
 tags: [english,microsoft,azure,security]
-img: /posts/azure/governance.png
+img: /posts/2023/08/governance.png
 lang: en
 ---
 

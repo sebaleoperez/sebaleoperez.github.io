@@ -3,7 +3,7 @@ layout: post
 title:  "Lo que me gustó del Microsoft Ignite 2020"
 date:   2020-09-24 00:00:00 -0300
 tags: [español,microsoft,conferencia,evento,desarrollo,azure]
-img: /posts/events/ignite2020.jpg
+img: /posts/2020/09/ignite2020.jpg
 lang: es
 ---
 

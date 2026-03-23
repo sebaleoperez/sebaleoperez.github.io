@@ -3,7 +3,7 @@ layout: post
 title:  "February 2026: the month Copilot stopped being an assistant and became an agent"
 date:   2026-02-28 00:00:00 -0300
 tags: [english,ai,cloud,azure,dotnet,github,copilot]
-img: posts/ia/copilot-agente.png
+img: posts/2026/02/copilot-agente.png
 lang: en
 ---
 

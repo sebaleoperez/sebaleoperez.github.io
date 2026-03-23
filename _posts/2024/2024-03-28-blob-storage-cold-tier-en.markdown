@@ -3,7 +3,7 @@ layout: post
 title:  "Optimal Blob Storage in Cold Tier"
 date:   2024-03-28 00:00:00 -0300
 tags: [english,microsoft,azure]
-img: /posts/azure/storage-tiers.jpeg
+img: /posts/2024/03/storage-tiers.jpeg
 lang: en
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title:  "Pinta-NET: Microsoft Build"
 date:   2020-05-13 00:00:00 -0300
 tags: [español,podcast,microsoft,evento,conferencia,desarrollo,.net,azure,microsoft mvp]
-img: /posts/events/build2020.jpeg
+img: /posts/2020/05/build2020.jpeg
 lang: es
 ---
 
@@ -50,10 +50,10 @@ Pablo en el Build, con Carlos Castro
 
 Yo, en el "Vacío" auditorio de conferencias de Apple
 
-![Auditorio Apple](../assets/img/posts/events/apple2020.jpg)
+![Auditorio Apple](../assets/img/posts/2020/05/apple2020.jpg)
 
 La foto "cholula" con Hanselman
 
-![Foto con Hanselman](../assets/img/posts/events/hanselman2019.jpg)
+![Foto con Hanselman](../assets/img/posts/2020/05/hanselman2019.jpg)
 
 Espero sus comentarios !
