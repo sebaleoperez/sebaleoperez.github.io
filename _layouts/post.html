@@ -2,7 +2,7 @@
 layout: main
 ---
 
-<a href="{{site.baseurl}}/" class="back-to-home"><i class="fas fa-arrow-left"></i> Back</a>
+<a href="{{site.baseurl}}/" class="back-to-home"><svg class="icon icon-arrow-left" aria-hidden="true"><use href="#icon-arrow-left"></use></svg> Back</a>
 
 <article class="article-page" lang="{{ page.lang }}">
   <div class="page-content">
@@ -10,9 +10,17 @@ layout: main
     <div class="page-cover-image">
       <figure>
         {% if page.img contains "http" %}
-        <img loading="lazy" class="page-image" src="{{ page.img }}" alt="{{page.title}}">
+        <img loading="lazy" decoding="async" width="1200" height="675" class="page-image" src="{{ page.img }}" alt="{{page.title}}" sizes="100vw">
         {% else %}
-        <img loading="lazy" class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}">
+        <picture>
+          {% if page.img_avif %}
+          <source type="image/avif" srcset="{{"/assets/img/" | prepend: site.baseurl | append : page.img_avif}}">
+          {% endif %}
+          {% if page.img_webp %}
+          <source type="image/webp" srcset="{{"/assets/img/" | prepend: site.baseurl | append : page.img_webp}}">
+          {% endif %}
+          <img loading="lazy" decoding="async" width="1200" height="675" class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}" sizes="100vw">
+        </picture>
         {% endif %}
         {% if page.fig-caption %}
           <figcaption>{{page.fig-caption}}</figcaption>
