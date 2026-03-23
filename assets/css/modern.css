@@ -93,40 +93,41 @@ html.dark-mode {
     --color-text-secondary: #94a3b8;
     --color-text-muted: #64748b;
     --color-heading: #f1f5f9;
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
-
-  @supports (view-transition-name: none) {
-    ::view-transition-old(root),
-    ::view-transition-new(root) {
-      animation-duration: 220ms;
-      animation-timing-function: ease;
-    }
-    ::view-transition-old(root) {
-      opacity: 1;
-    }
-    ::view-transition-new(root) {
-      opacity: 0;
-      animation-name: vt-fade-in;
-    }
-    @keyframes vt-fade-in {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-  }
     --color-border: #334155;
     --color-border-light: #1e293b;
     --color-primary: #818cf8;
     --color-primary-light: #a5b4fc;
     --color-primary-dark: #6366f1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@supports (view-transition-name: none) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 220ms;
+    animation-timing-function: ease;
+  }
+  ::view-transition-old(root) {
+    opacity: 1;
+  }
+  ::view-transition-new(root) {
+    opacity: 0;
+    animation-name: vt-fade-in;
+  }
+  @keyframes vt-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 }
 

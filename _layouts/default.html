@@ -96,6 +96,20 @@
       return document.documentElement.classList.contains("dark-mode");
     }
 
+    function setThemeMode(mode) {
+      const html = document.documentElement;
+      const body = document.body;
+      html.classList.remove("dark-mode", "light-mode");
+      body.classList.remove("dark-mode", "light-mode");
+      if (mode === "dark") {
+        html.classList.add("dark-mode");
+        body.classList.add("dark-mode");
+      } else if (mode === "light") {
+        html.classList.add("light-mode");
+        body.classList.add("light-mode");
+      }
+    }
+
     function updateAllThemeButtons() {
       const dark = isDarkMode();
       const emoji = dark ? "☀️" : "🌙";
@@ -115,14 +129,11 @@
     try {
       const saved = localStorage.getItem("theme");
       if (saved === "dark") {
-        document.documentElement.classList.add("dark-mode");
-        document.body.classList.add("dark-mode");
+        setThemeMode("dark");
       } else if (saved === "light") {
-        document.documentElement.classList.remove("dark-mode");
-        document.body.classList.remove("dark-mode");
+        setThemeMode("light");
       } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        document.documentElement.classList.add("dark-mode");
-        document.body.classList.add("dark-mode");
+        setThemeMode("dark");
       }
     } catch(e) {}
 
@@ -133,8 +144,7 @@
       toggle.addEventListener("click", (e) => {
         e.preventDefault();
         const willBeDark = !isDarkMode();
-        document.documentElement.classList.toggle("dark-mode");
-        document.body.classList.toggle("dark-mode");
+        setThemeMode(willBeDark ? "dark" : "light");
         try { localStorage.setItem("theme", willBeDark ? "dark" : "light"); } catch(e) {}
         updateAllThemeButtons();
       });
@@ -155,6 +165,10 @@
     const urlParams = new URLSearchParams(window.location.search);
     const lang = urlParams.get("lang");
 
+    const docLang = (document.documentElement.getAttribute("lang") || "").toLowerCase();
+    const currentLang = (lang || (docLang.startsWith("es") ? "es" : "en"));
+    const newLang = currentLang === "es" ? "en" : "es";
+
     // Propagate lang to internal links
     if (lang) {
       document.querySelectorAll('a').forEach(link => {
@@ -167,6 +181,45 @@
         } catch(e) {}
       });
     }
+
+    // Setup lang switchers (desktop + mobile)
+    const switchers = [
+      document.getElementById("lang-switcher"),
+      document.getElementById("lang-switcher-mobile")
+    ];
+
+    function getAlternateUrl() {
+      const isPost = !!document.querySelector(".article-page");
+      if (isPost) {
+        const path = window.location.pathname;
+        const hasEn = /-en\/?$/.test(path);
+        let targetPath;
+        if (hasEn) {
+          targetPath = path.replace(/-en\/?$/, "/");
+        } else {
+          targetPath = path.endsWith("/") ? path.slice(0, -1) + "-en/" : path + "-en";
+        }
+        return targetPath + window.location.search;
+      }
+
+      const url = new URL(window.location.href);
+      url.searchParams.set("lang", newLang);
+      return url.pathname + url.search;
+    }
+
+    switchers.forEach(btn => {
+      if (!btn) return;
+      const isMobile = btn.id.includes("mobile");
+      btn.textContent = isMobile
+        ? (currentLang === "es" ? "🌐 English" : "🌐 Español")
+        : "🌐";
+      btn.setAttribute("title", currentLang === "es" ? "Switch to English" : "Cambiar a Español");
+
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.location.href = getAlternateUrl();
+      });
+    });
 
     // ===== Reading Progress Bar =====
     const progressBar = document.getElementById("readingProgress");

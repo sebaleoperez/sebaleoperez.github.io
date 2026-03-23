@@ -49,29 +49,6 @@
         post.style.display = (postLang === lang) ? "" : "none";
       });
     
-      // Setup lang switchers (desktop + mobile)
-      const currentLang = lang || "es";
-      const newLang = currentLang === "es" ? "en" : "es";
-      const switchers = [
-        document.getElementById("lang-switcher"),
-        document.getElementById("lang-switcher-mobile")
-      ];
-
-      switchers.forEach(btn => {
-        if (!btn) return;
-        const isMobile = btn.id.includes("mobile");
-        btn.textContent = isMobile
-          ? (currentLang === "es" ? "🌐 English" : "🌐 Español")
-          : "🌐";
-        btn.setAttribute("title", currentLang === "es" ? "Switch to English" : "Cambiar a Español");
-
-        btn.addEventListener("click", (e) => {
-          e.preventDefault();
-          const url = new URL(window.location.href);
-          url.searchParams.set("lang", newLang);
-          window.location.href = url.pathname + url.search;
-        });
-      });
     });
     </script>
 </div>
