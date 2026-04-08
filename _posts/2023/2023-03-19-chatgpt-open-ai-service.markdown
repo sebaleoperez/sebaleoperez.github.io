@@ -3,7 +3,7 @@ layout: post
 title:  "Chat GPT disponible en Azure Open AI Service"
 date:   2023-03-19 00:00:00 -0300
 tags: [español,microsoft,azure,desarrollo,ai,ia]
-img: /posts/ia/openai.png
+img: /posts/2023/03/openai.png
 lang: es
 ---
 

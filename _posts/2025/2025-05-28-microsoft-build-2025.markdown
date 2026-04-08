@@ -3,7 +3,7 @@ layout: post
 title:  "Microsoft Build 2025: Bienvenid@s a la era de los agentes"
 date:   2025-05-28 00:00:00 -0300
 tags: [español,microsoft,evento,conferencia,ia,copilot]
-img: /posts/events/build2025.png
+img: /posts/2025/05/build2025.png
 lang: es
 ---
 

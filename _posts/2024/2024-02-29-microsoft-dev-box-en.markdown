@@ -3,7 +3,7 @@ layout: post
 title:  "Microsoft Dev Box: Your Cloud-Based Development Environment"
 date:   2024-02-25 00:00:00 -0300
 tags: [english,microsoft,azure]
-img: /posts/azure/dev-box.jpeg
+img: /posts/2024/02/dev-box.jpeg
 lang: en
 ---
 

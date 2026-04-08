@@ -3,7 +3,7 @@ layout: post
 title:  "Novedades de enero 2026: IA, Cloud y .NET"
 date:   2026-01-31 00:00:00 -0300
 tags: [español,ia,cloud,azure,dotnet,github,copilot]
-img: posts/news/012026.png
+img: posts/2026/01/012026.png
 lang: es
 ---
 

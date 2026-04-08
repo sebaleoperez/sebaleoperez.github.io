@@ -3,7 +3,7 @@ layout: post
 title:  "Microsoft Build 2022 LATAM: Return to In-Person Events"
 date:   2022-05-27 00:00:00 -0300
 tags: [english,microsoft,event,conference,development,.net,azure,microsoft mvp,maui]
-img: /posts/events/build2022latam.JPG
+img: /posts/2022/05/build2022latam.jpg
 lang: en
 ---
 

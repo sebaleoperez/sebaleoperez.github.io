@@ -3,7 +3,7 @@ layout: post
 title:  ".NET Conf Focus on MAUI: un paso más en la estabilidad"
 date:   2022-08-12 00:00:00 -0300
 tags: [español,microsoft,mobile,desarrollo,.net,microsoft mvp,maui]
-img: /posts/net/net_maui_stable.png
+img: /posts/2022/08/net-maui-stable.png
 lang: es
 ---
 

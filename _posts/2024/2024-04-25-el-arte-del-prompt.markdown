@@ -3,7 +3,7 @@ layout: post
 title:  "IA Generativa: El arte del prompt"
 date:   2024-04-25 00:00:00 -0300
 tags: [español,microsoft,azure,ia]
-img: /posts/azure/prompt.jpeg
+img: /posts/2024/04/prompt.jpeg
 lang: es
 ---
 

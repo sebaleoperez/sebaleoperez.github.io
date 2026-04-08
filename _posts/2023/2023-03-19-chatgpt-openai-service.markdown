@@ -3,7 +3,7 @@ layout: post
 title:  "ChatGPT Available in Azure OpenAI Service"
 date:   2023-03-19 00:00:00 -0300
 tags: [english,microsoft,azure,development,ai,ia]
-img: /posts/ia/openai.png
+img: /posts/2023/03/openai.png
 lang: en
 ---
 

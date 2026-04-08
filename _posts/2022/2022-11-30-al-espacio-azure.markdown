@@ -3,7 +3,7 @@ layout: post
 title:  "Al espacio con Azure"
 date:   2022-11-30 00:00:00 -0300
 tags: [español,microsoft,azure,desarrollo]
-img: /posts/azure/space.png
+img: /posts/2022/11/space.png
 lang: es
 ---
 

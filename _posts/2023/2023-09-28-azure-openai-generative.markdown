@@ -3,7 +3,7 @@ layout: post
 title:  "Azure Open AI Service: What Is Generative AI?"
 date:   2023-09-28 00:00:00 -0300
 tags: [english,microsoft,azure,ai]
-img: /posts/azure/generative.jpeg
+img: /posts/2023/09/generative.jpeg
 lang: en
 ---
 

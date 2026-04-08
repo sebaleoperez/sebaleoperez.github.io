@@ -3,7 +3,7 @@ layout: post
 title:  ".NET 10 LTS: key announcements from .NET Conf 2025"
 date:   2025-11-30 00:00:00 -0300
 tags: [english,dotnet,ai,cloud,aspnet,visualstudio,maui,event]
-img: /posts/net/net10.png
+img: /posts/2025/11/net10.png
 lang: en
 ---
 
