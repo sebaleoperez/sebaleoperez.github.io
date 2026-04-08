@@ -3,7 +3,7 @@ layout: post
 title:  "Entendiendo la seguridad en Azure: Gobernanza, Riesgo y Compliance"
 date:   2023-08-25 00:00:00 -0300
 tags: [español,microsoft,azure,seguridad]
-img: /posts/azure/governance.png
+img: /posts/2023/08/governance.png
 lang: es
 ---
 

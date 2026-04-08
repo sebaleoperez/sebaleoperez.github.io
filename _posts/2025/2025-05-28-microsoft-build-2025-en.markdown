@@ -3,7 +3,7 @@ layout: post
 title:  "Microsoft Build 2025: Welcome to the Age of Agents"
 date:   2025-05-28 00:00:00 -0300
 tags: [english,microsoft,event,conference,ai,copilot]
-img: /posts/events/build2025.png
+img: /posts/2025/05/build2025.png
 lang: en
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title:  "How Blockchain Works"
 date:   2020-05-04 00:00:00 -0300
 tags: [blockchain,english]
-img: /posts/crypto/blockchain.avif
+img: /posts/2020/05/blockchain.avif
 lang: en
 ---
 

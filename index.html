@@ -2,14 +2,42 @@
 layout: main
 ---
 
-<div class="top-controls">
-  <a href="#" id="lang-switcher" class="lang-toggle">🌐 Cambiar idioma</a>
-  <a href="#" id="themeToggle" class="theme-toggle">🌓 Dark Mode</a>
-</div>
 {% for post in paginator.posts %}
 <article class="post" data-lang="{{ post.lang }}">
   {% if post.img %}
-    <a class="post-thumbnail" style="background-image: url({{"/assets/img/" | prepend: site.baseurl | append : post.img}})" href="{{post.url | prepend: site.baseurl}}"></a>
+    {% if post.img contains "http" %}
+      <a class="post-thumbnail" href="{{post.url | prepend: site.baseurl}}">
+        <img
+          src="{{ post.img }}"
+          alt="{{ post.title }}"
+          width="800"
+          height="450"
+          decoding="async"
+          sizes="(max-width: 1100px) 100vw, 30vw"
+          {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy" fetchpriority="low"{% endif %}
+        >
+      </a>
+    {% else %}
+      <a class="post-thumbnail" href="{{post.url | prepend: site.baseurl}}">
+        <picture>
+          {% if post.img_avif %}
+          <source type="image/avif" srcset="{{"/assets/img/" | prepend: site.baseurl | append : post.img_avif}}">
+          {% endif %}
+          {% if post.img_webp %}
+          <source type="image/webp" srcset="{{"/assets/img/" | prepend: site.baseurl | append : post.img_webp}}">
+          {% endif %}
+          <img
+            src="{{"/assets/img/" | prepend: site.baseurl | append : post.img}}"
+            alt="{{ post.title }}"
+            width="800"
+            height="450"
+            decoding="async"
+            sizes="(max-width: 1100px) 100vw, 30vw"
+            {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy" fetchpriority="low"{% endif %}
+          >
+        </picture>
+      </a>
+    {% endif %}
   {% else %}
   {% endif %}
   <div class="post-content">

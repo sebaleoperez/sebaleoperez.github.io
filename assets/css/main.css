@@ -437,16 +437,16 @@ template {
 }
 
 .highlight {
-  background-color: #faf9f9;
+  background-color: var(--color-surface, #faf9f9);
   -webkit-border-radius: 3px;
   border-radius: 3px;
   margin: 0;
 }
 
 .highlighter-rouge {
-  color: #ce887b;
+  color: var(--color-primary, #ce887b);
   font-weight: 400;
-  border: 1px solid #607D8B;
+  border: 1px solid var(--color-border, #607D8B);
   -webkit-border-radius: 3px;
   border-radius: 3px;
   padding: 0.1rem 0.5rem;
@@ -775,9 +775,9 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  color: #515151;
-  background-color: #fbfbfb;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  color: var(--color-text, #515151);
+  background-color: var(--color-bg, #fbfbfb);
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -803,11 +803,11 @@ img+em {
 }
 
 blockquote {
-  border-left: 5px solid #000;
+  border-left: 5px solid var(--color-primary, #000);
   padding-left: 1.1rem;
   margin-left: 1rem;
   font-style: italic;
-  color: #ada8a8;
+  color: var(--color-text-secondary, #ada8a8);
 }
 
 pre {
@@ -829,8 +829,8 @@ pre code {
 }
 
 table {
-  border: 1px solid #aaa;
-  background-color: #eee;
+  border: 1px solid var(--color-border, #aaa);
+  background-color: var(--color-surface, #eee);
   width: 100%;
   text-align: left;
   border-collapse: collapse;
@@ -838,7 +838,7 @@ table {
 
 table td,
 table.blueTable th {
-  border: 1px solid #aaa;
+  border: 1px solid var(--color-border, #aaa);
   padding: 3px 2px;
 }
 
@@ -847,7 +847,7 @@ table tbody td {
 }
 
 table tr:nth-child(even) {
-  background: #adbecc;
+  background: var(--color-surface-hover, #adbecc);
 }
 
 table thead {
@@ -893,7 +893,7 @@ table tfoot td {
 
 .post,
 .article-page {
-  background-color: #fff;
+  background-color: var(--color-surface, #fff);
 }
 
 ::-moz-selection {

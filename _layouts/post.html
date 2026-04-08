@@ -2,12 +2,26 @@
 layout: main
 ---
 
+<a href="{{site.baseurl}}/" class="back-to-home"><svg class="icon icon-arrow-left" aria-hidden="true"><use href="#icon-arrow-left"></use></svg> Back</a>
+
 <article class="article-page" lang="{{ page.lang }}">
   <div class="page-content">
     {% if page.img %}
     <div class="page-cover-image">
       <figure>
-        <img loading="lazy" class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}">
+        {% if page.img contains "http" %}
+        <img loading="lazy" decoding="async" width="1200" height="675" class="page-image" src="{{ page.img }}" alt="{{page.title}}" sizes="100vw">
+        {% else %}
+        <picture>
+          {% if page.img_avif %}
+          <source type="image/avif" srcset="{{"/assets/img/" | prepend: site.baseurl | append : page.img_avif}}">
+          {% endif %}
+          {% if page.img_webp %}
+          <source type="image/webp" srcset="{{"/assets/img/" | prepend: site.baseurl | append : page.img_webp}}">
+          {% endif %}
+          <img loading="lazy" decoding="async" width="1200" height="675" class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}" sizes="100vw">
+        </picture>
+        {% endif %}
         {% if page.fig-caption %}
           <figcaption>{{page.fig-caption}}</figcaption>
         {% endif %}
@@ -18,7 +32,11 @@ layout: main
     <div class="wrap-content">
       <header class="header-page">
         <h1 class="page-title">{{page.title}}</h1>
-        <div class="page-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+        <div class="page-date">
+          <span>{{page.date | date: '%Y, %b %d'}}</span>
+          <span>&nbsp;·&nbsp;</span>
+          <span>{% capture words %}{{ page.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 }} min read{% endunless %}</span>
+        </div>
       </header>
       <button id="listen-btn" class="listen-button" aria-label="Escuchar/Listen">🔊 Escuchar artículo</button>
       {{content | markdownify}}
@@ -41,12 +59,6 @@ layout: main
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Check if dark mode is enabled in localStorage
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark-mode");
-    }
-
-    // Listen for changes to the theme toggle
     const btn = document.getElementById("listen-btn");
     const synth = window.speechSynthesis;
 

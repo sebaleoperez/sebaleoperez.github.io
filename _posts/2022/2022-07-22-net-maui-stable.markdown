@@ -3,7 +3,7 @@ layout: post
 title:  ".NET MAUI GA, stable version?"
 date:   2022-07-22 00:00:00 -0300
 tags: [english,microsoft,mobile,development,.net,microsoft mvp,maui]
-img: /posts/net/netmaui.png
+img: /posts/2022/07/netmaui.png
 lang: en
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title:  "Casos de uso de Azure Open IA en Automoviles"
 date:   2023-12-28 00:00:00 -0300
 tags: [español,microsoft,azure]
-img: /posts/azure/ia-cars.jpeg
+img: /posts/2023/12/ia-cars.jpeg
 lang: es
 ---
 

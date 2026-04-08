@@ -3,7 +3,7 @@ layout: post
 title:  "Azure Open AI Service: ¿Qué es la IA generativa?"
 date:   2023-09-28 00:00:00 -0300
 tags: [español,microsoft,azure,ia]
-img: /posts/azure/generative.jpeg
+img: /posts/2023/09/generative.jpeg
 lang: es
 ---
 

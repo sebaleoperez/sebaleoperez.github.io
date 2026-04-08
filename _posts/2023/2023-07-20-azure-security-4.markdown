@@ -3,7 +3,7 @@ layout: post
 title:  "Understanding Security in Azure: Encryption and Hashing"
 date:   2023-07-20 00:00:00 -0300
 tags: [english,microsoft,azure,security]
-img: /posts/azure/encryption.avif
+img: /posts/2023/07/encryption.avif
 lang: en
 ---
 

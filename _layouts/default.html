@@ -2,69 +2,270 @@
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 {% include head.html %}
 <body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true" focusable="false">
+    <symbol id="icon-github" viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.57.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/>
+    </symbol>
+    <symbol id="icon-linkedin" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="3"/>
+      <rect x="6.5" y="10" width="2.5" height="7" fill="#fff"/>
+      <rect x="6.5" y="6.5" width="2.5" height="2.5" fill="#fff"/>
+      <rect x="11" y="10" width="6.5" height="7" fill="#fff"/>
+    </symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24">
+      <path d="M4 4l16 16M20 4L4 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="17" cy="7" r="1"/>
+    </symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M16 16l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M3 12h18M12 3a12 12 0 0 1 0 18M12 3a12 12 0 0 0 0 18" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+    <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+      <path d="M12 4l7 7h-4v9H9v-9H5z"/>
+    </symbol>
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+      <path d="M10 6l-6 6 6 6v-4h10v-4H10z"/>
+    </symbol>
+    <symbol id="icon-youtube" viewBox="0 0 24 24">
+      <rect x="3" y="6" width="18" height="12" rx="3"/>
+      <path d="M10 9l6 3-6 3z" fill="#fff"/>
+    </symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24">
+      <circle cx="8" cy="9" r="3"/>
+      <circle cx="16" cy="10" r="2.5"/>
+      <path d="M3 20c0-3 3-5 5-5s5 2 5 5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M13 20c0-2 2-3.5 4-3.5" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+    <symbol id="icon-windows" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="8" height="8"/>
+      <rect x="13" y="3" width="8" height="8"/>
+      <rect x="3" y="13" width="8" height="8"/>
+      <rect x="13" y="13" width="8" height="8"/>
+    </symbol>
+    <symbol id="icon-mic" viewBox="0 0 24 24">
+      <rect x="9" y="3" width="6" height="10" rx="3"/>
+      <path d="M5 11a7 7 0 0 0 14 0" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 18v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M8 21h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-graduation" viewBox="0 0 24 24">
+      <path d="M12 3L2 8l10 5 10-5-10-5z"/>
+      <path d="M6 10v4c0 2 3 3 6 3s6-1 6-3v-4" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+    <symbol id="icon-award" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4"/>
+      <path d="M8 12l-2 9 6-3 6 3-2-9"/>
+    </symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+    <symbol id="icon-home" viewBox="0 0 24 24">
+      <path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>
+    </symbol>
+  </svg>
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress" id="readingProgress"></div>
+  
   <!-- Main content wrapper -->
   <div class="wrapper">
     {{ content }}
   </div>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+    <svg class="icon icon-arrow-up" aria-hidden="true"><use href="#icon-arrow-up"></use></svg>
+  </button>
   
   {% include analytics.html %}
 
   <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Toggle dark mode
-    const toggle = document.getElementById("themeToggle");
+    // ===== Dark Mode Toggle =====
+    const toggles = [document.getElementById("themeToggle"), document.getElementById("themeToggle-mobile")];
     
-    // Function to update button text based on current theme
-    function updateToggleButtonText() {
-      if (toggle) {
-        const isDarkMode = document.body.classList.contains("dark-mode");
-        toggle.textContent = isDarkMode ? "🌓 Light Mode" : "🌓 Dark Mode";
-        toggle.setAttribute("aria-pressed", isDarkMode.toString());
-        toggle.setAttribute("aria-label", isDarkMode ? "Switch to light mode" : "Switch to dark mode");
+    function isDarkMode() {
+      return document.documentElement.classList.contains("dark-mode");
+    }
+
+    function setThemeMode(mode) {
+      const html = document.documentElement;
+      const body = document.body;
+      html.classList.remove("dark-mode", "light-mode");
+      body.classList.remove("dark-mode", "light-mode");
+      if (mode === "dark") {
+        html.classList.add("dark-mode");
+        body.classList.add("dark-mode");
+      } else if (mode === "light") {
+        html.classList.add("light-mode");
+        body.classList.add("light-mode");
       }
     }
+
+    function updateAllThemeButtons() {
+      const dark = isDarkMode();
+      const emoji = dark ? "☀️" : "🌙";
+      toggles.forEach(t => {
+        if (!t) return;
+        // Keep just emoji for desktop (compact), add text for mobile
+        if (t.id.includes("mobile")) {
+          t.textContent = dark ? "☀️ Light" : "🌙 Dark";
+        } else {
+          t.textContent = emoji;
+        }
+        t.setAttribute("aria-pressed", dark.toString());
+      });
+    }
     
-    if (toggle) {
+    // Apply saved theme or OS preference
+    try {
+      const saved = localStorage.getItem("theme");
+      if (saved === "dark") {
+        setThemeMode("dark");
+      } else if (saved === "light") {
+        setThemeMode("light");
+      } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        setThemeMode("dark");
+      }
+    } catch(e) {}
+
+    updateAllThemeButtons();
+
+    toggles.forEach(toggle => {
+      if (!toggle) return;
       toggle.addEventListener("click", (e) => {
         e.preventDefault();
-        document.body.classList.toggle("dark-mode");
-        localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
-        updateToggleButtonText();
+        const willBeDark = !isDarkMode();
+        setThemeMode(willBeDark ? "dark" : "light");
+        try { localStorage.setItem("theme", willBeDark ? "dark" : "light"); } catch(e) {}
+        updateAllThemeButtons();
+      });
+    });
+
+    // ===== Hamburger Menu =====
+    const hamburger = document.getElementById("navbarHamburger");
+    const mobileMenu = document.getElementById("navbarMobile");
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.toggle("open");
+        hamburger.classList.toggle("active");
+        hamburger.setAttribute("aria-expanded", isOpen.toString());
       });
     }
 
-    // Apply saved theme
-    try {
-      if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark-mode");
-      }
-    } catch(e) {
-      console.warn("localStorage not available.");
-    }
-
-    // Mantener idioma en link del avatar
+    // ===== Language Switching =====
     const urlParams = new URLSearchParams(window.location.search);
     const lang = urlParams.get("lang");
+
+    const docLang = (document.documentElement.getAttribute("lang") || "").toLowerCase();
+    const currentLang = (lang || (docLang.startsWith("es") ? "es" : "en"));
+    const newLang = currentLang === "es" ? "en" : "es";
+
+    // Propagate lang to internal links
     if (lang) {
-      const avatarLink = document.querySelector(".cover-author-image a");
-      if (avatarLink) {
-        const url = new URL(avatarLink.href, window.location.origin);
-        url.searchParams.set("lang", lang);
-        avatarLink.href = url.pathname + url.search;
+      document.querySelectorAll('a').forEach(link => {
+        try {
+          const url = new URL(link.href, window.location.origin);
+          if (url.origin === window.location.origin && !url.searchParams.has("lang")) {
+            url.searchParams.set("lang", lang);
+            link.href = url.pathname + url.search;
+          }
+        } catch(e) {}
+      });
+    }
+
+    // Setup lang switchers (desktop + mobile)
+    const switchers = [
+      document.getElementById("lang-switcher"),
+      document.getElementById("lang-switcher-mobile")
+    ];
+
+    function getAlternateUrl() {
+      const isPost = !!document.querySelector(".article-page");
+      if (isPost) {
+        const path = window.location.pathname;
+        const hasEn = /-en\/?$/.test(path);
+        let targetPath;
+        if (hasEn) {
+          targetPath = path.replace(/-en\/?$/, "/");
+        } else {
+          targetPath = path.endsWith("/") ? path.slice(0, -1) + "-en/" : path + "-en";
+        }
+        return targetPath + window.location.search;
       }
+
+      const url = new URL(window.location.href);
+      url.searchParams.set("lang", newLang);
+      return url.pathname + url.search;
     }
 
-    // Mantener idioma en links de la barra de navegación
-    document.querySelectorAll('a[href^="{{site.baseurl}}/"]').forEach(link => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const lang = urlParams.get("lang");
-    if (lang) {
-      const url = new URL(link.href, window.location.origin);
-      url.searchParams.set("lang", lang);
-      link.href = url.pathname + url.search;
-    }
-});
+    switchers.forEach(btn => {
+      if (!btn) return;
+      const isMobile = btn.id.includes("mobile");
+      btn.textContent = isMobile
+        ? (currentLang === "es" ? "🌐 English" : "🌐 Español")
+        : "🌐";
+      btn.setAttribute("title", currentLang === "es" ? "Switch to English" : "Cambiar a Español");
 
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.location.href = getAlternateUrl();
+      });
+    });
+
+    // ===== Reading Progress Bar =====
+    const progressBar = document.getElementById("readingProgress");
+    if (progressBar && document.querySelector(".article-page")) {
+      window.addEventListener("scroll", () => {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (window.scrollY / docHeight) * 100;
+        progressBar.style.width = Math.min(scrolled, 100) + "%";
+      }, { passive: true });
+    } else if (progressBar) {
+      progressBar.style.display = "none";
+    }
+
+    // ===== Scroll to Top =====
+    const scrollBtn = document.getElementById("scrollToTop");
+    if (scrollBtn) {
+      window.addEventListener("scroll", () => {
+        scrollBtn.classList.toggle("visible", window.scrollY > 400);
+      }, { passive: true });
+      scrollBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+
+    // ===== Copy Code Buttons =====
+    document.querySelectorAll(".highlight").forEach(block => {
+      const btn = document.createElement("button");
+      btn.className = "copy-code-btn";
+      btn.textContent = "Copy";
+      btn.addEventListener("click", async () => {
+        const code = block.querySelector("code");
+        if (code) {
+          try {
+            await navigator.clipboard.writeText(code.textContent);
+            btn.textContent = "Copied!";
+            btn.classList.add("copied");
+            setTimeout(() => { btn.textContent = "Copy"; btn.classList.remove("copied"); }, 2000);
+          } catch(e) {
+            btn.textContent = "Error";
+            setTimeout(() => { btn.textContent = "Copy"; }, 2000);
+          }
+        }
+      });
+      block.style.position = "relative";
+      block.appendChild(btn);
+    });
   });
 </script>
 

@@ -141,7 +141,8 @@
 
 @media (max-height: 700px) {
   .findme-icons {
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 500px) {
@@ -151,5 +152,6 @@
   }
 
   .findme-icons {
-    max-height: 200px; 
+    max-height: 200px;
+  }
 }

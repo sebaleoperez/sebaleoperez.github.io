@@ -15,11 +15,13 @@ social-linkedin: sebaleoperez # add your Linkedin handle
 social-email: sebastian.leo.perez@outlook.com.ar # add your Email address
 social-instagram: sebaleoperez # add your instagram handle
 
-# Disqus
-discus-identifier: sebaleoperez # add your discus identifier
+# Disqus Comments
+# Create your site at https://disqus.com and put your shortname below
+disqus: sebaleoperez # your Disqus shortname
 
-# Tracker
-analytics: # Google Analytics
+# Google Analytics 4 — Get your Measurement ID at https://analytics.google.com
+# Format: G-XXXXXXXXXX
+analytics: # G-XXXXXXXXXX
 
 # Build Settings
 markdown: kramdown
@@ -27,8 +29,9 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jemoji
+  - jekyll-feed
 
 paginate: 20
 paginate_path: "/page/:num"
 
-exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
+exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "README.md"]

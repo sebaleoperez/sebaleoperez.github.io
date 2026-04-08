@@ -3,7 +3,7 @@ layout: post
 title:  "Understanding Security in Azure: Shared Responsibility"
 date:   2023-04-20 00:00:00 -0300
 tags: [english,microsoft,azure,security]
-img: /posts/azure/security.avif
+img: /posts/2023/04/security.avif
 lang: en
 ---
 

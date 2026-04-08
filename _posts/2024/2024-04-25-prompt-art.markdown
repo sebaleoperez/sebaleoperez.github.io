@@ -3,7 +3,7 @@ layout: post
 title:  "Generative AI: The Art of the Prompt"
 date:   2024-04-25 00:00:00 -0300
 tags: [english,microsoft,azure,ai]
-img: /posts/azure/prompt.jpeg
+img: /posts/2024/04/prompt.jpeg
 lang: en
 ---
 
