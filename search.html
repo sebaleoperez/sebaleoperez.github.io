@@ -6,13 +6,34 @@ permalink: /search/
 
 <div class="search-page">
   <div class="search-header">
-    <h1>Search</h1>
+    <p id="searchEyebrow" class="search-eyebrow">Search the archive</p>
+    <h1 id="searchTitle">Search</h1>
+    <p id="searchLead" class="search-lead">Jump into the archive by keyword, topic, or year.</p>
     <div class="search-input-wrapper">
       <svg class="search-icon icon" aria-hidden="true"><use href="#icon-search"></use></svg>
       <input type="text" id="searchInput" class="search-input" placeholder="Type to search posts..." autofocus autocomplete="off">
       <button id="searchClear" class="search-clear" aria-label="Clear search" style="display:none;">✕</button>
     </div>
   </div>
+
+  <div class="search-filter-bar">
+    <div class="search-filter-group">
+      <p id="searchTopicsLabel" class="search-filter-label">Topics</p>
+      <div id="searchTopicFilters" class="search-chips"></div>
+    </div>
+
+    <div class="search-filter-group">
+      <p id="searchYearsLabel" class="search-filter-label">Years</p>
+      <div id="searchYearFilters" class="search-chips"></div>
+    </div>
+  </div>
+
+  <div class="search-summary-bar">
+    <p id="searchSummary" class="search-summary"></p>
+    <button id="searchReset" class="search-reset" type="button"></button>
+  </div>
+
+  <div id="searchSuggestions" class="search-suggestions"></div>
   <div id="searchResults" class="search-results"></div>
   <p id="searchEmpty" class="search-empty" style="display:none;">No results found.</p>
 </div>
@@ -20,11 +41,76 @@ permalink: /search/
 <script src="https://unpkg.com/lunr@2.3.9/lunr.min.js"></script>
 <script>
 (function() {
-  let index, posts;
+  const copy = {
+    es: {
+      eyebrow: 'Buscar en el archivo',
+      title: 'Buscar',
+      lead: 'Entrá al archivo por palabra clave, tema o año.',
+      placeholder: 'Escribí para buscar posts...',
+      topics: 'Temas',
+      years: 'Años',
+      allTopics: 'Todos',
+      allYears: 'Todos',
+      clear: 'Limpiar búsqueda',
+      reset: 'Limpiar filtros',
+      empty: 'No se encontraron resultados.',
+      indexed: count => `${count} posts indexados`,
+      showing: count => `${count} resultados`,
+      filteredBy: 'Filtros activos',
+      browseLatest: 'Últimos publicados',
+      tryTopic: 'Probá por tema',
+      tryYear: 'o filtrá por año',
+      exploreTopic: tag => `Tema: ${tag}`,
+      yearLabel: year => `Año ${year}`
+    },
+    en: {
+      eyebrow: 'Search the archive',
+      title: 'Search',
+      lead: 'Jump into the archive by keyword, topic, or year.',
+      placeholder: 'Type to search posts...',
+      topics: 'Topics',
+      years: 'Years',
+      allTopics: 'All',
+      allYears: 'All',
+      clear: 'Clear search',
+      reset: 'Clear filters',
+      empty: 'No results found.',
+      indexed: count => `${count} indexed posts`,
+      showing: count => `${count} results`,
+      filteredBy: 'Active filters',
+      browseLatest: 'Latest published',
+      tryTopic: 'Try a topic',
+      tryYear: 'or filter by year',
+      exploreTopic: tag => `Topic: ${tag}`,
+      yearLabel: year => `Year ${year}`
+    }
+  };
+
+  const ignoredTags = new Set(['español', 'english']);
+
+  let index;
+  let posts = [];
+  let currentLang = 'en';
+  let activeTag = 'all';
+  let activeYear = 'all';
+
+  function getCurrentCopy() {
+    return copy[currentLang] || copy.en;
+  }
+
+  function normalizePosts(allPosts) {
+    return allPosts
+      .filter(post => (post.lang || 'en') === currentLang)
+      .map(post => ({
+        ...post,
+        year: (post.date || '').slice(0, 4),
+        tags: Array.isArray(post.tags) ? post.tags.filter(tag => !ignoredTags.has(tag)) : []
+      }));
+  }
 
   async function loadIndex() {
     const resp = await fetch('{{ site.baseurl }}/search.json');
-    posts = await resp.json();
+    posts = normalizePosts(await resp.json());
     index = lunr(function() {
       this.ref('url');
       this.field('title', { boost: 10 });
@@ -34,24 +120,146 @@ permalink: /search/
     });
   }
 
-  function renderResults(results) {
+  function matchesFilters(post) {
+    const matchesTag = activeTag === 'all' || post.tags.includes(activeTag);
+    const matchesYear = activeYear === 'all' || post.year === activeYear;
+    return matchesTag && matchesYear;
+  }
+
+  function getFilteredPosts() {
+    return posts.filter(matchesFilters);
+  }
+
+  function getVisiblePosts(query) {
+    const filteredPosts = getFilteredPosts();
+    if (!query) {
+      return filteredPosts.sort((left, right) => right.date.localeCompare(left.date));
+    }
+
+    try {
+      const results = index.search(`${query}~1`);
+      return results
+        .map(result => posts.find(post => post.url === result.ref))
+        .filter(Boolean)
+        .filter(matchesFilters);
+    } catch (error) {
+      try {
+        const results = index.search(`${query}*`);
+        return results
+          .map(result => posts.find(post => post.url === result.ref))
+          .filter(Boolean)
+          .filter(matchesFilters);
+      } catch (fallbackError) {
+        return [];
+      }
+    }
+  }
+
+  function renderChips(containerId, items, activeValue, allLabel, clickHandler) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+
+    const allButton = document.createElement('button');
+    allButton.type = 'button';
+    allButton.className = `search-chip${activeValue === 'all' ? ' active' : ''}`;
+    allButton.textContent = allLabel;
+    allButton.addEventListener('click', () => clickHandler('all'));
+    container.appendChild(allButton);
+
+    items.forEach(item => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = `search-chip${activeValue === item ? ' active' : ''}`;
+      button.textContent = item;
+      button.addEventListener('click', () => clickHandler(item));
+      container.appendChild(button);
+    });
+  }
+
+  function renderFilters() {
+    const topicCounts = new Map();
+    const years = new Set();
+
+    posts.forEach(post => {
+      years.add(post.year);
+      post.tags.forEach(tag => {
+        topicCounts.set(tag, (topicCounts.get(tag) || 0) + 1);
+      });
+    });
+
+    const topTags = Array.from(topicCounts.entries())
+      .sort((left, right) => right[1] - left[1])
+      .slice(0, 8)
+      .map(([tag]) => tag);
+
+    const sortedYears = Array.from(years).sort((left, right) => right.localeCompare(left));
+    const ui = getCurrentCopy();
+
+    renderChips('searchTopicFilters', topTags, activeTag, ui.allTopics, value => {
+      activeTag = value;
+      renderFilters();
+      updateSearch();
+    });
+
+    renderChips('searchYearFilters', sortedYears, activeYear, ui.allYears, value => {
+      activeYear = value;
+      renderFilters();
+      updateSearch();
+    });
+  }
+
+  function renderSuggestions() {
+    const container = document.getElementById('searchSuggestions');
+    const ui = getCurrentCopy();
+    const latest = posts.slice().sort((left, right) => right.date.localeCompare(left.date)).slice(0, 4);
+    const topTags = Array.from(new Set(posts.flatMap(post => post.tags))).slice(0, 4);
+
+    container.innerHTML = `
+      <div class="search-suggestion-card">
+        <p class="search-suggestion-label">${ui.browseLatest}</p>
+        <ul class="search-suggestion-list">
+          ${latest.map(post => `<li><a href="${post.url}">${post.title}</a></li>`).join('')}
+        </ul>
+      </div>
+      <div class="search-suggestion-card">
+        <p class="search-suggestion-label">${ui.tryTopic}</p>
+        <div class="search-suggestion-tags">
+          ${topTags.map(tag => `<button type="button" class="search-chip" data-suggested-tag="${tag}">#${tag}</button>`).join('')}
+        </div>
+        <p class="search-suggestion-hint">${ui.tryYear}</p>
+      </div>
+    `;
+
+    container.querySelectorAll('[data-suggested-tag]').forEach(button => {
+      button.addEventListener('click', () => {
+        activeTag = button.dataset.suggestedTag;
+        renderFilters();
+        updateSearch();
+      });
+    });
+  }
+
+  function renderResults(results, query) {
     const container = document.getElementById('searchResults');
     const empty = document.getElementById('searchEmpty');
+    const suggestions = document.getElementById('searchSuggestions');
     if (!results.length) {
       container.innerHTML = '';
       empty.style.display = 'block';
+      suggestions.style.display = query || activeTag !== 'all' || activeYear !== 'all' ? 'none' : '';
       return;
     }
     empty.style.display = 'none';
-    container.innerHTML = results.map(r => {
-      const post = posts.find(p => p.url === r.ref);
-      if (!post) return '';
+    suggestions.style.display = 'none';
+    container.innerHTML = results.map(post => {
       const tags = post.tags.map(t => `<span class="search-tag">#${t}</span>`).join(' ');
       return `
         <a href="${post.url}" class="search-result-item">
           <div class="search-result-title">${post.title}</div>
           <div class="search-result-meta">
             <span>${post.date}</span>
+            <span>·</span>
+            <span>${post.year}</span>
             ${tags}
           </div>
           <div class="search-result-excerpt">${post.content.substring(0, 150)}...</div>
@@ -60,42 +268,84 @@ permalink: /search/
     }).join('');
   }
 
+  function updateSummary(query, count) {
+    const summary = document.getElementById('searchSummary');
+    const reset = document.getElementById('searchReset');
+    const ui = getCurrentCopy();
+    const filters = [];
+
+    if (activeTag !== 'all') filters.push(ui.exploreTopic(activeTag));
+    if (activeYear !== 'all') filters.push(ui.yearLabel(activeYear));
+
+    if (!query && !filters.length) {
+      summary.textContent = ui.indexed(posts.length);
+      reset.style.visibility = 'hidden';
+      return;
+    }
+
+    summary.textContent = filters.length
+      ? `${ui.showing(count)} · ${ui.filteredBy}: ${filters.join(' · ')}`
+      : ui.showing(count);
+    reset.style.visibility = 'visible';
+  }
+
+  function updateSearch() {
+    const input = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('searchClear');
+    const query = input.value.trim();
+    const results = getVisiblePosts(query);
+
+    clearBtn.style.display = query ? 'block' : 'none';
+    renderResults(results, query);
+    updateSummary(query, results.length);
+  }
+
+  function applyCopy() {
+    const ui = getCurrentCopy();
+    document.getElementById('searchEyebrow').textContent = ui.eyebrow;
+    document.getElementById('searchTitle').textContent = ui.title;
+    document.getElementById('searchLead').textContent = ui.lead;
+    document.getElementById('searchInput').placeholder = ui.placeholder;
+    document.getElementById('searchTopicsLabel').textContent = ui.topics;
+    document.getElementById('searchYearsLabel').textContent = ui.years;
+    document.getElementById('searchEmpty').textContent = ui.empty;
+    document.getElementById('searchReset').textContent = ui.reset;
+  }
+
   document.addEventListener('DOMContentLoaded', async () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    currentLang = urlParams.get('lang') || 'en';
+
+    applyCopy();
     await loadIndex();
+    renderFilters();
+    renderSuggestions();
+
     const input = document.getElementById('searchInput');
     const clearBtn = document.getElementById('searchClear');
     const container = document.getElementById('searchResults');
     const empty = document.getElementById('searchEmpty');
+    const reset = document.getElementById('searchReset');
+
+    updateSearch();
 
     input.addEventListener('input', () => {
-      const q = input.value.trim();
-      clearBtn.style.display = q ? 'block' : 'none';
-      if (!q) {
-        container.innerHTML = '';
-        empty.style.display = 'none';
-        return;
-      }
-      try {
-        const results = index.search(q + '~1');  // fuzzy search
-        renderResults(results);
-      } catch(e) {
-        // Fallback for simple queries
-        try {
-          const results = index.search(q + '*');
-          renderResults(results);
-        } catch(e2) {
-          container.innerHTML = '';
-          empty.style.display = 'block';
-        }
-      }
+      updateSearch();
     });
 
     clearBtn.addEventListener('click', () => {
       input.value = '';
-      clearBtn.style.display = 'none';
-      container.innerHTML = '';
-      empty.style.display = 'none';
+      updateSearch();
       input.focus();
+    });
+
+    reset.addEventListener('click', () => {
+      activeTag = 'all';
+      activeYear = 'all';
+      input.value = '';
+      renderFilters();
+      renderSuggestions();
+      updateSearch();
     });
   });
 })();
