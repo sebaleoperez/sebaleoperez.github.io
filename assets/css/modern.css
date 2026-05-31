@@ -648,6 +648,41 @@ html.dark-mode .navbar {
   color: var(--color-primary);
 }
 
+/* --- Home Intro --- */
+.home-intro {
+  margin: 0 0 1.5rem;
+  padding: 1.75rem 1.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background:
+    radial-gradient(circle at top right, rgba(99, 102, 241, 0.18), transparent 35%),
+    linear-gradient(180deg, var(--color-surface-hover), var(--color-surface));
+  box-shadow: var(--shadow-sm);
+}
+
+.home-intro-eyebrow {
+  margin: 0 0 0.65rem;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.home-intro-title {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  line-height: 1.08;
+}
+
+.home-intro-copy {
+  margin: 0;
+  max-width: none;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-md);
+  line-height: 1.65;
+}
+
 /* --- Post Cards --- */
 .post {
   width: 100%;
@@ -724,6 +759,27 @@ html.dark-mode .navbar {
   justify-content: center;
 }
 
+.post-meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0 0 0.8rem;
+}
+
+.post-topic-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--border-radius-full);
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--color-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .post .post-content .post-title {
   margin: 0 0 0.5rem;
   font-size: var(--font-size-xl);
@@ -762,12 +818,13 @@ html.dark-mode .navbar {
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
   font-weight: 500;
-}
-
-.post .post-content .post-words {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
+}
+
+.post .post-content .post-words {
+  white-space: nowrap;
 }
 
 /* --- Pagination --- */
@@ -1556,6 +1613,12 @@ a.tag:hover {
   .main-content {
     padding: 1.5rem;
   }
+  .home-intro {
+    padding: 1.4rem 1.35rem;
+  }
+  .home-intro-copy {
+    font-size: var(--font-size-sm);
+  }
   .header-page .page-title {
     font-size: var(--font-size-2xl);
   }
@@ -1577,6 +1640,9 @@ a.tag:hover {
   }
   .navbar-inner {
     padding: 0.75rem 1rem;
+  }
+  .home-intro-title {
+    font-size: 1.8rem;
   }
   .post .post-content .post-title {
     font-size: var(--font-size-lg);

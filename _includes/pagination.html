@@ -9,7 +9,12 @@
         </li>
       {% endif %}
 
-      <li><span class="page-number">Pag {{ paginator.page }} / {{ paginator.total_pages }}</span></li>
+      <li>
+        <span class="page-number">
+          <span class="page-number-label" data-label-es="Pag" data-label-en="Page">Pag</span>
+          {{ paginator.page }} / {{ paginator.total_pages }}
+        </span>
+      </li>
 
       {% if paginator.next_page %}
         <li>
@@ -26,14 +31,15 @@
       const urlParams = new URLSearchParams(window.location.search);
       let lang = urlParams.get("lang");
 
-      // Si no hay lang en la URL, usar el idioma del navegador
+      // Si no hay lang en la URL, usar el idioma del navegador sin forzar redirect
       if (!lang) {
         const browserLang = navigator.language || navigator.userLanguage;
         lang = browserLang.startsWith("es") ? "es" : "en";
-        urlParams.set("lang", lang);
-        const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
-        window.location.replace(newUrl);
-        return;
+      }
+
+      const pageLabel = document.querySelector('.page-number-label');
+      if (pageLabel) {
+        pageLabel.textContent = lang === 'es' ? pageLabel.dataset.labelEs : pageLabel.dataset.labelEn;
       }
 
       // Aplica el lang a la paginación
@@ -43,10 +49,10 @@
         link.href = url.pathname + url.search;
       });
 
-      // Filtra posts por idioma
-      document.querySelectorAll(".post").forEach(post => {
-        const postLang = post.dataset.lang;
-        post.style.display = (postLang === lang) ? "" : "none";
+      // Filtra bloques por idioma
+      document.querySelectorAll('[data-lang]').forEach(block => {
+        const blockLang = block.dataset.lang;
+        block.style.display = (blockLang === lang) ? "" : "none";
       });
     
     });
