@@ -1,12 +1,41 @@
 <head>
-	<meta charset="utf-8">
-	<title>{% if page.title %}{{page.title}} - {{site.title}}{% else %}{{site.title}}{% endif %}</title>
+  <meta charset="utf-8">
+  {%- assign meta_title = page.title | default: site.title -%}
+  {%- assign raw_description = page.description | default: page.excerpt | default: site.description -%}
+  {%- assign meta_description = raw_description | strip_html | strip_newlines | replace: '  ', ' ' | strip | truncate: 160 -%}
+  {%- assign canonical_url = site.url | append: page.url | default: site.url -%}
+  {%- assign author_image = site.author-img | remove_first: '/' -%}
+  {%- assign meta_image = site.url | append: site.baseurl | append: '/assets/img/' | append: author_image -%}
+  {%- if page.img -%}
+    {%- if page.img contains 'http' -%}
+      {%- assign meta_image = page.img -%}
+    {%- else -%}
+      {%- assign page_image = page.img | remove_first: '/' -%}
+      {%- assign meta_image = site.url | append: site.baseurl | append: '/assets/img/' | append: page_image -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- assign og_locale = 'en_US' -%}
+  {%- if current_page_lang == 'es' -%}
+    {%- assign og_locale = 'es_AR' -%}
+  {%- endif -%}
+  {%- assign alternate_og_locale = '' -%}
+  {%- if alternate_page -%}
+    {%- assign alternate_og_locale = 'en_US' -%}
+    {%- if alternate_page.lang == 'es' -%}
+      {%- assign alternate_og_locale = 'es_AR' -%}
+    {%- endif -%}
+  {%- endif -%}
+  <title>{% if page.title %}{{page.title}} - {{site.title}}{% else %}{{site.title}}{% endif %}</title>
 
   <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
 
     <meta content="{{ site.title }}" property="og:site_name">
+    <meta content="{{ og_locale }}" property="og:locale">
+  {% if alternate_page %}
+    <meta content="{{ alternate_og_locale }}" property="og:locale:alternate">
+  {% endif %}
   {% if page.title %}
-    <meta content="{{ page.title }}" property="og:title">
+    <meta content="{{ meta_title }}" property="og:title">
   {% else %}
     <meta content="{{ site.title }}" property="og:title">
   {% endif %}
@@ -15,23 +44,16 @@
   {% else %}
     <meta content="website" property="og:type">
   {% endif %}
-  {% if page.description %}
-    <meta content="{{ page.description }}" property="og:description">
-  {% else %}
-    <meta content="{{ site.description }}" property="og:description">
-  {% endif %}
+    <meta content="{{ meta_description }}" property="og:description">
   {% if page.url %}
-    <meta content="{{ site.url }}{{ page.url }}" property="og:url">
+    <meta content="{{ canonical_url }}" property="og:url">
   {% endif %}
   {% if page.date %}
     <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
+    <meta content="{{ page.last_modified_at | default: page.date | date_to_xmlschema }}" property="article:modified_time">
     <meta content="{{ site.url }}/about/" property="article:author">
   {% endif %}
-  {% if page.img %}
-    <meta content="{{ site.url }}{{ site.baseurl }}/assets/img/{{ page.img }}" property="og:image">
-  {% else %}
-    <meta content="{{ site.url }}{{ site.baseurl }}/assets/img/{{ site.author-img }}" property="og:image">
-  {% endif %}
+    <meta content="{{ meta_image }}" property="og:image">
   {% if page.categories %}
     {% for category in page.categories limit:1 %}
     <meta content="{{ category }}" property="article:section">
@@ -47,28 +69,22 @@
     <meta name="twitter:site" content="@{{ site.social-x }}">
     <meta name="twitter:creator" content="@{{ site.social-x }}">
   {% if page.title %}
-    <meta name="twitter:title" content="{{ page.title }}">
+    <meta name="twitter:title" content="{{ meta_title }}">
   {% else %}
     <meta name="twitter:title" content="{{ site.title }}">
   {% endif %}
   {% if page.url %}
-    <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+    <meta name="twitter:url" content="{{ canonical_url }}">
   {% endif %}
-  {% if page.description %}
-    <meta name="twitter:description" content="{{ page.description }}">
-  {% else %}
-    <meta name="twitter:description" content="{{ site.description }}">
-  {% endif %}
-  {% if page.img %}
-    <meta name="twitter:image:src" content="{{ site.url }}{{ site.baseurl }}/assets/img/{{ page.img }}">
-  {% else %}
-    <meta name="twitter:image:src" content="{{ site.url }}{{ site.baseurl }}/assets/img/{{ site.author-img }}">
-  {% endif %}
+    <meta name="twitter:description" content="{{ meta_description }}">
+    <meta name="twitter:image:src" content="{{ meta_image }}">
+    <meta name="twitter:image:alt" content="{{ meta_title }}">
 
-	<meta name="description" content="{{ page.description | default: site.description }}">
+	<meta name="description" content="{{ meta_description }}">
+	<meta name="author" content="{{ site.author }}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="{{ site.url }}{{ page.url | default: '/' }}">
+  <link rel="canonical" href="{{ canonical_url }}">
   {% if alternate_page %}
   {% if current_page_lang == 'es' %}
     {% assign x_default_url = page.url %}
@@ -81,6 +97,39 @@
   <link rel="alternate" hreflang="{{ alternate_page.lang }}" href="{{ site.url }}{{ alternate_page.url }}">
   <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ x_default_url }}">
   {% endif %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      {% if page.date %}
+      "@type": "BlogPosting",
+      "headline": {{ meta_title | jsonify }},
+      "description": {{ meta_description | jsonify }},
+      "image": {{ meta_image | jsonify }},
+      "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+      "dateModified": {{ page.last_modified_at | default: page.date | date_to_xmlschema | jsonify }},
+      "inLanguage": {{ current_page_lang | jsonify }},
+      "mainEntityOfPage": {{ canonical_url | jsonify }},
+      "url": {{ canonical_url | jsonify }},
+      "author": {
+        "@type": "Person",
+        "name": {{ site.author | jsonify }},
+        "url": {{ site.url | append: '/about/' | jsonify }}
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": {{ site.author | jsonify }},
+        "image": {{ site.url | append: site.baseurl | append: '/assets/img/' | append: author_image | jsonify }}
+      }{% if page.tags %},
+      "keywords": {{ page.tags | join: ', ' | jsonify }}{% endif %}
+      {% else %}
+      "@type": "WebSite",
+      "name": {{ site.title | jsonify }},
+      "description": {{ meta_description | jsonify }},
+      "url": {{ site.url | jsonify }},
+      "inLanguage": {{ current_page_lang | jsonify }}
+      {% endif %}
+    }
+  </script>
   <meta name="view-transition" content="same-origin">
 	<link rel="shortcut icon" href="{{ "/assets/img/favicon/favicon.ico" | prepend: site.baseurl }}" type="image/x-icon">
 	<link rel="apple-touch-icon" href="{{ "/assets/img/favicon/apple-touch-icon.png" | prepend: site.baseurl }}">

@@ -2,15 +2,28 @@
 layout: main
 ---
 
-<a href="{{site.baseurl}}/" class="back-to-home"><svg class="icon icon-arrow-left" aria-hidden="true"><use href="#icon-arrow-left"></use></svg> Back</a>
+{% assign post_lang = page.lang | default: site.lang | default: 'en' %}
+{% if post_lang == 'es' %}
+  {% assign back_label = 'Volver' %}
+  {% assign outline_title = 'En este artículo' %}
+  {% assign share_label = 'Compartir' %}
+  {% assign tags_label = 'Temas' %}
+{% else %}
+  {% assign back_label = 'Back' %}
+  {% assign outline_title = 'In this article' %}
+  {% assign share_label = 'Share' %}
+  {% assign tags_label = 'Topics' %}
+{% endif %}
 
-<article class="article-page" lang="{{ page.lang }}">
+<a href="{{site.baseurl}}/" class="back-to-home"><svg class="icon icon-arrow-left" aria-hidden="true"><use href="#icon-arrow-left"></use></svg> {{ back_label }}</a>
+
+<article class="article-page" lang="{{ page.lang }}" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="page-content">
     {% if page.img %}
     <div class="page-cover-image">
       <figure>
         {% if page.img contains "http" %}
-        <img loading="lazy" decoding="async" width="1200" height="675" class="page-image" src="{{ page.img }}" alt="{{page.title}}" sizes="100vw">
+        <img loading="lazy" decoding="async" width="1200" height="675" class="page-image" src="{{ page.img }}" alt="{{page.title}}" sizes="100vw" itemprop="image">
         {% else %}
         <picture>
           {% if page.img_avif %}
@@ -19,7 +32,7 @@ layout: main
           {% if page.img_webp %}
           <source type="image/webp" srcset="{{"/assets/img/" | prepend: site.baseurl | append : page.img_webp}}">
           {% endif %}
-          <img loading="lazy" decoding="async" width="1200" height="675" class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}" sizes="100vw">
+          <img loading="lazy" decoding="async" width="1200" height="675" class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}" sizes="100vw" itemprop="image">
         </picture>
         {% endif %}
         {% if page.fig-caption %}
@@ -31,22 +44,32 @@ layout: main
     {% endif %}
     <div class="wrap-content">
       <header class="header-page">
-        <h1 class="page-title">{{page.title}}</h1>
+        <h1 class="page-title" itemprop="headline">{{page.title}}</h1>
         <div class="page-date">
-          <span>{{page.date | date: '%Y, %b %d'}}</span>
+          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{page.date | date: '%Y, %b %d'}}</time>
           <span>&nbsp;·&nbsp;</span>
           <span>{% capture words %}{{ page.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 }} min read{% endunless %}</span>
         </div>
       </header>
       <button id="listen-btn" class="listen-button" aria-label="Escuchar/Listen">🔊 Escuchar artículo</button>
-      {{content | markdownify}}
+      <aside id="post-outline" class="post-outline" hidden>
+        <p class="post-outline-title">{{ outline_title }}</p>
+        <nav aria-label="{{ outline_title }}">
+          <ol id="post-outline-list" class="post-outline-list"></ol>
+        </nav>
+      </aside>
+      <div itemprop="articleBody">
+        {{content | markdownify}}
+      </div>
       <div class="page-footer">
         <div class="page-share">
+          <span class="page-footer-label">{{ share_label }}</span>
           <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
           <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
           <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" title="Share on LinkedIn" rel="nofollow" target="_blank">LinkedIn</a>
         </div>
         <div class="page-tag">
+          <span class="page-footer-label">{{ tags_label }}</span>
           {% for tag in page.tags %}
             <a href="{{site.baseurl}}/tags#{{tag}}" class="tag">&#35; {{ tag }}</a>
           {% endfor %}
@@ -81,9 +104,55 @@ layout: main
         : { start: "🔊 Listen article", stop: "⏹️ Stop" };
     }
 
+    function slugifyHeading(text) {
+      return (text || "section")
+        .toString()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-");
+    }
+
+    function buildOutline() {
+      const outline = document.getElementById("post-outline");
+      const list = document.getElementById("post-outline-list");
+      const body = document.querySelector('[itemprop="articleBody"]');
+      if (!outline || !list || !body) return;
+
+      const headings = Array.from(body.querySelectorAll("h2, h3"));
+      if (headings.length < 2) return;
+
+      const usedIds = new Map();
+
+      headings.forEach((heading) => {
+        const baseId = heading.id || slugifyHeading(heading.textContent);
+        const count = usedIds.get(baseId) || 0;
+        const nextCount = count + 1;
+        usedIds.set(baseId, nextCount);
+        heading.id = count ? `${baseId}-${nextCount}` : baseId;
+
+        const item = document.createElement("li");
+        item.className = `post-outline-item post-outline-item-${heading.tagName.toLowerCase()}`;
+
+        const link = document.createElement("a");
+        link.className = "post-outline-link";
+        link.href = `#${heading.id}`;
+        link.textContent = heading.textContent.trim();
+
+        item.appendChild(link);
+        list.appendChild(item);
+      });
+
+      outline.hidden = false;
+    }
+
     const lang = getPostLang();
     const texts = getTexts(lang);
     btn.textContent = texts.start;
+    buildOutline();
 
     btn.addEventListener("click", () => {
       if (isSpeaking) {

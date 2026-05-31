@@ -943,6 +943,63 @@ html.dark-mode .navbar {
   opacity: 0.95;
 }
 
+.post-outline {
+  margin: 0 0 2rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: linear-gradient(180deg, var(--color-surface-hover), var(--color-surface));
+  box-shadow: var(--shadow-sm);
+}
+
+.post-outline-title {
+  margin: 0 0 0.85rem;
+  color: var(--color-heading);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.post-outline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.post-outline-item {
+  margin: 0;
+}
+
+.post-outline-item-h3 {
+  padding-left: 1rem;
+}
+
+.post-outline-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  line-height: 1.5;
+  font-size: var(--font-size-sm);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.post-outline-link:hover {
+  color: var(--color-primary);
+}
+
+.page-footer-label {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-right: 0.25rem;
+}
+
 /* Page footer (share + tags) */
 .page-footer {
   display: flex;
