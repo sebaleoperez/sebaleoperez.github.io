@@ -3,7 +3,7 @@ layout: post
 title:  "Marzo 2026: el mes en que los agentes empezaron a trabajar como owners"
 date:   2026-03-31 00:00:00 -0300
 tags: [español,ia,cloud,azure,dotnet,github,copilot]
-img: posts/2026/03/032026.svg
+img: posts/2026/03/032026.png
 lang: es
 ---
 

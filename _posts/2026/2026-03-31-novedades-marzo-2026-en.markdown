@@ -3,7 +3,7 @@ layout: post
 title:  "March 2026: the month agents started working like owners"
 date:   2026-03-31 00:00:00 -0300
 tags: [english,ai,cloud,azure,dotnet,github,copilot]
-img: posts/2026/03/032026.svg
+img: posts/2026/03/032026.png
 lang: en
 ---
 
