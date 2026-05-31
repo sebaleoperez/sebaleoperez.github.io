@@ -3,17 +3,56 @@ layout: main
 ---
 
 {% assign post_lang = page.lang | default: site.lang | default: 'en' %}
+{% capture words %}{{ page.content | number_of_words }}{% endcapture %}
+{% unless words contains "-" %}
+  {% assign reading_minutes = words | plus: 250 | divided_by: 250 %}
+{% else %}
+  {% assign reading_minutes = 1 %}
+{% endunless %}
 {% if post_lang == 'es' %}
   {% assign back_label = 'Volver' %}
   {% assign outline_title = 'En este artículo' %}
   {% assign share_label = 'Compartir' %}
   {% assign tags_label = 'Temas' %}
+  {% assign reading_label = 'Lectura estimada' %}
+  {% assign copy_label = 'Copiar link' %}
+  {% assign copied_label = 'Link copiado' %}
+  {% assign related_title = 'Seguí por acá' %}
+  {% assign cta_title = '¿Te interesó este tema?' %}
+  {% assign cta_body = 'Podés seguir explorando por temas o conectar conmigo para conversar sobre .NET, Azure, IA y Web3.' %}
+  {% assign cta_primary_label = 'Explorar temas' %}
+  {% assign cta_secondary_label = 'Ver LinkedIn' %}
 {% else %}
   {% assign back_label = 'Back' %}
   {% assign outline_title = 'In this article' %}
   {% assign share_label = 'Share' %}
   {% assign tags_label = 'Topics' %}
+  {% assign reading_label = 'Reading time' %}
+  {% assign copy_label = 'Copy link' %}
+  {% assign copied_label = 'Link copied' %}
+  {% assign related_title = 'Keep reading' %}
+  {% assign cta_title = 'Interested in this topic?' %}
+  {% assign cta_body = 'You can keep exploring by topic or connect with me to talk about .NET, Azure, AI, and Web3.' %}
+  {% assign cta_primary_label = 'Explore topics' %}
+  {% assign cta_secondary_label = 'View LinkedIn' %}
 {% endif %}
+
+{% assign has_related_posts = false %}
+{% for post in site.posts %}
+  {% if post.url != page.url and post.lang == post_lang %}
+    {% assign is_related = false %}
+    {% for tag in post.tags %}
+      {% if page.tags contains tag %}
+        {% assign is_related = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% if is_related %}
+      {% assign has_related_posts = true %}
+      {% break %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
 
 <a href="{{site.baseurl}}/" class="back-to-home"><svg class="icon icon-arrow-left" aria-hidden="true"><use href="#icon-arrow-left"></use></svg> {{ back_label }}</a>
 
@@ -47,11 +86,17 @@ layout: main
         <h1 class="page-title" itemprop="headline">{{page.title}}</h1>
         <div class="page-date">
           <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{page.date | date: '%Y, %b %d'}}</time>
-          <span>&nbsp;·&nbsp;</span>
-          <span>{% capture words %}{{ page.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 }} min read{% endunless %}</span>
         </div>
       </header>
-      <button id="listen-btn" class="listen-button" aria-label="Escuchar/Listen">🔊 Escuchar artículo</button>
+      <div class="post-actions" aria-label="Post actions">
+        <div class="post-meta-pills">
+          <span class="post-meta-pill">{{ reading_label }}: {{ reading_minutes }} min</span>
+        </div>
+        <div class="post-action-buttons">
+          <button id="listen-btn" class="listen-button" aria-label="Escuchar/Listen">🔊 Escuchar artículo</button>
+          <button id="copy-link-btn" class="copy-link-button" type="button" data-copy-label="{{ copy_label }}" data-copied-label="{{ copied_label }}">🔗 {{ copy_label }}</button>
+        </div>
+      </div>
       <aside id="post-outline" class="post-outline" hidden>
         <p class="post-outline-title">{{ outline_title }}</p>
         <nav aria-label="{{ outline_title }}">
@@ -64,6 +109,7 @@ layout: main
       <div class="page-footer">
         <div class="page-share">
           <span class="page-footer-label">{{ share_label }}</span>
+          <button id="copy-link-inline" class="page-share-button" type="button" data-copy-label="{{ copy_label }}" data-copied-label="{{ copied_label }}">{{ copy_label }}</button>
           <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
           <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
           <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" title="Share on LinkedIn" rel="nofollow" target="_blank">LinkedIn</a>
@@ -75,6 +121,41 @@ layout: main
           {% endfor %}
         </div>
       </div>
+      {% if has_related_posts %}
+      <section class="related-posts" aria-labelledby="related-posts-title">
+        <h2 id="related-posts-title" class="related-posts-title">{{ related_title }}</h2>
+        <div class="related-posts-grid">
+          {% assign related_count = 0 %}
+          {% for post in site.posts %}
+            {% if post.url != page.url and post.lang == post_lang and related_count < 3 %}
+              {% assign is_related = false %}
+              {% for tag in post.tags %}
+                {% if page.tags contains tag %}
+                  {% assign is_related = true %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+              {% if is_related %}
+              <article class="related-post-card">
+                <p class="related-post-date">{{ post.date | date: '%Y, %b %d' }}</p>
+                <h3 class="related-post-name"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
+              </article>
+              {% assign related_count = related_count | plus: 1 %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+      <section class="post-cta" aria-labelledby="post-cta-title">
+        <p class="post-cta-eyebrow">{{ tags_label }}</p>
+        <h2 id="post-cta-title" class="post-cta-title">{{ cta_title }}</h2>
+        <p class="post-cta-copy">{{ cta_body }}</p>
+        <div class="post-cta-actions">
+          <a class="post-cta-button post-cta-button-primary" href="{{ site.baseurl }}/tags">{{ cta_primary_label }}</a>
+          <a class="post-cta-button" href="https://www.linkedin.com/in/{{ site.social-linkedin }}/" target="_blank" rel="noopener noreferrer">{{ cta_secondary_label }}</a>
+        </div>
+      </section>
       {% include disqus.html %}
     </div> <!-- End Wrap Content -->
   </div> <!-- End Page Content -->
@@ -83,6 +164,7 @@ layout: main
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("listen-btn");
+    const copyButtons = Array.from(document.querySelectorAll("#copy-link-btn, #copy-link-inline"));
     const synth = window.speechSynthesis;
 
     if (!window.speechSynthesis || !window.SpeechSynthesisUtterance) {
@@ -154,6 +236,30 @@ layout: main
     btn.textContent = texts.start;
     buildOutline();
 
+    async function copyCurrentUrl(button) {
+      const copyLabel = button.dataset.copyLabel;
+      const copiedLabel = button.dataset.copiedLabel;
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+      } catch (error) {
+        const tempInput = document.createElement("input");
+        tempInput.value = window.location.href;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+      }
+
+      button.textContent = copiedLabel;
+      window.setTimeout(() => {
+        button.textContent = copyLabel;
+      }, 1600);
+    }
+
+    copyButtons.forEach((button) => {
+      button.addEventListener("click", () => copyCurrentUrl(button));
+    });
+
     btn.addEventListener("click", () => {
       if (isSpeaking) {
         synth.cancel();
@@ -165,8 +271,7 @@ layout: main
       const content = document.querySelector(".wrap-content");
       
       const clone = content.cloneNode(true);
-      const button = clone.querySelector("#listen-btn");
-      if (button) button.remove();
+      clone.querySelectorAll(".post-actions, #post-outline, .page-footer, .related-posts, .post-cta, .comment-area").forEach((element) => element.remove());
       const text = clone.innerText || clone.textContent;
 
       utterance = new SpeechSynthesisUtterance(text);
