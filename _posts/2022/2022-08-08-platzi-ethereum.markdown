@@ -4,6 +4,7 @@ title:  "EthLatam + Platzi como plataforma sugerida de aprendizaje en Ethereum.o
 date:   2022-08-08 00:00:00 -0300
 tags: [español,web3,blockchain,desarrollo,solidity,educacion, ethereum, comunidad]
 img: /posts/2022/08/platzi-ethlatam.png
+lang: es
 ---
 
 Este mes de Agosto vino super cargado de novedades para el mundo Ethereum en latinoamérica. Primero, porque estamos muy cerca de la fecha del [MERGE](https://ethereum.org/en/upgrades/merge/) y eso puede ser una revolución en la plataforma. Por otro lado, porque esta semana se estará realizando un [evento presencial](https://ethlatam.org/) de tremenda magnitud (**+5000 personas**). 
