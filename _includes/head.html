@@ -70,9 +70,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="{{ site.url }}{{ page.url | default: '/' }}">
   {% if alternate_page %}
+  {% if current_page_lang == 'es' %}
+    {% assign x_default_url = page.url %}
+  {% elsif alternate_page.lang == 'es' %}
+    {% assign x_default_url = alternate_page.url %}
+  {% else %}
+    {% assign x_default_url = page.url %}
+  {% endif %}
   <link rel="alternate" hreflang="{{ current_page_lang }}" href="{{ site.url }}{{ page.url }}">
   <link rel="alternate" hreflang="{{ alternate_page.lang }}" href="{{ site.url }}{{ alternate_page.url }}">
-  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ x_default_url }}">
   {% endif %}
   <meta name="view-transition" content="same-origin">
 	<link rel="shortcut icon" href="{{ "/assets/img/favicon/favicon.ico" | prepend: site.baseurl }}" type="image/x-icon">
