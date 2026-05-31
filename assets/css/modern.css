@@ -650,6 +650,7 @@ html.dark-mode .navbar {
 
 /* --- Home Intro --- */
 .home-intro {
+  position: relative;
   margin: 0 0 1.5rem;
   padding: 1.75rem 1.9rem;
   border: 1px solid var(--color-border);
@@ -658,6 +659,43 @@ html.dark-mode .navbar {
     radial-gradient(circle at top right, rgba(99, 102, 241, 0.18), transparent 35%),
     linear-gradient(180deg, var(--color-surface-hover), var(--color-surface));
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  animation: homeIntroReveal 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.home-intro::after {
+  content: "";
+  position: absolute;
+  inset: auto -8% -40% auto;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.16), transparent 68%);
+  pointer-events: none;
+  transform: translate3d(0, 16px, 0) scale(0.96);
+  animation: homeIntroGlow 0.9s ease-out 0.08s both;
+}
+
+@keyframes homeIntroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes homeIntroGlow {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
 }
 
 .home-intro-eyebrow {
@@ -685,6 +723,7 @@ html.dark-mode .navbar {
 
 /* --- Post Cards --- */
 .post {
+  position: relative;
   width: 100%;
   max-width: 100%;
   display: flex;
@@ -698,6 +737,16 @@ html.dark-mode .navbar {
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-base);
   animation: fadeInUp 0.4s ease-out both;
+}
+
+.post::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+  transition: width var(--transition-base), opacity var(--transition-base);
+  opacity: 0;
 }
 
 @keyframes fadeInUp {
@@ -718,9 +767,14 @@ html.dark-mode .navbar {
 .post:nth-child(5) { animation-delay: 0.25s; }
 
 .post:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-xl);
   border-color: var(--color-primary-light);
+}
+
+.post:hover::before {
+  width: 4px;
+  opacity: 1;
 }
 
 .post .post-thumbnail {
@@ -778,6 +832,13 @@ html.dark-mode .navbar {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  transition: transform var(--transition-base), background-color var(--transition-base), color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.post:hover .post-topic-chip {
+  transform: translateX(4px);
+  background: rgba(99, 102, 241, 0.18);
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.12);
 }
 
 .post .post-content .post-title {
@@ -800,6 +861,10 @@ html.dark-mode .navbar {
 
 .post .post-content .post-title a:hover {
   color: var(--color-primary);
+}
+
+.post:hover .post-content .post-title a {
+  color: var(--color-primary-dark);
 }
 
 .post .post-content p {
