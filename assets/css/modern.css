@@ -943,6 +943,18 @@ html.dark-mode .navbar {
   opacity: 0.95;
 }
 
+.listen-button-secondary {
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.listen-button-secondary:hover {
+  opacity: 1;
+  color: var(--color-primary);
+  border-color: var(--color-primary-light);
+}
+
 .post-actions {
   display: flex;
   align-items: center;
@@ -956,6 +968,28 @@ html.dark-mode .navbar {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  align-items: center;
+}
+
+.post-action-buttons .listen-button,
+.post-action-buttons .copy-link-button {
+  box-sizing: border-box;
+  margin-bottom: 0;
+  min-height: 44px;
+}
+
+.button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  line-height: 1;
+}
+
+.button-label {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.2;
 }
 
 .post-meta-pills {
@@ -967,7 +1001,10 @@ html.dark-mode .navbar {
 .post-meta-pill {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   padding: 0.45rem 0.8rem;
+  min-height: 44px;
+  box-sizing: border-box;
   border-radius: var(--border-radius-full);
   background: var(--color-surface-hover);
   border: 1px solid var(--color-border);
@@ -980,6 +1017,8 @@ html.dark-mode .navbar {
 
 .copy-link-button,
 .page-share-button {
+  -webkit-appearance: none;
+  appearance: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -994,6 +1033,22 @@ html.dark-mode .navbar {
   cursor: pointer;
   transition: all var(--transition-base);
   box-shadow: var(--shadow-sm);
+  font-family: var(--font-sans);
+}
+
+.post-action-buttons .copy-link-button {
+  padding: 0.6rem 1.25rem;
+  line-height: 23.8px;
+}
+
+.post-action-buttons #copy-link-btn {
+  padding: 0.6rem 1.25rem !important;
+  line-height: 23.8px !important;
+  min-height: 44px !important;
+}
+
+.post-action-buttons #listen-btn {
+  min-height: 44px;
 }
 
 .copy-link-button:hover,
@@ -1011,9 +1066,6 @@ html.dark-mode .navbar {
   border-radius: var(--border-radius);
   background: linear-gradient(180deg, var(--color-surface-hover), var(--color-surface));
   box-shadow: var(--shadow-sm);
-  position: sticky;
-  top: 5.75rem;
-  z-index: 5;
 }
 
 .post-outline-title {
@@ -1082,7 +1134,10 @@ html.dark-mode .navbar {
   flex-wrap: wrap;
 }
 
-.page-footer .page-share a {
+.page-footer .page-share a,
+.page-footer .page-share .page-share-button {
+  -webkit-appearance: none;
+  appearance: none;
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
@@ -1095,20 +1150,26 @@ html.dark-mode .navbar {
   font-weight: 500;
   border-radius: var(--border-radius-full);
   transition: all var(--transition-base);
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: none;
+  font-family: var(--font-sans);
 }
 
-.page-footer .page-share a:hover {
+.page-footer #copy-link-inline {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  border-radius: 9999px !important;
+  min-height: 26px;
+  overflow: hidden;
+}
+
+.page-footer .page-share a:hover,
+.page-footer .page-share .page-share-button:hover {
   background: var(--color-primary);
   border-color: var(--color-primary);
   color: #fff;
   transform: translateY(-1px);
-}
-
-.page-share-button {
-  padding: 0.4rem 0.75rem;
-  font-size: var(--font-size-xs);
-  background: var(--color-surface-hover);
-  box-shadow: none;
 }
 
 .page-footer .page-tag {

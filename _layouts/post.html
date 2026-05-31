@@ -22,6 +22,8 @@ layout: main
   {% assign cta_body = 'Podés seguir explorando por temas o conectar conmigo para conversar sobre .NET, Azure, IA y Web3.' %}
   {% assign cta_primary_label = 'Explorar temas' %}
   {% assign cta_secondary_label = 'Ver LinkedIn' %}
+  {% assign listen_start_label = 'Escuchar artículo' %}
+  {% assign listen_stop_label = 'Detener' %}
 {% else %}
   {% assign back_label = 'Back' %}
   {% assign outline_title = 'In this article' %}
@@ -35,7 +37,13 @@ layout: main
   {% assign cta_body = 'You can keep exploring by topic or connect with me to talk about .NET, Azure, AI, and Web3.' %}
   {% assign cta_primary_label = 'Explore topics' %}
   {% assign cta_secondary_label = 'View LinkedIn' %}
+  {% assign listen_start_label = 'Listen article' %}
+  {% assign listen_stop_label = 'Stop' %}
 {% endif %}
+{% assign listen_start_icon = '🔊' %}
+{% assign listen_stop_icon = '⏹️' %}
+{% assign copy_icon = '🔗' %}
+{% assign copied_icon = '✓' %}
 
 {% assign has_related_posts = false %}
 {% for post in site.posts %}
@@ -93,8 +101,14 @@ layout: main
           <span class="post-meta-pill">{{ reading_label }}: {{ reading_minutes }} min</span>
         </div>
         <div class="post-action-buttons">
-          <button id="listen-btn" class="listen-button" aria-label="Escuchar/Listen">🔊 Escuchar artículo</button>
-          <button id="copy-link-btn" class="copy-link-button" type="button" data-copy-label="{{ copy_label }}" data-copied-label="{{ copied_label }}">🔗 {{ copy_label }}</button>
+          <button id="listen-btn" class="listen-button" type="button" aria-label="Escuchar/Listen">
+            <span class="button-icon" aria-hidden="true">{{ listen_start_icon }}</span>
+            <span class="button-label">{{ listen_start_label }}</span>
+          </button>
+          <button id="copy-link-btn" class="listen-button listen-button-secondary copy-link-button" type="button" data-copy-label="{{ copy_label }}" data-copied-label="{{ copied_label }}" data-copy-icon="{{ copy_icon }}" data-copied-icon="{{ copied_icon }}">
+            <span class="button-icon" aria-hidden="true">{{ copy_icon }}</span>
+            <span class="button-label">{{ copy_label }}</span>
+          </button>
         </div>
       </div>
       <aside id="post-outline" class="post-outline" hidden>
@@ -110,7 +124,7 @@ layout: main
         <div class="page-share">
           <span class="page-footer-label">{{ share_label }}</span>
           <button id="copy-link-inline" class="page-share-button" type="button" data-copy-label="{{ copy_label }}" data-copied-label="{{ copied_label }}">{{ copy_label }}</button>
-          <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on X" rel="nofollow" target="_blank">X</a>
           <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
           <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" title="Share on LinkedIn" rel="nofollow" target="_blank">LinkedIn</a>
         </div>
@@ -182,8 +196,12 @@ layout: main
 
     function getTexts(lang) {
       return lang.startsWith("es")
-        ? { start: "🔊 Escuchar artículo", stop: "⏹️ Detener" }
-        : { start: "🔊 Listen article", stop: "⏹️ Stop" };
+        ? { start: "Escuchar artículo", stop: "Detener" }
+        : { start: "Listen article", stop: "Stop" };
+    }
+
+    function setButtonContent(button, icon, label) {
+      button.innerHTML = `<span class="button-icon" aria-hidden="true">${icon}</span><span class="button-label">${label}</span>`;
     }
 
     function slugifyHeading(text) {
@@ -233,7 +251,8 @@ layout: main
 
     const lang = getPostLang();
     const texts = getTexts(lang);
-    btn.textContent = texts.start;
+    setButtonContent(btn, "{{ listen_start_icon }}", texts.start);
+    btn.hidden = false;
     buildOutline();
 
     async function copyCurrentUrl(button) {
@@ -250,9 +269,9 @@ layout: main
         document.body.removeChild(tempInput);
       }
 
-      button.textContent = copiedLabel;
+      setButtonContent(button, button.dataset.copiedIcon || "{{ copied_icon }}", copiedLabel);
       window.setTimeout(() => {
-        button.textContent = copyLabel;
+        setButtonContent(button, button.dataset.copyIcon || "{{ copy_icon }}", copyLabel);
       }, 1600);
     }
 
@@ -263,7 +282,7 @@ layout: main
     btn.addEventListener("click", () => {
       if (isSpeaking) {
         synth.cancel();
-        btn.textContent = texts.start;
+        setButtonContent(btn, "{{ listen_start_icon }}", texts.start);
         isSpeaking = false;
         return;
       }
@@ -281,11 +300,11 @@ layout: main
 
       synth.speak(utterance);
       isSpeaking = true;
-      btn.textContent = texts.stop;
+      setButtonContent(btn, "{{ listen_stop_icon }}", texts.stop);
 
       utterance.onend = () => {
         isSpeaking = false;
-        btn.textContent = texts.start;
+        setButtonContent(btn, "{{ listen_start_icon }}", texts.start);
       };
     });
   });
