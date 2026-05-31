@@ -650,6 +650,8 @@ html.dark-mode .navbar {
 
 /* --- Home Intro --- */
 .home-intro {
+  --intro-parallax-x: 0px;
+  --intro-parallax-y: 0px;
   position: relative;
   margin: 0 0 1.5rem;
   padding: 1.75rem 1.9rem;
@@ -672,7 +674,8 @@ html.dark-mode .navbar {
   border-radius: 50%;
   background: radial-gradient(circle, rgba(34, 211, 238, 0.16), transparent 68%);
   pointer-events: none;
-  transform: translate3d(0, 16px, 0) scale(0.96);
+  will-change: transform, opacity;
+  transform: translate3d(var(--intro-parallax-x), calc(16px + var(--intro-parallax-y)), 0) scale(0.96);
   animation: homeIntroGlow 0.9s ease-out 0.08s both;
 }
 
@@ -690,11 +693,9 @@ html.dark-mode .navbar {
 @keyframes homeIntroGlow {
   from {
     opacity: 0;
-    transform: translate3d(0, 24px, 0) scale(0.92);
   }
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 

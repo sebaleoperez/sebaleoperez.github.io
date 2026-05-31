@@ -83,3 +83,64 @@ layout: main
 {% endfor %}
 
 {% include pagination.html %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const intros = Array.from(document.querySelectorAll('.home-intro'));
+
+    if (!intros.length) return;
+
+    let ticking = false;
+
+    function getVisibleIntros() {
+      return intros.filter((intro) => getComputedStyle(intro).display !== "none");
+    }
+
+    function resetParallax() {
+      intros.forEach((intro) => {
+        intro.style.setProperty("--intro-parallax-x", "0px");
+        intro.style.setProperty("--intro-parallax-y", "0px");
+      });
+    }
+
+    function updateParallax() {
+      ticking = false;
+
+      if (!mediaQuery.matches || reducedMotion.matches) {
+        resetParallax();
+        return;
+      }
+
+      getVisibleIntros().forEach((intro) => {
+        const rect = intro.getBoundingClientRect();
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+        const progress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
+        const clamped = Math.min(Math.max(progress, 0), 1);
+        const yOffset = (clamped - 0.5) * 16;
+        const xOffset = (clamped - 0.5) * 10;
+
+        intro.style.setProperty("--intro-parallax-x", `${xOffset.toFixed(2)}px`);
+        intro.style.setProperty("--intro-parallax-y", `${yOffset.toFixed(2)}px`);
+      });
+    }
+
+    function requestParallaxUpdate() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateParallax);
+    }
+
+    resetParallax();
+    updateParallax();
+
+    window.addEventListener("scroll", requestParallaxUpdate, { passive: true });
+    window.addEventListener("resize", requestParallaxUpdate, { passive: true });
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", requestParallaxUpdate);
+      reducedMotion.addEventListener("change", requestParallaxUpdate);
+    }
+  });
+</script>
