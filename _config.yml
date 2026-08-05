@@ -15,6 +15,10 @@ social-linkedin: sebaleoperez # add your Linkedin handle
 social-email: sebastian.leo.perez@outlook.com.ar # add your Email address
 social-instagram: sebaleoperez # add your instagram handle
 
+# Home "Videos" section — pulled from this public playlist at build time,
+# see _plugins/youtube_playlist.rb. No API key needed.
+youtube-playlist-id: PLaKO7Kx16YLg
+
 # Disqus Comments
 # Create your site at https://disqus.com and put your shortname below
 disqus: sebaleoperez # your Disqus shortname

@@ -99,9 +99,9 @@ layout: default
             <div class="footer-contact">
                   <p class="footer-section-title">Contact</p>
                   <ul class="footer-contact-list">
-                        {% if site.social-email %}
-                        <li><a href="mailto:{{site.social-email}}"><svg class="icon icon-mail" aria-hidden="true"><use href="#icon-mail"></use></svg> {{site.social-email}}</a></li>
-                        {% endif %}
+                        <!-- No plaintext mailto: here on purpose — scrapers harvest exposed
+                             addresses for spam. The contact form (#contact) still delivers to
+                             this inbox under the hood; LinkedIn is the other public channel. -->
                         {% if site.social-github %}
                         <li><a href="https://github.com/{{site.social-github}}" target="_blank" rel="noopener"><svg class="icon icon-github" aria-hidden="true"><use href="#icon-github"></use></svg> github.com/{{site.social-github}}</a></li>
                         {% endif %}
