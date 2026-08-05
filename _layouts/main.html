@@ -12,6 +12,12 @@ layout: default
             </a>
 
             <div class="navbar-links">
+                  <ul class="navbar-quicklinks">
+                        <li><a href="{{site.baseurl}}/#services" class="navbar-quicklink" data-i18n-nav data-label-es="Servicios" data-label-en="Services">Servicios</a></li>
+                        <li><a href="{{site.baseurl}}/#blog" class="navbar-quicklink" data-i18n-nav data-label-es="Blog" data-label-en="Blog">Blog</a></li>
+                        <li><a href="{{site.baseurl}}/#videos" class="navbar-quicklink" data-i18n-nav data-label-es="Videos" data-label-en="Videos">Videos</a></li>
+                        <li><a href="{{site.baseurl}}/#contact" class="navbar-quicklink" data-i18n-nav data-label-es="Contacto" data-label-en="Contact">Contacto</a></li>
+                  </ul>
                   <ul class="navbar-social">
                         {% if site.social-github %}
                         <li><a aria-label="Github" href="https://github.com/{{site.social-github}}" target="_blank" rel="noopener"><svg class="icon icon-github" aria-hidden="true"><use href="#icon-github"></use></svg></a></li>
@@ -40,6 +46,12 @@ layout: default
 
       <!-- Mobile menu -->
       <div class="navbar-mobile" id="navbarMobile">
+            <ul class="navbar-mobile-links">
+                  <li><a href="{{site.baseurl}}/#services" data-i18n-nav data-label-es="Servicios" data-label-en="Services">Servicios</a></li>
+                  <li><a href="{{site.baseurl}}/#blog" data-i18n-nav data-label-es="Blog" data-label-en="Blog">Blog</a></li>
+                  <li><a href="{{site.baseurl}}/#videos" data-i18n-nav data-label-es="Videos" data-label-en="Videos">Videos</a></li>
+                  <li><a href="{{site.baseurl}}/#contact" data-i18n-nav data-label-es="Contacto" data-label-en="Contact">Contacto</a></li>
+            </ul>
             <ul class="navbar-social">
                   {% if site.social-github %}
                   <li><a aria-label="Github" href="https://github.com/{{site.social-github}}" target="_blank" rel="noopener"><svg class="icon icon-github" aria-hidden="true"><use href="#icon-github"></use></svg> GitHub</a></li>

@@ -181,12 +181,34 @@
     // ===== Hamburger Menu =====
     const hamburger = document.getElementById("navbarHamburger");
     const mobileMenu = document.getElementById("navbarMobile");
+    const navbar = document.querySelector(".navbar");
     if (hamburger && mobileMenu) {
       hamburger.addEventListener("click", () => {
         const isOpen = mobileMenu.classList.toggle("open");
         hamburger.classList.toggle("active");
         hamburger.setAttribute("aria-expanded", isOpen.toString());
       });
+
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("open");
+          hamburger.classList.remove("active");
+          hamburger.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+
+    if (navbar) {
+      let lastScrollTop = window.scrollY;
+      window.addEventListener("scroll", () => {
+        const currentScrollTop = window.scrollY;
+        if (currentScrollTop > lastScrollTop && currentScrollTop > 140) {
+          navbar.classList.add("navbar-hidden");
+        } else {
+          navbar.classList.remove("navbar-hidden");
+        }
+        lastScrollTop = currentScrollTop;
+      }, { passive: true });
     }
 
     // ===== Language Switching =====
@@ -197,6 +219,13 @@
     const currentLang = (lang || (docLang.startsWith("es") ? "es" : "en"));
     const newLang = currentLang === "es" ? "en" : "es";
 
+    document.querySelectorAll("[data-i18n-nav]").forEach((link) => {
+      const nextLabel = currentLang === "es" ? link.dataset.labelEs : link.dataset.labelEn;
+      if (nextLabel) {
+        link.textContent = nextLabel;
+      }
+    });
+
     // Propagate lang to internal links
     if (lang) {
       document.querySelectorAll('a').forEach(link => {
@@ -204,7 +233,7 @@
           const url = new URL(link.href, window.location.origin);
           if (url.origin === window.location.origin && !url.searchParams.has("lang")) {
             url.searchParams.set("lang", lang);
-            link.href = url.pathname + url.search;
+            link.href = url.pathname + url.search + url.hash;
           }
         } catch(e) {}
       });

@@ -2,17 +2,199 @@
 layout: main
 ---
 
-<section class="home-intro" data-lang="es">
-  <p class="home-intro-eyebrow">Hola, soy Seba</p>
-  <h1 class="home-intro-title">Comparto ideas y experiencias sobre .NET, Azure, IA, Web3 y eventos.</h1>
-  <p class="home-intro-copy">Este espacio reúne posts técnicos, resúmenes editoriales y aprendizajes de comunidad para que puedas entrar, entender rápido cada tema y elegir por dónde seguir.</p>
+<section class="home-section home-services" id="services" data-reveal>
+  <div data-lang="es">
+    <p class="home-section-eyebrow">Servicios</p>
+    <h2 class="home-section-title">Acompaño a personas y equipos a escalar su nivel técnico</h2>
+    <p class="home-section-lead">Contenido práctico, aplicado al día a día, con foco en resultados: mejor arquitectura, mejor calidad y mejor velocidad de entrega.</p>
+    <div class="service-grid">
+      <article class="service-card" data-reveal>
+        <h3>Capacitaciones in-company</h3>
+        <p>Programas intensivos para equipos en .NET, Azure, IA y arquitectura moderna.</p>
+        <ul>
+          <li>Diagnóstico técnico inicial</li>
+          <li>Plan por niveles y objetivos</li>
+          <li>Laboratorios guiados con código real</li>
+        </ul>
+      </article>
+      <article class="service-card" data-reveal>
+        <h3>Workshops hands-on</h3>
+        <p>Sesiones prácticas para acelerar aprendizaje en temas puntuales y actuales.</p>
+        <ul>
+          <li>Copilot y productividad para devs</li>
+          <li>Agentes de IA y flujos MCP</li>
+          <li>Cloud patterns con Azure</li>
+        </ul>
+      </article>
+      <article class="service-card" data-reveal>
+        <h3>Mentoría técnica</h3>
+        <p>Acompañamiento 1:1 o por squad para decisiones de arquitectura y roadmap técnico.</p>
+        <ul>
+          <li>Revisión de diseño y código</li>
+          <li>Buenas prácticas por contexto</li>
+          <li>Plan de mejora iterativo</li>
+        </ul>
+      </article>
+    </div>
+    <div class="services-cta-row">
+      <a class="home-cta home-cta-primary" href="#contact">Hablemos</a>
+    </div>
+  </div>
+  <div data-lang="en">
+    <p class="home-section-eyebrow">Services</p>
+    <h2 class="home-section-title">I help people and teams raise their technical game</h2>
+    <p class="home-section-lead">Hands-on, real-world content focused on outcomes: better architecture, better quality, and faster delivery.</p>
+    <div class="service-grid">
+      <article class="service-card" data-reveal>
+        <h3>In-company training</h3>
+        <p>Intensive learning tracks for teams in .NET, Azure, AI, and modern architecture.</p>
+        <ul>
+          <li>Initial technical assessment</li>
+          <li>Level-based learning plan</li>
+          <li>Guided labs with real code</li>
+        </ul>
+      </article>
+      <article class="service-card" data-reveal>
+        <h3>Hands-on workshops</h3>
+        <p>Practical sessions to speed up learning on specific, high-impact topics.</p>
+        <ul>
+          <li>Copilot and developer productivity</li>
+          <li>AI agents and MCP workflows</li>
+          <li>Azure cloud patterns</li>
+        </ul>
+      </article>
+      <article class="service-card" data-reveal>
+        <h3>Technical mentoring</h3>
+        <p>1:1 or squad-level guidance for architecture decisions and technical roadmaps.</p>
+        <ul>
+          <li>Design and code reviews</li>
+          <li>Context-driven best practices</li>
+          <li>Iterative improvement plans</li>
+        </ul>
+      </article>
+    </div>
+    <div class="services-cta-row">
+      <a class="home-cta home-cta-primary" href="#contact">Let's talk</a>
+    </div>
+  </div>
 </section>
 
-<section class="home-intro" data-lang="en">
-  <p class="home-intro-eyebrow">Hi, I'm Seba</p>
-  <h1 class="home-intro-title">I share ideas and hands-on notes about .NET, Azure, AI, Web3, and events.</h1>
-  <p class="home-intro-copy">This space brings together technical posts, editorial roundups, and community-driven learnings so you can quickly understand each topic and decide where to dive in next.</p>
+<div id="blog" class="home-section-anchor" aria-hidden="true"></div>
+
+<section class="home-feed-head" data-lang="es" data-reveal>
+  <p class="home-section-eyebrow">Blog</p>
+  <h2 class="home-section-title">Ultimos articulos</h2>
+  <p class="home-section-lead">Notas tecnicas, eventos y aprendizajes de campo.</p>
 </section>
+
+<section class="home-feed-head" data-lang="en" data-reveal>
+  <p class="home-section-eyebrow">Blog</p>
+  <h2 class="home-section-title">Latest articles</h2>
+  <p class="home-section-lead">Technical notes, event recaps, and practical learnings.</p>
+</section>
+
+{% assign youtube_posts_es = site.posts | where: "lang", "es" | where_exp: "post", "post.img contains 'img.youtube.com/vi/'" %}
+{% assign youtube_posts_en = site.posts | where: "lang", "en" | where_exp: "post", "post.img contains 'img.youtube.com/vi/'" %}
+
+{% capture deferred_videos %}
+<section class="home-section home-videos" id="videos" data-reveal>
+  <div data-lang="es">
+    <div class="home-section-head-row">
+      <div>
+        <p class="home-section-eyebrow">Contenido audiovisual</p>
+        <h2 class="home-section-title">Videos destacados de YouTube</h2>
+      </div>
+      <a class="home-inline-link" href="https://www.youtube.com/channel/UCjm14K2SX978Z62XUbXTlwA" target="_blank" rel="noopener">Ir al canal completo</a>
+    </div>
+    <div class="video-grid">
+      {% for post in youtube_posts_es limit: 6 %}
+      {% assign video_id = post.img | split: '/vi/' | last | split: '/' | first %}
+      <a class="video-card" href="{{ post.url | prepend: site.baseurl }}" data-reveal>
+        <span class="video-thumb">
+          <img src="https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg" alt="{{ post.title }}" loading="lazy" decoding="async" width="480" height="270">
+        </span>
+        <span class="video-card-content">
+          <span class="video-card-meta">{{ post.date | date: '%Y · %b %d' }}</span>
+          <span class="video-card-title">{{ post.title }}</span>
+          <span class="video-card-action">Ver resumen + video</span>
+        </span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  <div data-lang="en">
+    <div class="home-section-head-row">
+      <div>
+        <p class="home-section-eyebrow">Video content</p>
+        <h2 class="home-section-title">Featured YouTube videos</h2>
+      </div>
+      <a class="home-inline-link" href="https://www.youtube.com/channel/UCjm14K2SX978Z62XUbXTlwA" target="_blank" rel="noopener">Visit full channel</a>
+    </div>
+    <div class="video-grid">
+      {% for post in youtube_posts_en limit: 6 %}
+      {% assign video_id = post.img | split: '/vi/' | last | split: '/' | first %}
+      <a class="video-card" href="{{ post.url | prepend: site.baseurl }}" data-reveal>
+        <span class="video-thumb">
+          <img src="https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg" alt="{{ post.title }}" loading="lazy" decoding="async" width="480" height="270">
+        </span>
+        <span class="video-card-content">
+          <span class="video-card-meta">{{ post.date | date: '%Y · %b %d' }}</span>
+          <span class="video-card-title">{{ post.title }}</span>
+          <span class="video-card-action">Open recap + video</span>
+        </span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endcapture %}
+
+{% capture deferred_contact %}
+<section class="home-section home-contact" id="contact" data-reveal>
+  <div data-lang="es" class="contact-grid">
+    <div>
+      <p class="home-section-eyebrow">Contacto</p>
+      <h2 class="home-section-title">Hablemos de tu próxima capacitación</h2>
+      <p class="home-section-lead">Contame objetivo, stack y tamaño del equipo. Te respondo con una propuesta concreta.</p>
+      <div class="contact-shortcuts">
+        <a href="mailto:{{site.social-email}}">{{site.social-email}}</a>
+        <a href="https://linkedin.com/in/{{site.social-linkedin}}" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://sessionize.com/sebaleoperez" target="_blank" rel="noopener">Sessionize</a>
+      </div>
+    </div>
+    <form class="contact-form" data-contact-form data-lang="es">
+      <label for="contactNameEs">Nombre</label>
+      <input id="contactNameEs" name="name" type="text" required>
+      <label for="contactEmailEs">Email</label>
+      <input id="contactEmailEs" name="email" type="email" required>
+      <label for="contactMessageEs">¿Qué te gustaría trabajar?</label>
+      <textarea id="contactMessageEs" name="message" rows="4" required></textarea>
+      <button type="submit">Enviar consulta</button>
+    </form>
+  </div>
+  <div data-lang="en" class="contact-grid">
+    <div>
+      <p class="home-section-eyebrow">Contact</p>
+      <h2 class="home-section-title">Let's discuss your next training initiative</h2>
+      <p class="home-section-lead">Share your goal, stack, and team size. I will reply with a concrete proposal.</p>
+      <div class="contact-shortcuts">
+        <a href="mailto:{{site.social-email}}">{{site.social-email}}</a>
+        <a href="https://linkedin.com/in/{{site.social-linkedin}}" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://sessionize.com/sebaleoperez" target="_blank" rel="noopener">Sessionize</a>
+      </div>
+    </div>
+    <form class="contact-form" data-contact-form data-lang="en">
+      <label for="contactNameEn">Name</label>
+      <input id="contactNameEn" name="name" type="text" required>
+      <label for="contactEmailEn">Email</label>
+      <input id="contactEmailEn" name="email" type="email" required>
+      <label for="contactMessageEn">What would you like to work on?</label>
+      <textarea id="contactMessageEn" name="message" rows="4" required></textarea>
+      <button type="submit">Send message</button>
+    </form>
+  </div>
+</section>
+{% endcapture %}
 
 {% for post in paginator.posts %}
 {% assign topic_tag = '' %}
@@ -22,7 +204,7 @@ layout: main
     {% break %}
   {% endunless %}
 {% endfor %}
-<article class="post" data-lang="{{ post.lang }}">
+<article class="post" data-lang="{{ post.lang }}" data-reveal>
   {% if post.img %}
     {% if post.img contains "http" %}
       <a class="post-thumbnail" href="{{post.url | prepend: site.baseurl}}">
@@ -84,63 +266,53 @@ layout: main
 
 {% include pagination.html %}
 
+{{ deferred_videos }}
+{{ deferred_contact }}
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const mediaQuery = window.matchMedia("(min-width: 1024px)");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const intros = Array.from(document.querySelectorAll('.home-intro'));
+    const revealItems = Array.from(document.querySelectorAll('[data-reveal]'));
+    const contactForms = Array.from(document.querySelectorAll('[data-contact-form]'));
 
-    if (!intros.length) return;
+    if (!revealItems.length && !contactForms.length) return;
 
-    let ticking = false;
+    if (revealItems.length) {
+      if (reducedMotion.matches || typeof IntersectionObserver === "undefined") {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      } else {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14, rootMargin: "0px 0px -40px 0px" });
 
-    function getVisibleIntros() {
-      return intros.filter((intro) => getComputedStyle(intro).display !== "none");
-    }
-
-    function resetParallax() {
-      intros.forEach((intro) => {
-        intro.style.setProperty("--intro-parallax-x", "0px");
-        intro.style.setProperty("--intro-parallax-y", "0px");
-      });
-    }
-
-    function updateParallax() {
-      ticking = false;
-
-      if (!mediaQuery.matches || reducedMotion.matches) {
-        resetParallax();
-        return;
+        revealItems.forEach((item) => observer.observe(item));
       }
+    }
 
-      getVisibleIntros().forEach((intro) => {
-        const rect = intro.getBoundingClientRect();
-        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-        const progress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
-        const clamped = Math.min(Math.max(progress, 0), 1);
-        const yOffset = (clamped - 0.5) * 16;
-        const xOffset = (clamped - 0.5) * 10;
+    contactForms.forEach((form) => {
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const name = (formData.get("name") || "").toString().trim();
+        const email = (formData.get("email") || "").toString().trim();
+        const message = (formData.get("message") || "").toString().trim();
+        const isEs = form.dataset.lang === "es";
 
-        intro.style.setProperty("--intro-parallax-x", `${xOffset.toFixed(2)}px`);
-        intro.style.setProperty("--intro-parallax-y", `${yOffset.toFixed(2)}px`);
+        const subject = isEs
+          ? `Consulta de capacitacion - ${name}`
+          : `Training inquiry - ${name}`;
+        const body = isEs
+          ? `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`
+          : `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+
+        window.location.href = `mailto:{{site.social-email}}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       });
-    }
+    });
 
-    function requestParallaxUpdate() {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(updateParallax);
-    }
-
-    resetParallax();
-    updateParallax();
-
-    window.addEventListener("scroll", requestParallaxUpdate, { passive: true });
-    window.addEventListener("resize", requestParallaxUpdate, { passive: true });
-
-    if (typeof mediaQuery.addEventListener === "function") {
-      mediaQuery.addEventListener("change", requestParallaxUpdate);
-      reducedMotion.addEventListener("change", requestParallaxUpdate);
-    }
   });
 </script>
