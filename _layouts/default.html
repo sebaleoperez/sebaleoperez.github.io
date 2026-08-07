@@ -181,13 +181,215 @@
     // ===== Hamburger Menu =====
     const hamburger = document.getElementById("navbarHamburger");
     const mobileMenu = document.getElementById("navbarMobile");
+    const navbar = document.querySelector(".navbar");
     if (hamburger && mobileMenu) {
       hamburger.addEventListener("click", () => {
         const isOpen = mobileMenu.classList.toggle("open");
         hamburger.classList.toggle("active");
         hamburger.setAttribute("aria-expanded", isOpen.toString());
       });
+
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("open");
+          hamburger.classList.remove("active");
+          hamburger.setAttribute("aria-expanded", "false");
+        });
+      });
     }
+
+    // ===================================================================
+    // MOTION ENGINE
+    // One rAF loop drives every scroll-linked effect (navbar state,
+    // parallax layers, reading progress). Handlers only write transform
+    // and opacity, so nothing here triggers layout or paint.
+    // ===================================================================
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+    const progressBar = document.getElementById("readingProgress");
+    const isArticle = !!document.querySelector(".article-page");
+    const scrollBtn = document.getElementById("scrollToTop");
+    const parallaxLayers = Array.from(document.querySelectorAll("[data-parallax]"))
+      .map((el) => ({ el, speed: parseFloat(el.dataset.parallax) || 0.15 }));
+    const hero = document.querySelector(".home-hero");
+
+    if (progressBar && !isArticle) progressBar.style.display = "none";
+
+    let lastScrollTop = window.scrollY;
+    let ticking = false;
+
+    function onFrame() {
+      ticking = false;
+      const y = window.scrollY;
+
+      // --- Sticky navbar: hide going down, reveal going up ---
+      if (navbar) {
+        if (y > lastScrollTop && y > 140) {
+          navbar.classList.add("navbar-hidden");
+        } else {
+          navbar.classList.remove("navbar-hidden");
+        }
+        navbar.classList.toggle("navbar-scrolled", y > 8);
+      }
+
+      // --- Parallax layers (skipped once the hero is off screen) ---
+      if (!reduceMotion.matches && parallaxLayers.length) {
+        const heroBottom = hero ? hero.offsetTop + hero.offsetHeight : Infinity;
+        if (y < heroBottom) {
+          for (const layer of parallaxLayers) {
+            layer.el.style.setProperty("--py", (y * layer.speed).toFixed(2) + "px");
+          }
+        }
+      }
+
+      // --- Reading progress (articles only) ---
+      if (progressBar && isArticle) {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = docHeight > 0 ? Math.min(y / docHeight, 1) : 0;
+        progressBar.style.transform = "scaleX(" + ratio + ")";
+      }
+
+      if (scrollBtn) scrollBtn.classList.toggle("visible", y > 400);
+
+      lastScrollTop = y;
+      updateNavIndicator();
+    }
+
+    function requestFrame() {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(onFrame);
+      }
+    }
+
+    window.addEventListener("scroll", requestFrame, { passive: true });
+    window.addEventListener("resize", requestFrame, { passive: true });
+
+    // ===== Hero headline: split into per-word masks for a staggered rise =====
+    (function splitHeadings() {
+      let wordIndex = 0;
+
+      function splitInto(node) {
+        const children = Array.from(node.childNodes);
+        children.forEach((child) => {
+          if (child.nodeType === Node.ELEMENT_NODE) {
+            // Gradient text (background-clip: text) cannot paint into a
+            // descendant that has its own transform, so elements marked
+            // data-nosplit animate as one unit instead of per word.
+            if (child.hasAttribute("data-nosplit")) {
+              child.style.setProperty("--i", wordIndex++);
+              if (reduceMotion.matches) child.classList.add("is-static");
+              return;
+            }
+            splitInto(child);
+            return;
+          }
+          if (child.nodeType !== Node.TEXT_NODE || !child.textContent.trim()) return;
+
+          const fragment = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach((chunk) => {
+            if (!chunk.trim()) {
+              fragment.appendChild(document.createTextNode(chunk));
+              return;
+            }
+            const mask = document.createElement("span");
+            mask.className = "hero-word";
+            const inner = document.createElement("span");
+            inner.textContent = chunk;
+            inner.style.setProperty("--i", wordIndex++);
+            if (reduceMotion.matches) inner.classList.add("is-static");
+            mask.appendChild(inner);
+            fragment.appendChild(mask);
+          });
+          node.replaceChild(fragment, child);
+        });
+      }
+
+      document.querySelectorAll("[data-split]").forEach((el) => splitInto(el));
+    })();
+
+    if (hero) {
+      // Next frame, so the initial (hidden) state is committed and the
+      // transition actually runs instead of being collapsed away.
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => hero.classList.add("is-ready"));
+      });
+    }
+
+    // ===== Scroll reveal =====
+    const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
+    if (revealItems.length) {
+      if (reduceMotion.matches || typeof IntersectionObserver === "undefined") {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      } else {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+        revealItems.forEach((item) => revealObserver.observe(item));
+      }
+    }
+
+    // ===== Spotlight cards — one delegated listener for every .spotlight =====
+    if (finePointer.matches) {
+      document.addEventListener("pointermove", (event) => {
+        const card = event.target.closest(".spotlight");
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty("--mx", (event.clientX - rect.left) + "px");
+        card.style.setProperty("--my", (event.clientY - rect.top) + "px");
+      }, { passive: true });
+    }
+
+    // ===== Magnetic buttons =====
+    if (finePointer.matches && !reduceMotion.matches) {
+      document.querySelectorAll("[data-magnetic]").forEach((el) => {
+        const strength = 0.28;
+        el.addEventListener("pointermove", (event) => {
+          const rect = el.getBoundingClientRect();
+          const dx = event.clientX - (rect.left + rect.width / 2);
+          const dy = event.clientY - (rect.top + rect.height / 2);
+          el.style.setProperty("--mx", (dx * strength).toFixed(2) + "px");
+          el.style.setProperty("--my", (dy * strength).toFixed(2) + "px");
+        });
+        el.addEventListener("pointerleave", () => {
+          el.style.setProperty("--mx", "0px");
+          el.style.setProperty("--my", "0px");
+        });
+      });
+    }
+
+    // ===== Active-section pill in the navbar =====
+    const quicklinkBar = document.querySelector(".navbar-quicklinks");
+    const quicklinks = Array.from(document.querySelectorAll(".navbar-quicklink"));
+
+    function updateNavIndicator() {
+      if (!quicklinkBar || !quicklinks.length) return;
+
+      let active = null;
+      const probe = window.innerHeight * 0.35;
+      quicklinks.forEach((link) => {
+        const id = (link.getAttribute("href") || "").split("#")[1];
+        const section = id && document.getElementById(id);
+        if (section && section.getBoundingClientRect().top <= probe) active = link;
+      });
+
+      quicklinks.forEach((link) => link.classList.toggle("is-active", link === active));
+
+      if (!active) {
+        quicklinkBar.style.setProperty("--ql-o", "0");
+        return;
+      }
+      quicklinkBar.style.setProperty("--ql-o", "1");
+      quicklinkBar.style.setProperty("--ql-x", active.offsetLeft + "px");
+      quicklinkBar.style.setProperty("--ql-w", active.offsetWidth + "px");
+    }
+
+    updateNavIndicator();
 
     // ===== Language Switching =====
     const urlParams = new URLSearchParams(window.location.search);
@@ -197,6 +399,13 @@
     const currentLang = (lang || (docLang.startsWith("es") ? "es" : "en"));
     const newLang = currentLang === "es" ? "en" : "es";
 
+    document.querySelectorAll("[data-i18n-nav]").forEach((link) => {
+      const nextLabel = currentLang === "es" ? link.dataset.labelEs : link.dataset.labelEn;
+      if (nextLabel) {
+        link.textContent = nextLabel;
+      }
+    });
+
     // Propagate lang to internal links
     if (lang) {
       document.querySelectorAll('a').forEach(link => {
@@ -204,7 +413,7 @@
           const url = new URL(link.href, window.location.origin);
           if (url.origin === window.location.origin && !url.searchParams.has("lang")) {
             url.searchParams.set("lang", lang);
-            link.href = url.pathname + url.search;
+            link.href = url.pathname + url.search + url.hash;
           }
         } catch(e) {}
       });
@@ -244,24 +453,8 @@
       });
     });
 
-    // ===== Reading Progress Bar =====
-    const progressBar = document.getElementById("readingProgress");
-    if (progressBar && document.querySelector(".article-page")) {
-      window.addEventListener("scroll", () => {
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrolled = (window.scrollY / docHeight) * 100;
-        progressBar.style.width = Math.min(scrolled, 100) + "%";
-      }, { passive: true });
-    } else if (progressBar) {
-      progressBar.style.display = "none";
-    }
-
-    // ===== Scroll to Top =====
-    const scrollBtn = document.getElementById("scrollToTop");
+    // ===== Scroll to Top (visibility is handled inside the rAF loop) =====
     if (scrollBtn) {
-      window.addEventListener("scroll", () => {
-        scrollBtn.classList.toggle("visible", window.scrollY > 400);
-      }, { passive: true });
       scrollBtn.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       });

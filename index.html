@@ -2,17 +2,332 @@
 layout: main
 ---
 
-<section class="home-intro" data-lang="es">
-  <p class="home-intro-eyebrow">Hola, soy Seba</p>
-  <h1 class="home-intro-title">Comparto ideas y experiencias sobre .NET, Azure, IA, Web3 y eventos.</h1>
-  <p class="home-intro-copy">Este espacio reúne posts técnicos, resúmenes editoriales y aprendizajes de comunidad para que puedas entrar, entender rápido cada tema y elegir por dónde seguir.</p>
+<!-- ============================================================
+     HERO — parallax stage, now the services pitch itself (merged
+     per feedback: was a generic "blog topics" intro that didn't
+     represent the site owner). Layers move at different scroll
+     speeds via data-parallax (see the motion engine in
+     _layouts/default.html).
+     ============================================================ -->
+<section class="home-hero" id="services">
+  <div class="hero-orbs" aria-hidden="true">
+    <span class="hero-orb hero-orb-1" data-parallax="0.22"></span>
+    <span class="hero-orb hero-orb-2" data-parallax="0.35"></span>
+    <span class="hero-orb hero-orb-3" data-parallax="0.14"></span>
+  </div>
+  <div class="hero-grid-lines" aria-hidden="true" data-parallax="0.06"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content" data-lang="es">
+      <p class="hero-eyebrow hero-fade" style="--i:0"><span class="hero-dot" aria-hidden="true"></span> Microsoft MVP · Developer &amp; Educator</p>
+      <h1 class="hero-title" data-split>Te acompaño a <span class="hero-title-accent" data-nosplit>escalar tu nivel técnico</span></h1>
+      <p class="hero-copy hero-fade" style="--i:1">Capacitaciones, workshops y mentoría técnica, adaptados al stack que uses vos o tu equipo: .NET, TypeScript, Rust, Web3 y más.</p>
+      <div class="hero-actions hero-fade" style="--i:2">
+        <a class="home-cta home-cta-primary" href="#contact" data-magnetic>Hablemos</a>
+        <a class="home-cta home-cta-secondary" href="#blog" data-magnetic>Ver blog</a>
+        <a class="home-cta home-cta-secondary" href="#videos" data-magnetic>Ver videos</a>
+      </div>
+      <ul class="hero-proof hero-fade" style="--i:3">
+        <li>Microsoft MVP</li>
+        <li>.NET Baires</li>
+        <li>Platzi</li>
+        <li>YouTube</li>
+      </ul>
+    </div>
+
+    <div class="hero-content" data-lang="en">
+      <p class="hero-eyebrow hero-fade" style="--i:0"><span class="hero-dot" aria-hidden="true"></span> Microsoft MVP · Developer &amp; Educator</p>
+      <h1 class="hero-title" data-split>I help you <span class="hero-title-accent" data-nosplit>level up your technical skills</span></h1>
+      <p class="hero-copy hero-fade" style="--i:1">Training, workshops, and technical mentoring, tailored to your stack or your team's: .NET, TypeScript, Rust, Web3, and more.</p>
+      <div class="hero-actions hero-fade" style="--i:2">
+        <a class="home-cta home-cta-primary" href="#contact" data-magnetic>Let's talk</a>
+        <a class="home-cta home-cta-secondary" href="#blog" data-magnetic>Read the blog</a>
+        <a class="home-cta home-cta-secondary" href="#videos" data-magnetic>Watch videos</a>
+      </div>
+      <ul class="hero-proof hero-fade" style="--i:3">
+        <li>Microsoft MVP</li>
+        <li>.NET Baires</li>
+        <li>Platzi</li>
+        <li>YouTube</li>
+      </ul>
+    </div>
+
+    <!-- Topic ticker. The group is duplicated so the -50% keyframe loops seamlessly. -->
+    <div class="hero-marquee hero-fade" style="--i:4" aria-hidden="true">
+      <div class="hero-marquee-track">
+        <div class="hero-marquee-group">
+          <span class="hero-marquee-item">.NET</span>
+          <span class="hero-marquee-item">TypeScript</span>
+          <span class="hero-marquee-item">Rust</span>
+          <span class="hero-marquee-item">Azure</span>
+          <span class="hero-marquee-item">GitHub Copilot</span>
+          <span class="hero-marquee-item">AI Agents</span>
+          <span class="hero-marquee-item">MCP</span>
+          <span class="hero-marquee-item">Blockchain</span>
+          <span class="hero-marquee-item">Web3</span>
+          <span class="hero-marquee-item">Architecture</span>
+        </div>
+        <div class="hero-marquee-group">
+          <span class="hero-marquee-item">.NET</span>
+          <span class="hero-marquee-item">TypeScript</span>
+          <span class="hero-marquee-item">Rust</span>
+          <span class="hero-marquee-item">Azure</span>
+          <span class="hero-marquee-item">GitHub Copilot</span>
+          <span class="hero-marquee-item">AI Agents</span>
+          <span class="hero-marquee-item">MCP</span>
+          <span class="hero-marquee-item">Blockchain</span>
+          <span class="hero-marquee-item">Web3</span>
+          <span class="hero-marquee-item">Architecture</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="home-intro" data-lang="en">
-  <p class="home-intro-eyebrow">Hi, I'm Seba</p>
-  <h1 class="home-intro-title">I share ideas and hands-on notes about .NET, Azure, AI, Web3, and events.</h1>
-  <p class="home-intro-copy">This space brings together technical posts, editorial roundups, and community-driven learnings so you can quickly understand each topic and decide where to dive in next.</p>
+<section class="home-section home-services" data-reveal>
+  <div data-lang="es">
+    <div class="service-grid">
+      <details class="service-card spotlight" data-reveal style="--i:0">
+        <summary>
+          <h3>Capacitaciones in-company</h3>
+          <span class="service-card-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="service-card-body">
+          <p>Programas intensivos para equipos, adaptados al stack que uses: .NET, TypeScript/JavaScript, Rust, frameworks modernos y buenas prácticas de arquitectura.</p>
+          <ul>
+            <li>Diagnóstico técnico inicial</li>
+            <li>Plan por niveles y objetivos</li>
+            <li>Laboratorios guiados con código real</li>
+          </ul>
+        </div>
+      </details>
+      <details class="service-card spotlight" data-reveal style="--i:1">
+        <summary>
+          <h3>Workshops hands-on</h3>
+          <span class="service-card-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="service-card-body">
+          <p>Sesiones prácticas para acelerar aprendizaje en temas puntuales y actuales.</p>
+          <ul>
+            <li>Copilot y productividad para devs</li>
+            <li>Agentes de IA y flujos MCP</li>
+            <li>Cloud patterns con Azure</li>
+          </ul>
+        </div>
+      </details>
+      <details class="service-card spotlight" data-reveal style="--i:2">
+        <summary>
+          <h3>Blockchain &amp; Web3</h3>
+          <span class="service-card-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="service-card-body">
+          <p>Diseño y desarrollo de soluciones descentralizadas, desde smart contracts hasta arquitecturas Web3 end-to-end.</p>
+          <ul>
+            <li>Smart contracts y auditorías</li>
+            <li>Arquitectura de dApps</li>
+            <li>Integración Web3 en productos existentes</li>
+          </ul>
+        </div>
+      </details>
+      <details class="service-card spotlight" data-reveal style="--i:3">
+        <summary>
+          <h3>Consultoría y mentoría técnica</h3>
+          <span class="service-card-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="service-card-body">
+          <p>Acompañamiento puntual o continuo para decisiones de arquitectura, stack y roadmap técnico.</p>
+          <ul>
+            <li>Auditorías de arquitectura y código</li>
+            <li>Selección de stack y evaluación de proveedores</li>
+            <li>Mentoría 1:1 o por squad</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+    <div class="services-cta-row">
+      <a class="home-cta home-cta-primary" href="#contact" data-magnetic>Hablemos</a>
+    </div>
+  </div>
+  <div data-lang="en">
+    <div class="service-grid">
+      <details class="service-card spotlight" data-reveal style="--i:0">
+        <summary>
+          <h3>In-company training</h3>
+          <span class="service-card-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="service-card-body">
+          <p>Intensive learning tracks tailored to your stack: .NET, TypeScript/JavaScript, Rust, modern frameworks, and solid architecture practices.</p>
+          <ul>
+            <li>Initial technical assessment</li>
+            <li>Level-based learning plan</li>
+            <li>Guided labs with real code</li>
+          </ul>
+        </div>
+      </details>
+      <details class="service-card spotlight" data-reveal style="--i:1">
+        <summary>
+          <h3>Hands-on workshops</h3>
+          <span class="service-card-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="service-card-body">
+          <p>Practical sessions to speed up learning on specific, high-impact topics.</p>
+          <ul>
+            <li>Copilot and developer productivity</li>
+            <li>AI agents and MCP workflows</li>
+            <li>Azure cloud patterns</li>
+          </ul>
+        </div>
+      </details>
+      <details class="service-card spotlight" data-reveal style="--i:2">
+        <summary>
+          <h3>Blockchain &amp; Web3</h3>
+          <span class="service-card-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="service-card-body">
+          <p>Design and development of decentralized solutions, from smart contracts to end-to-end Web3 architecture.</p>
+          <ul>
+            <li>Smart contracts &amp; audits</li>
+            <li>dApp architecture</li>
+            <li>Web3 integration into existing products</li>
+          </ul>
+        </div>
+      </details>
+      <details class="service-card spotlight" data-reveal style="--i:3">
+        <summary>
+          <h3>Technical consulting &amp; mentoring</h3>
+          <span class="service-card-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="service-card-body">
+          <p>One-off or ongoing support for architecture decisions, stack selection, and technical roadmaps.</p>
+          <ul>
+            <li>Architecture and code audits</li>
+            <li>Stack selection and vendor evaluation</li>
+            <li>1:1 or squad-level mentoring</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+    <div class="services-cta-row">
+      <a class="home-cta home-cta-primary" href="#contact" data-magnetic>Let's talk</a>
+    </div>
+  </div>
 </section>
+
+<div id="blog" class="home-section-anchor" aria-hidden="true"></div>
+
+<section class="home-feed-head" data-lang="es" data-reveal>
+  <p class="home-section-eyebrow">Blog</p>
+  <h2 class="home-section-title">Ultimos articulos</h2>
+  <p class="home-section-lead">Notas tecnicas, eventos y aprendizajes de campo.</p>
+</section>
+
+<section class="home-feed-head" data-lang="en" data-reveal>
+  <p class="home-section-eyebrow">Blog</p>
+  <h2 class="home-section-title">Latest articles</h2>
+  <p class="home-section-lead">Technical notes, event recaps, and practical learnings.</p>
+</section>
+
+{% comment %}
+  Sourced from a public YouTube playlist at build time (see
+  _plugins/youtube_playlist.rb), not from blog posts — the two are
+  independent, so a video shows up here whether or not it has a
+  matching recap post.
+{% endcomment %}
+{% assign playlist_videos = site.youtube_playlist_videos %}
+
+{% capture deferred_videos %}
+<section class="home-section home-videos" id="videos" data-reveal>
+  <div data-lang="es">
+    <div class="home-section-head-row">
+      <div>
+        <p class="home-section-eyebrow">Contenido audiovisual</p>
+        <h2 class="home-section-title">Videos destacados de YouTube</h2>
+      </div>
+      <a class="home-inline-link" href="https://www.youtube.com/playlist?list={{ site.youtube-playlist-id }}" target="_blank" rel="noopener">Ver playlist completa</a>
+    </div>
+    <div class="video-grid">
+      {% for video in playlist_videos limit: 6 %}
+      <a class="video-card spotlight" href="{{ video.url }}" target="_blank" rel="noopener" data-reveal style="--i:{{ forloop.index0 | modulo: 3 }}">
+        <span class="video-thumb">
+          <img src="{{ video.thumbnail }}" alt="{{ video.title }}" loading="lazy" decoding="async" width="480" height="270">
+        </span>
+        <span class="video-card-content">
+          <span class="video-card-meta">{{ video.published | date: '%Y · %b %d' }}</span>
+          <span class="video-card-title">{{ video.title }}</span>
+          <span class="video-card-action">Ver en YouTube</span>
+        </span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  <div data-lang="en">
+    <div class="home-section-head-row">
+      <div>
+        <p class="home-section-eyebrow">Video content</p>
+        <h2 class="home-section-title">Featured YouTube videos</h2>
+      </div>
+      <a class="home-inline-link" href="https://www.youtube.com/playlist?list={{ site.youtube-playlist-id }}" target="_blank" rel="noopener">View full playlist</a>
+    </div>
+    <div class="video-grid">
+      {% for video in playlist_videos limit: 6 %}
+      <a class="video-card spotlight" href="{{ video.url }}" target="_blank" rel="noopener" data-reveal style="--i:{{ forloop.index0 | modulo: 3 }}">
+        <span class="video-thumb">
+          <img src="{{ video.thumbnail }}" alt="{{ video.title }}" loading="lazy" decoding="async" width="480" height="270">
+        </span>
+        <span class="video-card-content">
+          <span class="video-card-meta">{{ video.published | date: '%Y · %b %d' }}</span>
+          <span class="video-card-title">{{ video.title }}</span>
+          <span class="video-card-action">Watch on YouTube</span>
+        </span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endcapture %}
+
+{% capture deferred_contact %}
+<section class="home-section home-contact" id="contact" data-reveal>
+  <div data-lang="es" class="contact-grid">
+    <div>
+      <p class="home-section-eyebrow">Contacto</p>
+      <h2 class="home-section-title">Hablemos de tu próxima capacitación</h2>
+      <p class="home-section-lead">Contame objetivo, stack y tamaño del equipo. Te respondo con una propuesta concreta.</p>
+      <div class="contact-shortcuts">
+        <a href="https://linkedin.com/in/{{site.social-linkedin}}" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <form class="contact-form" data-contact-form data-lang="es">
+      <label for="contactNameEs">Nombre</label>
+      <input id="contactNameEs" name="name" type="text" required>
+      <label for="contactEmailEs">Email</label>
+      <input id="contactEmailEs" name="email" type="email" required>
+      <label for="contactMessageEs">¿Qué te gustaría trabajar?</label>
+      <textarea id="contactMessageEs" name="message" rows="4" required></textarea>
+      <button type="submit">Enviar consulta</button>
+    </form>
+  </div>
+  <div data-lang="en" class="contact-grid">
+    <div>
+      <p class="home-section-eyebrow">Contact</p>
+      <h2 class="home-section-title">Let's discuss your next training initiative</h2>
+      <p class="home-section-lead">Share your goal, stack, and team size. I will reply with a concrete proposal.</p>
+      <div class="contact-shortcuts">
+        <a href="https://linkedin.com/in/{{site.social-linkedin}}" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <form class="contact-form" data-contact-form data-lang="en">
+      <label for="contactNameEn">Name</label>
+      <input id="contactNameEn" name="name" type="text" required>
+      <label for="contactEmailEn">Email</label>
+      <input id="contactEmailEn" name="email" type="email" required>
+      <label for="contactMessageEn">What would you like to work on?</label>
+      <textarea id="contactMessageEn" name="message" rows="4" required></textarea>
+      <button type="submit">Send message</button>
+    </form>
+  </div>
+</section>
+{% endcapture %}
 
 {% for post in paginator.posts %}
 {% assign topic_tag = '' %}
@@ -22,7 +337,7 @@ layout: main
     {% break %}
   {% endunless %}
 {% endfor %}
-<article class="post" data-lang="{{ post.lang }}">
+<article class="post spotlight" data-lang="{{ post.lang }}" data-reveal>
   {% if post.img %}
     {% if post.img contains "http" %}
       <a class="post-thumbnail" href="{{post.url | prepend: site.baseurl}}">
@@ -84,63 +399,34 @@ layout: main
 
 {% include pagination.html %}
 
+{{ deferred_videos }}
+{{ deferred_contact }}
+
 <script>
+  // Scroll reveal lives in the shared motion engine (_layouts/default.html).
   document.addEventListener("DOMContentLoaded", () => {
-    const mediaQuery = window.matchMedia("(min-width: 1024px)");
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const intros = Array.from(document.querySelectorAll('.home-intro'));
+    const contactForms = Array.from(document.querySelectorAll('[data-contact-form]'));
+    if (!contactForms.length) return;
 
-    if (!intros.length) return;
+    contactForms.forEach((form) => {
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const name = (formData.get("name") || "").toString().trim();
+        const email = (formData.get("email") || "").toString().trim();
+        const message = (formData.get("message") || "").toString().trim();
+        const isEs = form.dataset.lang === "es";
 
-    let ticking = false;
+        const subject = isEs
+          ? `Consulta de capacitacion - ${name}`
+          : `Training inquiry - ${name}`;
+        const body = isEs
+          ? `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`
+          : `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
 
-    function getVisibleIntros() {
-      return intros.filter((intro) => getComputedStyle(intro).display !== "none");
-    }
-
-    function resetParallax() {
-      intros.forEach((intro) => {
-        intro.style.setProperty("--intro-parallax-x", "0px");
-        intro.style.setProperty("--intro-parallax-y", "0px");
+        window.location.href = `mailto:{{site.social-email}}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       });
-    }
+    });
 
-    function updateParallax() {
-      ticking = false;
-
-      if (!mediaQuery.matches || reducedMotion.matches) {
-        resetParallax();
-        return;
-      }
-
-      getVisibleIntros().forEach((intro) => {
-        const rect = intro.getBoundingClientRect();
-        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-        const progress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
-        const clamped = Math.min(Math.max(progress, 0), 1);
-        const yOffset = (clamped - 0.5) * 16;
-        const xOffset = (clamped - 0.5) * 10;
-
-        intro.style.setProperty("--intro-parallax-x", `${xOffset.toFixed(2)}px`);
-        intro.style.setProperty("--intro-parallax-y", `${yOffset.toFixed(2)}px`);
-      });
-    }
-
-    function requestParallaxUpdate() {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(updateParallax);
-    }
-
-    resetParallax();
-    updateParallax();
-
-    window.addEventListener("scroll", requestParallaxUpdate, { passive: true });
-    window.addEventListener("resize", requestParallaxUpdate, { passive: true });
-
-    if (typeof mediaQuery.addEventListener === "function") {
-      mediaQuery.addEventListener("change", requestParallaxUpdate);
-      reducedMotion.addEventListener("change", requestParallaxUpdate);
-    }
   });
 </script>
