@@ -133,25 +133,24 @@
   <meta name="view-transition" content="same-origin">
 	<link rel="shortcut icon" href="{{ "/assets/img/favicon/favicon.ico" | prepend: site.baseurl }}" type="image/x-icon">
 	<link rel="apple-touch-icon" href="{{ "/assets/img/favicon/apple-touch-icon.png" | prepend: site.baseurl }}">
-	<link rel="apple-touch-icon" sizes="72x72" href="{{ "/assets/img/favicon/apple-touch-icon-72x72.png" | prepend: site.baseurl }}">
-	<link rel="apple-touch-icon" sizes="144x144" href="{{ "/assets/img/favicon/apple-touch-icon-144x144.png" | prepend: site.baseurl }}">
 	<!-- RSS Feed -->
 	{% feed_meta %}
 	<!-- Theme color -->
-	<meta name="theme-color" content="#6366f1" media="(prefers-color-scheme: light)">
-	<meta name="theme-color" content="#1e293b" media="(prefers-color-scheme: dark)">
-	<meta name="msapplication-navbutton-color" content="#6366f1">
-	<meta name="apple-mobile-web-app-status-bar-style" content="#6366f1">
+  <meta name="theme-color" content="#f7f6fb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#08080f" media="(prefers-color-scheme: dark)">
+  <meta name="msapplication-navbutton-color" content="#6d5efc">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#6d5efc">
 	<!-- Preconnect for performance -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+	<!-- Google Fonts — Sora (display) + Inter (UI/body) + JetBrains Mono (code/meta) -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 	<!-- Styles -->
 	<link rel="stylesheet" href="{{ "/assets/css/modern.css" | prepend: site.baseurl }}">
-	<!-- Dark mode: prevent flash of wrong theme -->
+	<!-- Set theme + js flag before first paint (no FOUC, no invisible content without JS) -->
 	<script>
+		document.documentElement.classList.add("js");
 		try{if(localStorage.getItem("theme")==="dark"||(!localStorage.getItem("theme")&&window.matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark-mode")}}catch(e){}
 	</script>
 </head>
